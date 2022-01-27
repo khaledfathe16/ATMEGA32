@@ -23,7 +23,7 @@ int main()
 
 	switch(Local_u8Value)
 	{
-	case(0):MDIO_voidSetPortValue(GPIOB,0x3F);break;
+	case(0):MDIO_voidSetPortValue(GPIOB,0x3F);MDIO_voidSetPortValue(GPIOC,0x3F);break;
 	case(1):MDIO_voidSetPortValue(GPIOB,0x06);break;
 	case(2):MDIO_voidSetPortValue(GPIOB,0x5B);break;
 	case(3):MDIO_voidSetPortValue(GPIOB,0x4F);break;
