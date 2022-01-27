@@ -3,7 +3,11 @@
 
 void MDIO_voidSetPinMode(u8 copy_u8PortId,u8 copy_u8PinId,u8 copy_u8PinMode);
 
+void MDIO_voidSetPortMode(u8 copy_u8PortId  , u8 copy_u8PortMode);
+
 void MDIO_voidSetPinValue(u8 copy_u8PortId,u8 copy_u8PinId,u8 copy_u8PinValue);
+
+void MDIO_voidSetPortValue(u8 copy_u8PortId , u8 copy_u8Value);
 
 u8 MDIO_u8GetPinValue(u8 copy_u8PortId,u8 copy_u8PinId);
 

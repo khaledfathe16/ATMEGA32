@@ -87,6 +87,39 @@ void MDIO_voidSetPinMode(u8 copy_u8PortId , u8 copy_u8PinId , u8 copy_u8PinMode)
 	
 }
 
+void MDIO_voidSetPortMode(u8 copy_u8PortId  , u8 copy_u8PortMode)
+{
+
+if(copy_u8PortMode == HIGH)
+{
+	switch(copy_u8PortId)
+	{
+	case(GPIOA):DIO->DDRA = 0xFF;break;
+	case(GPIOB):DIO->DDRB = 0xFF;break;
+	case(GPIOC):DIO->DDRC = 0xFF;break;
+	case(GPIOD):DIO->DDRD = 0xFF;break;
+	default:/*Error*/;break;
+	}
+}
+else if(copy_u8PortMode == LOW)
+{
+	switch(copy_u8PortId)
+	{
+	case(GPIOA):DIO->DDRA = 0x00;break;
+	case(GPIOB):DIO->DDRB = 0x00;break;
+	case(GPIOC):DIO->DDRC = 0x00;break;
+	case(GPIOD):DIO->DDRD = 0x00;break;
+	default:/*Error*/;break;
+	}
+}
+else
+{
+//Error
+}
+
+}
+
+
 
 
 void MDIO_voidSetPinValue(u8 copy_u8PortId , u8 copy_u8PinId , u8 copy_u8PinValue)
@@ -159,6 +192,46 @@ void MDIO_voidSetPinValue(u8 copy_u8PortId , u8 copy_u8PinId , u8 copy_u8PinValu
 	
 	
 }
+
+
+
+void MDIO_voidSetPortValue(u8 copy_u8PortId ,u8 copy_u8Value)
+{
+
+	if(copy_u8Value <= (255))
+	{
+	  switch(copy_u8PortId)
+	  {
+	  case (GPIOA) : DIO->PORTA = copy_u8Value;break;
+	  case (GPIOB) : DIO->PORTB = copy_u8Value;break;
+	  case (GPIOC) : DIO->PORTC = copy_u8Value;break;
+	  case (GPIOD) : DIO->PORTD = copy_u8Value;break;
+	  default:/*Error*/;
+	  }
+
+
+	}
+
+	else {
+
+		//Error
+
+	}
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
 
 
 

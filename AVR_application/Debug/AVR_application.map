@@ -1,9 +1,7 @@
 Archive member included because of file (symbol)
 
-c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                              c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o (exit)
-c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
-                              ./main.o (__do_copy_data)
+c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                              c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o (exit)
 
 Memory Configuration
 
@@ -18,13 +16,13 @@ signature        0x00840000         0x00000400         rw !x
 
 Linker script and memory map
 
-LOAD c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+LOAD c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
 LOAD ./DIO_program.o
 LOAD ./UART_program.o
 LOAD ./main.o
-LOAD c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
-LOAD c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a
-LOAD c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
+LOAD c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
+LOAD c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a
+LOAD c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 
 .hash
  *(.hash)
@@ -116,9 +114,9 @@ LOAD c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x7de
+.text           0x00000000      0x932
  *(.vectors)
- .vectors       0x00000000       0x54 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .vectors       0x00000000       0x54 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
                 0x00000000                __vector_default
  *(.vectors)
@@ -143,19 +141,17 @@ LOAD c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x00000054        0x0 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .init0         0x00000054        0x0 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000054                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x00000054        0xc c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .init2         0x00000054        0xc c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x00000060       0x16 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
-                0x00000060                __do_copy_data
  *(.init4)
  *(.init5)
  *(.init5)
@@ -166,65 +162,69 @@ LOAD c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x00000076        0x8 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .init9         0x00000060        0x8 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
  *(.init9)
  *(.text)
- .text          0x0000007e        0x4 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
-                0x0000007e                __vector_1
-                0x0000007e                __vector_12
-                0x0000007e                __bad_interrupt
-                0x0000007e                __vector_6
-                0x0000007e                __vector_3
-                0x0000007e                __vector_11
-                0x0000007e                __vector_13
-                0x0000007e                __vector_17
-                0x0000007e                __vector_19
-                0x0000007e                __vector_7
-                0x0000007e                __vector_5
-                0x0000007e                __vector_4
-                0x0000007e                __vector_9
-                0x0000007e                __vector_2
-                0x0000007e                __vector_15
-                0x0000007e                __vector_8
-                0x0000007e                __vector_14
-                0x0000007e                __vector_10
-                0x0000007e                __vector_16
-                0x0000007e                __vector_18
-                0x0000007e                __vector_20
- .text          0x00000082        0x0 ./DIO_program.o
- .text          0x00000082        0x0 ./UART_program.o
- .text          0x00000082        0x0 ./main.o
- .text          0x00000082        0x0 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text          0x00000082        0x0 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
-                0x00000082                . = ALIGN (0x2)
+ .text          0x00000068        0x4 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+                0x00000068                __vector_1
+                0x00000068                __vector_12
+                0x00000068                __bad_interrupt
+                0x00000068                __vector_6
+                0x00000068                __vector_3
+                0x00000068                __vector_11
+                0x00000068                __vector_13
+                0x00000068                __vector_17
+                0x00000068                __vector_19
+                0x00000068                __vector_7
+                0x00000068                __vector_5
+                0x00000068                __vector_4
+                0x00000068                __vector_9
+                0x00000068                __vector_2
+                0x00000068                __vector_15
+                0x00000068                __vector_8
+                0x00000068                __vector_14
+                0x00000068                __vector_10
+                0x00000068                __vector_16
+                0x00000068                __vector_18
+                0x00000068                __vector_20
+ .text          0x0000006c        0x0 ./DIO_program.o
+ .text          0x0000006c        0x0 ./UART_program.o
+ .text          0x0000006c        0x0 ./main.o
+ .text          0x0000006c        0x0 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x0000006c                . = ALIGN (0x2)
  *(.text.*)
  .text.MDIO_voidSetPinMode
-                0x00000082      0x2ac ./DIO_program.o
-                0x00000082                MDIO_voidSetPinMode
+                0x0000006c      0x2ac ./DIO_program.o
+                0x0000006c                MDIO_voidSetPinMode
+ .text.MDIO_voidSetPortMode
+                0x00000318       0xf2 ./DIO_program.o
+                0x00000318                MDIO_voidSetPortMode
  .text.MDIO_voidSetPinValue
-                0x0000032e      0x20c ./DIO_program.o
-                0x0000032e                MDIO_voidSetPinValue
+                0x0000040a      0x20c ./DIO_program.o
+                0x0000040a                MDIO_voidSetPinValue
+ .text.MDIO_voidSetPortValue
+                0x00000616       0x82 ./DIO_program.o
+                0x00000616                MDIO_voidSetPortValue
  .text.MDIO_u8GetPinValue
-                0x0000053a       0xfa ./DIO_program.o
-                0x0000053a                MDIO_u8GetPinValue
+                0x00000698       0xfa ./DIO_program.o
+                0x00000698                MDIO_u8GetPinValue
  .text.MUART_voidUartInitialization
-                0x00000634       0x2c ./UART_program.o
-                0x00000634                MUART_voidUartInitialization
+                0x00000792       0x2c ./UART_program.o
+                0x00000792                MUART_voidUartInitialization
  .text.MUART_voidUartSendByte
-                0x00000660       0x34 ./UART_program.o
-                0x00000660                MUART_voidUartSendByte
+                0x000007be       0x34 ./UART_program.o
+                0x000007be                MUART_voidUartSendByte
  .text.MUART_u8UartRecieveByte
-                0x00000694       0x1e ./UART_program.o
-                0x00000694                MUART_u8UartRecieveByte
- .text.main     0x000006b2      0x128 ./main.o
-                0x000006b2                main
- .text.libgcc   0x000007da        0x0 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x000007da        0x0 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
-                0x000007da                . = ALIGN (0x2)
+                0x000007f2       0x1e ./UART_program.o
+                0x000007f2                MUART_u8UartRecieveByte
+ .text.main     0x00000810      0x11e ./main.o
+                0x00000810                main
+ .text.libgcc   0x0000092e        0x0 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x0000092e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000007da        0x0 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x000007da                exit
-                0x000007da                _exit
+ .fini9         0x0000092e        0x0 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x0000092e                exit
+                0x0000092e                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -243,48 +243,46 @@ LOAD c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000007da        0x4 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000092e        0x4 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x000007de                _etext = .
+                0x00000932                _etext = .
 
-.data           0x00800060      0x3e8 load address 0x000007de
+.data           0x00800060        0x0 load address 0x00000932
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
- .data          0x00800060        0x0 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .data          0x00800060        0x0 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
  .data          0x00800060        0x0 ./DIO_program.o
  .data          0x00800060        0x0 ./UART_program.o
- .data          0x00800060      0x3e8 ./main.o
- .data          0x00800448        0x0 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .data          0x00800448        0x0 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .data          0x00800060        0x0 ./main.o
+ .data          0x00800060        0x0 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.data*)
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.d*)
-                0x00800448                . = ALIGN (0x2)
-                0x00800448                _edata = .
-                0x00800448                PROVIDE (__data_end, .)
+                0x00800060                . = ALIGN (0x2)
+                0x00800060                _edata = .
+                0x00800060                PROVIDE (__data_end, .)
 
-.bss            0x00800448        0x0
-                0x00800448                PROVIDE (__bss_start, .)
+.bss            0x00800060        0x0
+                0x00800060                PROVIDE (__bss_start, .)
  *(.bss)
- .bss           0x00800448        0x0 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
- .bss           0x00800448        0x0 ./DIO_program.o
- .bss           0x00800448        0x0 ./UART_program.o
- .bss           0x00800448        0x0 ./main.o
- .bss           0x00800448        0x0 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .bss           0x00800448        0x0 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .bss           0x00800060        0x0 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .bss           0x00800060        0x0 ./DIO_program.o
+ .bss           0x00800060        0x0 ./UART_program.o
+ .bss           0x00800060        0x0 ./main.o
+ .bss           0x00800060        0x0 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.bss*)
  *(COMMON)
-                0x00800448                PROVIDE (__bss_end, .)
-                0x000007de                __data_load_start = LOADADDR (.data)
-                0x00000bc6                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00800060                PROVIDE (__bss_end, .)
+                0x00000932                __data_load_start = LOADADDR (.data)
+                0x00000932                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800448        0x0
-                0x00800448                PROVIDE (__noinit_start, .)
+.noinit         0x00800060        0x0
+                0x00800060                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x00800448                PROVIDE (__noinit_end, .)
-                0x00800448                _end = .
-                0x00800448                PROVIDE (__heap_start, .)
+                0x00800060                PROVIDE (__noinit_end, .)
+                0x00800060                _end = .
+                0x00800060                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -302,17 +300,17 @@ LOAD c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.
 .signature
  *(.signature*)
 
-.stab           0x00000000      0x7e0
+.stab           0x00000000      0x960
  *(.stab)
- .stab          0x00000000      0x48c ./DIO_program.o
- .stab          0x0000048c      0x1bc ./UART_program.o
+ .stab          0x00000000      0x5d0 ./DIO_program.o
+ .stab          0x000005d0      0x1bc ./UART_program.o
                                 0x21c (size before relaxing)
- .stab          0x00000648      0x198 ./main.o
-                                0x1f8 (size before relaxing)
+ .stab          0x0000078c      0x1d4 ./main.o
+                                0x234 (size before relaxing)
 
-.stabstr        0x00000000      0x529
+.stabstr        0x00000000      0x56d
  *(.stabstr)
- .stabstr       0x00000000      0x529 ./DIO_program.o
+ .stabstr       0x00000000      0x56d ./DIO_program.o
 
 .stab.excl
  *(.stab.excl)
