@@ -12,7 +12,7 @@ int main()
 	MUART_voidUartInitialization();
 
 
-u8 ask[1000]={"Here you can find activities"};
+u8 ask[1000]={"Hello from My laptop"};
 
 u8 i=0;
 

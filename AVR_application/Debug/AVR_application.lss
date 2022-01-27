@@ -1114,7 +1114,7 @@ int main()
  6d2:	0e 94 1a 03 	call	0x634	; 0x634 <MUART_voidUartInitialization>
 
 
-u8 ask[1000]={"Here you can find activities"};
+u8 ask[1000]={"Hello from My laptop"};
  6d6:	9e 01       	movw	r18, r28
  6d8:	2e 5f       	subi	r18, 0xFE	; 254
  6da:	3f 4f       	sbci	r19, 0xFF	; 255
@@ -1132,7 +1132,7 @@ u8 ask[1000]={"Here you can find activities"};
  6f2:	88 83       	st	Y, r24
  6f4:	cc 5e       	subi	r28, 0xEC	; 236
  6f6:	d3 40       	sbci	r29, 0x03	; 3
- 6f8:	9d e1       	ldi	r25, 0x1D	; 29
+ 6f8:	95 e1       	ldi	r25, 0x15	; 21
  6fa:	c2 51       	subi	r28, 0x12	; 18
  6fc:	dc 4f       	sbci	r29, 0xFC	; 252
  6fe:	98 83       	st	Y, r25
@@ -1196,10 +1196,10 @@ u8 ask[1000]={"Here you can find activities"};
  772:	d3 40       	sbci	r29, 0x03	; 3
  774:	22 23       	and	r18, r18
  776:	31 f6       	brne	.-116    	; 0x704 <main+0x52>
- 778:	8b ec       	ldi	r24, 0xCB	; 203
+ 778:	83 ed       	ldi	r24, 0xD3	; 211
  77a:	93 e0       	ldi	r25, 0x03	; 3
  77c:	fe 01       	movw	r30, r28
- 77e:	7f 96       	adiw	r30, 0x1f	; 31
+ 77e:	77 96       	adiw	r30, 0x17	; 23
  780:	df 01       	movw	r26, r30
  782:	9c 01       	movw	r18, r24
  784:	1d 92       	st	X+, r1
@@ -1230,7 +1230,7 @@ u8 i=0;
  7a8:	8f 5f       	subi	r24, 0xFF	; 255
  7aa:	89 83       	std	Y+1, r24	; 0x01
 
-u8 ask[1000]={"Here you can find activities"};
+u8 ask[1000]={"Hello from My laptop"};
 
 u8 i=0;
 
