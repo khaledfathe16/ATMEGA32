@@ -3,11 +3,11 @@ AVR_application.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000a82  00000000  00000000  00000054  2**1
+  0 .text         00000a9e  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .stab         000009d8  00000000  00000000  00000ad8  2**2
+  1 .stab         000009e4  00000000  00000000  00000af4  2**2
                   CONTENTS, READONLY, DEBUGGING
-  2 .stabstr      0000056d  00000000  00000000  000014b0  2**0
+  2 .stabstr      0000056d  00000000  00000000  000014d8  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -43,7 +43,7 @@ Disassembly of section .text:
   5c:	de bf       	out	0x3e, r29	; 62
   5e:	cd bf       	out	0x3d, r28	; 61
   60:	0e 94 08 04 	call	0x810	; 0x810 <main>
-  64:	0c 94 3f 05 	jmp	0xa7e	; 0xa7e <_exit>
+  64:	0c 94 4d 05 	jmp	0xa9a	; 0xa9a <_exit>
 
 00000068 <__bad_interrupt>:
   68:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -1357,7 +1357,7 @@ int main()
  846:	89 30       	cpi	r24, 0x09	; 9
  848:	91 05       	cpc	r25, r1
  84a:	09 f4       	brne	.+2      	; 0x84e <main+0x3e>
- 84c:	c2 c0       	rjmp	.+388    	; 0x9d2 <__stack+0x173>
+ 84c:	d0 c0       	rjmp	.+416    	; 0x9ee <__stack+0x18f>
  84e:	2a 81       	ldd	r18, Y+2	; 0x02
  850:	3b 81       	ldd	r19, Y+3	; 0x03
  852:	2a 30       	cpi	r18, 0x0A	; 10
@@ -1369,7 +1369,7 @@ int main()
  85e:	84 30       	cpi	r24, 0x04	; 4
  860:	91 05       	cpc	r25, r1
  862:	09 f4       	brne	.+2      	; 0x866 <__stack+0x7>
- 864:	9d c0       	rjmp	.+314    	; 0x9a0 <__stack+0x141>
+ 864:	ab c0       	rjmp	.+342    	; 0x9bc <__stack+0x15d>
  866:	2a 81       	ldd	r18, Y+2	; 0x02
  868:	3b 81       	ldd	r19, Y+3	; 0x03
  86a:	25 30       	cpi	r18, 0x05	; 5
@@ -1380,7 +1380,7 @@ int main()
  874:	81 30       	cpi	r24, 0x01	; 1
  876:	91 05       	cpc	r25, r1
  878:	09 f4       	brne	.+2      	; 0x87c <__stack+0x1d>
- 87a:	83 c0       	rjmp	.+262    	; 0x982 <__stack+0x123>
+ 87a:	91 c0       	rjmp	.+290    	; 0x99e <__stack+0x13f>
  87c:	2a 81       	ldd	r18, Y+2	; 0x02
  87e:	3b 81       	ldd	r19, Y+3	; 0x03
  880:	22 30       	cpi	r18, 0x02	; 2
@@ -1390,52 +1390,52 @@ int main()
  888:	9b 81       	ldd	r25, Y+3	; 0x03
  88a:	00 97       	sbiw	r24, 0x00	; 0
  88c:	09 f4       	brne	.+2      	; 0x890 <__stack+0x31>
- 88e:	70 c0       	rjmp	.+224    	; 0x970 <__stack+0x111>
+ 88e:	7e c0       	rjmp	.+252    	; 0x98c <__stack+0x12d>
  890:	d0 cf       	rjmp	.-96     	; 0x832 <main+0x22>
  892:	2a 81       	ldd	r18, Y+2	; 0x02
  894:	3b 81       	ldd	r19, Y+3	; 0x03
  896:	22 30       	cpi	r18, 0x02	; 2
  898:	31 05       	cpc	r19, r1
  89a:	09 f4       	brne	.+2      	; 0x89e <__stack+0x3f>
- 89c:	77 c0       	rjmp	.+238    	; 0x98c <__stack+0x12d>
+ 89c:	85 c0       	rjmp	.+266    	; 0x9a8 <__stack+0x149>
  89e:	8a 81       	ldd	r24, Y+2	; 0x02
  8a0:	9b 81       	ldd	r25, Y+3	; 0x03
  8a2:	83 30       	cpi	r24, 0x03	; 3
  8a4:	91 05       	cpc	r25, r1
  8a6:	09 f4       	brne	.+2      	; 0x8aa <__stack+0x4b>
- 8a8:	76 c0       	rjmp	.+236    	; 0x996 <__stack+0x137>
+ 8a8:	84 c0       	rjmp	.+264    	; 0x9b2 <__stack+0x153>
  8aa:	c3 cf       	rjmp	.-122    	; 0x832 <main+0x22>
  8ac:	2a 81       	ldd	r18, Y+2	; 0x02
  8ae:	3b 81       	ldd	r19, Y+3	; 0x03
  8b0:	26 30       	cpi	r18, 0x06	; 6
  8b2:	31 05       	cpc	r19, r1
  8b4:	09 f4       	brne	.+2      	; 0x8b8 <__stack+0x59>
- 8b6:	7e c0       	rjmp	.+252    	; 0x9b4 <__stack+0x155>
+ 8b6:	8c c0       	rjmp	.+280    	; 0x9d0 <__stack+0x171>
  8b8:	8a 81       	ldd	r24, Y+2	; 0x02
  8ba:	9b 81       	ldd	r25, Y+3	; 0x03
  8bc:	86 30       	cpi	r24, 0x06	; 6
  8be:	91 05       	cpc	r25, r1
  8c0:	0c f4       	brge	.+2      	; 0x8c4 <__stack+0x65>
- 8c2:	73 c0       	rjmp	.+230    	; 0x9aa <__stack+0x14b>
+ 8c2:	81 c0       	rjmp	.+258    	; 0x9c6 <__stack+0x167>
  8c4:	2a 81       	ldd	r18, Y+2	; 0x02
  8c6:	3b 81       	ldd	r19, Y+3	; 0x03
  8c8:	27 30       	cpi	r18, 0x07	; 7
  8ca:	31 05       	cpc	r19, r1
  8cc:	09 f4       	brne	.+2      	; 0x8d0 <__stack+0x71>
- 8ce:	77 c0       	rjmp	.+238    	; 0x9be <__stack+0x15f>
+ 8ce:	85 c0       	rjmp	.+266    	; 0x9da <__stack+0x17b>
  8d0:	8a 81       	ldd	r24, Y+2	; 0x02
  8d2:	9b 81       	ldd	r25, Y+3	; 0x03
  8d4:	88 30       	cpi	r24, 0x08	; 8
  8d6:	91 05       	cpc	r25, r1
  8d8:	09 f4       	brne	.+2      	; 0x8dc <__stack+0x7d>
- 8da:	76 c0       	rjmp	.+236    	; 0x9c8 <__stack+0x169>
+ 8da:	84 c0       	rjmp	.+264    	; 0x9e4 <__stack+0x185>
  8dc:	aa cf       	rjmp	.-172    	; 0x832 <main+0x22>
  8de:	2a 81       	ldd	r18, Y+2	; 0x02
  8e0:	3b 81       	ldd	r19, Y+3	; 0x03
  8e2:	22 33       	cpi	r18, 0x32	; 50
  8e4:	31 05       	cpc	r19, r1
  8e6:	09 f4       	brne	.+2      	; 0x8ea <__stack+0x8b>
- 8e8:	9d c0       	rjmp	.+314    	; 0xa24 <__stack+0x1c5>
+ 8e8:	ab c0       	rjmp	.+342    	; 0xa40 <__stack+0x1e1>
  8ea:	8a 81       	ldd	r24, Y+2	; 0x02
  8ec:	9b 81       	ldd	r25, Y+3	; 0x03
  8ee:	83 33       	cpi	r24, 0x33	; 51
@@ -1446,7 +1446,7 @@ int main()
  8f8:	24 31       	cpi	r18, 0x14	; 20
  8fa:	31 05       	cpc	r19, r1
  8fc:	09 f4       	brne	.+2      	; 0x900 <__stack+0xa1>
- 8fe:	77 c0       	rjmp	.+238    	; 0x9ee <__stack+0x18f>
+ 8fe:	85 c0       	rjmp	.+266    	; 0xa0a <__stack+0x1ab>
  900:	8a 81       	ldd	r24, Y+2	; 0x02
  902:	9b 81       	ldd	r25, Y+3	; 0x03
  904:	85 31       	cpi	r24, 0x15	; 21
@@ -1457,198 +1457,213 @@ int main()
  90e:	2a 30       	cpi	r18, 0x0A	; 10
  910:	31 05       	cpc	r19, r1
  912:	09 f4       	brne	.+2      	; 0x916 <__stack+0xb7>
- 914:	63 c0       	rjmp	.+198    	; 0x9dc <__stack+0x17d>
+ 914:	71 c0       	rjmp	.+226    	; 0x9f8 <__stack+0x199>
  916:	8d cf       	rjmp	.-230    	; 0x832 <main+0x22>
  918:	8a 81       	ldd	r24, Y+2	; 0x02
  91a:	9b 81       	ldd	r25, Y+3	; 0x03
  91c:	8e 31       	cpi	r24, 0x1E	; 30
  91e:	91 05       	cpc	r25, r1
  920:	09 f4       	brne	.+2      	; 0x924 <__stack+0xc5>
- 922:	6e c0       	rjmp	.+220    	; 0xa00 <__stack+0x1a1>
+ 922:	7c c0       	rjmp	.+248    	; 0xa1c <__stack+0x1bd>
  924:	2a 81       	ldd	r18, Y+2	; 0x02
  926:	3b 81       	ldd	r19, Y+3	; 0x03
  928:	28 32       	cpi	r18, 0x28	; 40
  92a:	31 05       	cpc	r19, r1
  92c:	09 f4       	brne	.+2      	; 0x930 <__stack+0xd1>
- 92e:	71 c0       	rjmp	.+226    	; 0xa12 <__stack+0x1b3>
+ 92e:	7f c0       	rjmp	.+254    	; 0xa2e <__stack+0x1cf>
  930:	80 cf       	rjmp	.-256    	; 0x832 <main+0x22>
  932:	8a 81       	ldd	r24, Y+2	; 0x02
  934:	9b 81       	ldd	r25, Y+3	; 0x03
- 936:	86 34       	cpi	r24, 0x46	; 70
+ 936:	80 35       	cpi	r24, 0x50	; 80
  938:	91 05       	cpc	r25, r1
  93a:	09 f4       	brne	.+2      	; 0x93e <__stack+0xdf>
- 93c:	85 c0       	rjmp	.+266    	; 0xa48 <__stack+0x1e9>
+ 93c:	9c c0       	rjmp	.+312    	; 0xa76 <__stack+0x217>
  93e:	2a 81       	ldd	r18, Y+2	; 0x02
  940:	3b 81       	ldd	r19, Y+3	; 0x03
- 942:	27 34       	cpi	r18, 0x47	; 71
+ 942:	21 35       	cpi	r18, 0x51	; 81
  944:	31 05       	cpc	r19, r1
- 946:	3c f4       	brge	.+14     	; 0x956 <__stack+0xf7>
+ 946:	6c f4       	brge	.+26     	; 0x962 <__stack+0x103>
  948:	8a 81       	ldd	r24, Y+2	; 0x02
  94a:	9b 81       	ldd	r25, Y+3	; 0x03
  94c:	8c 33       	cpi	r24, 0x3C	; 60
  94e:	91 05       	cpc	r25, r1
  950:	09 f4       	brne	.+2      	; 0x954 <__stack+0xf5>
- 952:	71 c0       	rjmp	.+226    	; 0xa36 <__stack+0x1d7>
- 954:	6e cf       	rjmp	.-292    	; 0x832 <main+0x22>
- 956:	2a 81       	ldd	r18, Y+2	; 0x02
- 958:	3b 81       	ldd	r19, Y+3	; 0x03
- 95a:	20 35       	cpi	r18, 0x50	; 80
- 95c:	31 05       	cpc	r19, r1
- 95e:	09 f4       	brne	.+2      	; 0x962 <__stack+0x103>
- 960:	7c c0       	rjmp	.+248    	; 0xa5a <__stack+0x1fb>
+ 952:	7f c0       	rjmp	.+254    	; 0xa52 <__stack+0x1f3>
+ 954:	2a 81       	ldd	r18, Y+2	; 0x02
+ 956:	3b 81       	ldd	r19, Y+3	; 0x03
+ 958:	26 34       	cpi	r18, 0x46	; 70
+ 95a:	31 05       	cpc	r19, r1
+ 95c:	09 f4       	brne	.+2      	; 0x960 <__stack+0x101>
+ 95e:	82 c0       	rjmp	.+260    	; 0xa64 <__stack+0x205>
+ 960:	68 cf       	rjmp	.-304    	; 0x832 <main+0x22>
  962:	8a 81       	ldd	r24, Y+2	; 0x02
  964:	9b 81       	ldd	r25, Y+3	; 0x03
  966:	8a 35       	cpi	r24, 0x5A	; 90
  968:	91 05       	cpc	r25, r1
  96a:	09 f4       	brne	.+2      	; 0x96e <__stack+0x10f>
- 96c:	7f c0       	rjmp	.+254    	; 0xa6c <__stack+0x20d>
- 96e:	61 cf       	rjmp	.-318    	; 0x832 <main+0x22>
+ 96c:	8d c0       	rjmp	.+282    	; 0xa88 <__stack+0x229>
+ 96e:	2a 81       	ldd	r18, Y+2	; 0x02
+ 970:	3b 81       	ldd	r19, Y+3	; 0x03
+ 972:	2f 3f       	cpi	r18, 0xFF	; 255
+ 974:	31 05       	cpc	r19, r1
+ 976:	09 f0       	breq	.+2      	; 0x97a <__stack+0x11b>
+ 978:	5c cf       	rjmp	.-328    	; 0x832 <main+0x22>
 	{
-	case(0):MDIO_voidSetPortValue(GPIOB,0x3F);MDIO_voidSetPortValue(GPIOC,0x3F);break;
- 970:	81 e0       	ldi	r24, 0x01	; 1
- 972:	6f e3       	ldi	r22, 0x3F	; 63
- 974:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 978:	82 e0       	ldi	r24, 0x02	; 2
- 97a:	6f e3       	ldi	r22, 0x3F	; 63
- 97c:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 980:	58 cf       	rjmp	.-336    	; 0x832 <main+0x22>
-	case(1):MDIO_voidSetPortValue(GPIOB,0x06);break;
- 982:	81 e0       	ldi	r24, 0x01	; 1
- 984:	66 e0       	ldi	r22, 0x06	; 6
+
+	case(255):MDIO_voidSetPortValue(GPIOB,255);MDIO_voidSetPortValue(GPIOC,255);break;
+ 97a:	81 e0       	ldi	r24, 0x01	; 1
+ 97c:	6f ef       	ldi	r22, 0xFF	; 255
+ 97e:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ 982:	82 e0       	ldi	r24, 0x02	; 2
+ 984:	6f ef       	ldi	r22, 0xFF	; 255
  986:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
  98a:	53 cf       	rjmp	.-346    	; 0x832 <main+0x22>
-	case(2):MDIO_voidSetPortValue(GPIOB,0x5B);break;
- 98c:	81 e0       	ldi	r24, 0x01	; 1
- 98e:	6b e5       	ldi	r22, 0x5B	; 91
- 990:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 994:	4e cf       	rjmp	.-356    	; 0x832 <main+0x22>
-	case(3):MDIO_voidSetPortValue(GPIOB,0x4F);break;
- 996:	81 e0       	ldi	r24, 0x01	; 1
- 998:	6f e4       	ldi	r22, 0x4F	; 79
- 99a:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 99e:	49 cf       	rjmp	.-366    	; 0x832 <main+0x22>
-	case(4):MDIO_voidSetPortValue(GPIOB,0x66);break;
- 9a0:	81 e0       	ldi	r24, 0x01	; 1
- 9a2:	66 e6       	ldi	r22, 0x66	; 102
- 9a4:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 9a8:	44 cf       	rjmp	.-376    	; 0x832 <main+0x22>
-	case(5):MDIO_voidSetPortValue(GPIOB,0x6D);break;
- 9aa:	81 e0       	ldi	r24, 0x01	; 1
- 9ac:	6d e6       	ldi	r22, 0x6D	; 109
- 9ae:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 9b2:	3f cf       	rjmp	.-386    	; 0x832 <main+0x22>
-	case(6):MDIO_voidSetPortValue(GPIOB,0x7D);break;
- 9b4:	81 e0       	ldi	r24, 0x01	; 1
- 9b6:	6d e7       	ldi	r22, 0x7D	; 125
- 9b8:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 9bc:	3a cf       	rjmp	.-396    	; 0x832 <main+0x22>
-	case(7):MDIO_voidSetPortValue(GPIOB,0x07);break;
- 9be:	81 e0       	ldi	r24, 0x01	; 1
- 9c0:	67 e0       	ldi	r22, 0x07	; 7
- 9c2:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 9c6:	35 cf       	rjmp	.-406    	; 0x832 <main+0x22>
-	case(8):MDIO_voidSetPortValue(GPIOB,0x7F);break;
- 9c8:	81 e0       	ldi	r24, 0x01	; 1
- 9ca:	6f e7       	ldi	r22, 0x7F	; 127
- 9cc:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 9d0:	30 cf       	rjmp	.-416    	; 0x832 <main+0x22>
-	case(9):MDIO_voidSetPortValue(GPIOB,0x6F);break;
- 9d2:	81 e0       	ldi	r24, 0x01	; 1
- 9d4:	6f e6       	ldi	r22, 0x6F	; 111
- 9d6:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 9da:	2b cf       	rjmp	.-426    	; 0x832 <main+0x22>
 
-	case(10):MDIO_voidSetPortValue(GPIOC,0x06);MDIO_voidSetPortValue(GPIOB,0x3F);break;
- 9dc:	82 e0       	ldi	r24, 0x02	; 2
- 9de:	66 e0       	ldi	r22, 0x06	; 6
- 9e0:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+	case(0):MDIO_voidSetPortValue(GPIOB,0x3F);MDIO_voidSetPortValue(GPIOC,0x3F);break;
+ 98c:	81 e0       	ldi	r24, 0x01	; 1
+ 98e:	6f e3       	ldi	r22, 0x3F	; 63
+ 990:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ 994:	82 e0       	ldi	r24, 0x02	; 2
+ 996:	6f e3       	ldi	r22, 0x3F	; 63
+ 998:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ 99c:	4a cf       	rjmp	.-364    	; 0x832 <main+0x22>
+	case(1):MDIO_voidSetPortValue(GPIOB,0x06);break;
+ 99e:	81 e0       	ldi	r24, 0x01	; 1
+ 9a0:	66 e0       	ldi	r22, 0x06	; 6
+ 9a2:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ 9a6:	45 cf       	rjmp	.-374    	; 0x832 <main+0x22>
+	case(2):MDIO_voidSetPortValue(GPIOB,0x5B);break;
+ 9a8:	81 e0       	ldi	r24, 0x01	; 1
+ 9aa:	6b e5       	ldi	r22, 0x5B	; 91
+ 9ac:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ 9b0:	40 cf       	rjmp	.-384    	; 0x832 <main+0x22>
+	case(3):MDIO_voidSetPortValue(GPIOB,0x4F);break;
+ 9b2:	81 e0       	ldi	r24, 0x01	; 1
+ 9b4:	6f e4       	ldi	r22, 0x4F	; 79
+ 9b6:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ 9ba:	3b cf       	rjmp	.-394    	; 0x832 <main+0x22>
+	case(4):MDIO_voidSetPortValue(GPIOB,0x66);break;
+ 9bc:	81 e0       	ldi	r24, 0x01	; 1
+ 9be:	66 e6       	ldi	r22, 0x66	; 102
+ 9c0:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ 9c4:	36 cf       	rjmp	.-404    	; 0x832 <main+0x22>
+	case(5):MDIO_voidSetPortValue(GPIOB,0x6D);break;
+ 9c6:	81 e0       	ldi	r24, 0x01	; 1
+ 9c8:	6d e6       	ldi	r22, 0x6D	; 109
+ 9ca:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ 9ce:	31 cf       	rjmp	.-414    	; 0x832 <main+0x22>
+	case(6):MDIO_voidSetPortValue(GPIOB,0x7D);break;
+ 9d0:	81 e0       	ldi	r24, 0x01	; 1
+ 9d2:	6d e7       	ldi	r22, 0x7D	; 125
+ 9d4:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ 9d8:	2c cf       	rjmp	.-424    	; 0x832 <main+0x22>
+	case(7):MDIO_voidSetPortValue(GPIOB,0x07);break;
+ 9da:	81 e0       	ldi	r24, 0x01	; 1
+ 9dc:	67 e0       	ldi	r22, 0x07	; 7
+ 9de:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ 9e2:	27 cf       	rjmp	.-434    	; 0x832 <main+0x22>
+	case(8):MDIO_voidSetPortValue(GPIOB,0x7F);break;
  9e4:	81 e0       	ldi	r24, 0x01	; 1
- 9e6:	6f e3       	ldi	r22, 0x3F	; 63
+ 9e6:	6f e7       	ldi	r22, 0x7F	; 127
  9e8:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
  9ec:	22 cf       	rjmp	.-444    	; 0x832 <main+0x22>
+	case(9):MDIO_voidSetPortValue(GPIOB,0x6F);break;
+ 9ee:	81 e0       	ldi	r24, 0x01	; 1
+ 9f0:	6f e6       	ldi	r22, 0x6F	; 111
+ 9f2:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ 9f6:	1d cf       	rjmp	.-454    	; 0x832 <main+0x22>
+
+	case(10):MDIO_voidSetPortValue(GPIOC,0x06);MDIO_voidSetPortValue(GPIOB,0x3F);break;
+ 9f8:	82 e0       	ldi	r24, 0x02	; 2
+ 9fa:	66 e0       	ldi	r22, 0x06	; 6
+ 9fc:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ a00:	81 e0       	ldi	r24, 0x01	; 1
+ a02:	6f e3       	ldi	r22, 0x3F	; 63
+ a04:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ a08:	14 cf       	rjmp	.-472    	; 0x832 <main+0x22>
 
 
 	case(20):MDIO_voidSetPortValue(GPIOC,0x5B);MDIO_voidSetPortValue(GPIOB,0x3F);break;
- 9ee:	82 e0       	ldi	r24, 0x02	; 2
- 9f0:	6b e5       	ldi	r22, 0x5B	; 91
- 9f2:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 9f6:	81 e0       	ldi	r24, 0x01	; 1
- 9f8:	6f e3       	ldi	r22, 0x3F	; 63
- 9fa:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 9fe:	19 cf       	rjmp	.-462    	; 0x832 <main+0x22>
+ a0a:	82 e0       	ldi	r24, 0x02	; 2
+ a0c:	6b e5       	ldi	r22, 0x5B	; 91
+ a0e:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ a12:	81 e0       	ldi	r24, 0x01	; 1
+ a14:	6f e3       	ldi	r22, 0x3F	; 63
+ a16:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ a1a:	0b cf       	rjmp	.-490    	; 0x832 <main+0x22>
 
 
 	case(30):MDIO_voidSetPortValue(GPIOC,0x4F);MDIO_voidSetPortValue(GPIOB,0x3F);break;
- a00:	82 e0       	ldi	r24, 0x02	; 2
- a02:	6f e4       	ldi	r22, 0x4F	; 79
- a04:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a08:	81 e0       	ldi	r24, 0x01	; 1
- a0a:	6f e3       	ldi	r22, 0x3F	; 63
- a0c:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a10:	10 cf       	rjmp	.-480    	; 0x832 <main+0x22>
+ a1c:	82 e0       	ldi	r24, 0x02	; 2
+ a1e:	6f e4       	ldi	r22, 0x4F	; 79
+ a20:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ a24:	81 e0       	ldi	r24, 0x01	; 1
+ a26:	6f e3       	ldi	r22, 0x3F	; 63
+ a28:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ a2c:	02 cf       	rjmp	.-508    	; 0x832 <main+0x22>
 
 
 	case(40):MDIO_voidSetPortValue(GPIOC,0x66);MDIO_voidSetPortValue(GPIOB,0x3F);break;
- a12:	82 e0       	ldi	r24, 0x02	; 2
- a14:	66 e6       	ldi	r22, 0x66	; 102
- a16:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a1a:	81 e0       	ldi	r24, 0x01	; 1
- a1c:	6f e3       	ldi	r22, 0x3F	; 63
- a1e:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a22:	07 cf       	rjmp	.-498    	; 0x832 <main+0x22>
+ a2e:	82 e0       	ldi	r24, 0x02	; 2
+ a30:	66 e6       	ldi	r22, 0x66	; 102
+ a32:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ a36:	81 e0       	ldi	r24, 0x01	; 1
+ a38:	6f e3       	ldi	r22, 0x3F	; 63
+ a3a:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ a3e:	f9 ce       	rjmp	.-526    	; 0x832 <main+0x22>
 
 
 	case(50):MDIO_voidSetPortValue(GPIOC,0x6D);MDIO_voidSetPortValue(GPIOB,0x3F);break;
- a24:	82 e0       	ldi	r24, 0x02	; 2
- a26:	6d e6       	ldi	r22, 0x6D	; 109
- a28:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a2c:	81 e0       	ldi	r24, 0x01	; 1
- a2e:	6f e3       	ldi	r22, 0x3F	; 63
- a30:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a34:	fe ce       	rjmp	.-516    	; 0x832 <main+0x22>
+ a40:	82 e0       	ldi	r24, 0x02	; 2
+ a42:	6d e6       	ldi	r22, 0x6D	; 109
+ a44:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ a48:	81 e0       	ldi	r24, 0x01	; 1
+ a4a:	6f e3       	ldi	r22, 0x3F	; 63
+ a4c:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ a50:	f0 ce       	rjmp	.-544    	; 0x832 <main+0x22>
 
 
 	case(60):MDIO_voidSetPortValue(GPIOC,0x7D);MDIO_voidSetPortValue(GPIOB,0x3F);break;
- a36:	82 e0       	ldi	r24, 0x02	; 2
- a38:	6d e7       	ldi	r22, 0x7D	; 125
- a3a:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a3e:	81 e0       	ldi	r24, 0x01	; 1
- a40:	6f e3       	ldi	r22, 0x3F	; 63
- a42:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a46:	f5 ce       	rjmp	.-534    	; 0x832 <main+0x22>
+ a52:	82 e0       	ldi	r24, 0x02	; 2
+ a54:	6d e7       	ldi	r22, 0x7D	; 125
+ a56:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ a5a:	81 e0       	ldi	r24, 0x01	; 1
+ a5c:	6f e3       	ldi	r22, 0x3F	; 63
+ a5e:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ a62:	e7 ce       	rjmp	.-562    	; 0x832 <main+0x22>
 
 
 	case(70):MDIO_voidSetPortValue(GPIOC,0x07);MDIO_voidSetPortValue(GPIOB,0x3F);break;
- a48:	82 e0       	ldi	r24, 0x02	; 2
- a4a:	67 e0       	ldi	r22, 0x07	; 7
- a4c:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a50:	81 e0       	ldi	r24, 0x01	; 1
- a52:	6f e3       	ldi	r22, 0x3F	; 63
- a54:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a58:	ec ce       	rjmp	.-552    	; 0x832 <main+0x22>
+ a64:	82 e0       	ldi	r24, 0x02	; 2
+ a66:	67 e0       	ldi	r22, 0x07	; 7
+ a68:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ a6c:	81 e0       	ldi	r24, 0x01	; 1
+ a6e:	6f e3       	ldi	r22, 0x3F	; 63
+ a70:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ a74:	de ce       	rjmp	.-580    	; 0x832 <main+0x22>
 
 
 	case(80):MDIO_voidSetPortValue(GPIOC,0x7F);MDIO_voidSetPortValue(GPIOB,0x3F);break;
- a5a:	82 e0       	ldi	r24, 0x02	; 2
- a5c:	6f e7       	ldi	r22, 0x7F	; 127
- a5e:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a62:	81 e0       	ldi	r24, 0x01	; 1
- a64:	6f e3       	ldi	r22, 0x3F	; 63
- a66:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a6a:	e3 ce       	rjmp	.-570    	; 0x832 <main+0x22>
+ a76:	82 e0       	ldi	r24, 0x02	; 2
+ a78:	6f e7       	ldi	r22, 0x7F	; 127
+ a7a:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ a7e:	81 e0       	ldi	r24, 0x01	; 1
+ a80:	6f e3       	ldi	r22, 0x3F	; 63
+ a82:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ a86:	d5 ce       	rjmp	.-598    	; 0x832 <main+0x22>
 
 
 	case(90):MDIO_voidSetPortValue(GPIOC,0x6F);MDIO_voidSetPortValue(GPIOB,0x3F);break;
- a6c:	82 e0       	ldi	r24, 0x02	; 2
- a6e:	6f e6       	ldi	r22, 0x6F	; 111
- a70:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a74:	81 e0       	ldi	r24, 0x01	; 1
- a76:	6f e3       	ldi	r22, 0x3F	; 63
- a78:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a7c:	da ce       	rjmp	.-588    	; 0x832 <main+0x22>
+ a88:	82 e0       	ldi	r24, 0x02	; 2
+ a8a:	6f e6       	ldi	r22, 0x6F	; 111
+ a8c:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ a90:	81 e0       	ldi	r24, 0x01	; 1
+ a92:	6f e3       	ldi	r22, 0x3F	; 63
+ a94:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
+ a98:	cc ce       	rjmp	.-616    	; 0x832 <main+0x22>
 
-00000a7e <_exit>:
- a7e:	f8 94       	cli
+00000a9a <_exit>:
+ a9a:	f8 94       	cli
 
-00000a80 <__stop_program>:
- a80:	ff cf       	rjmp	.-2      	; 0xa80 <__stop_program>
+00000a9c <__stop_program>:
+ a9c:	ff cf       	rjmp	.-2      	; 0xa9c <__stop_program>
