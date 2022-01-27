@@ -12,7 +12,7 @@ int main()
 	MUART_voidUartInitialization();
 
 
-u8 ask[1000]={"Here you can find activities to practise your reading skills. Reading will help you to improve your understanding of the language and build your vocabulary."};
+u8 ask[1000]={"Here you can find activities"};
 
 u8 i=0;
 
