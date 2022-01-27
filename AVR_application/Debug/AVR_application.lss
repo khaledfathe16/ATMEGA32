@@ -1219,10 +1219,10 @@ void MUART_voidUartInitialization(void)
  79c:	f0 e0       	ldi	r31, 0x00	; 0
  79e:	10 82       	st	Z, r1
 	
-	UCSRC = 0x84;  // Choose Asynchrounous and parity and stop bit and data character
+	UCSRC = 0x86;  // Choose Asynchrounous and parity and stop bit and data character
  7a0:	e0 e4       	ldi	r30, 0x40	; 64
  7a2:	f0 e0       	ldi	r31, 0x00	; 0
- 7a4:	84 e8       	ldi	r24, 0x84	; 132
+ 7a4:	86 e8       	ldi	r24, 0x86	; 134
  7a6:	80 83       	st	Z, r24
 	
 	UBRRL = 0x33; //Set UBRR  = 51 , Baud rate = 9600 
@@ -1305,6 +1305,7 @@ u8 MUART_u8UartRecieveByte(void)
  806:	f0 e0       	ldi	r31, 0x00	; 0
  808:	80 81       	ld	r24, Z
 	
+}
  80a:	cf 91       	pop	r28
  80c:	df 91       	pop	r29
  80e:	08 95       	ret

@@ -21,7 +21,7 @@ void MUART_voidUartInitialization(void)
 	
 	UCSRA = 0x00;  // Choose Normal Asynchrounous Mode
 	
-	UCSRC = 0x84;  // Choose Asynchrounous and parity and stop bit and data character
+	UCSRC = 0x86;  // Choose Asynchrounous and parity and stop bit and data character
 	
 	UBRRL = 0x33; //Set UBRR  = 51 , Baud rate = 9600 
 	
