@@ -1,7 +1,7 @@
 Archive member included because of file (symbol)
 
-c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                              c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o (exit)
+c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                              c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o (exit)
 
 Memory Configuration
 
@@ -16,13 +16,14 @@ signature        0x00840000         0x00000400         rw !x
 
 Linker script and memory map
 
-LOAD c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+LOAD c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
 LOAD ./DIO_program.o
+LOAD ./SPI_program.o
 LOAD ./UART_program.o
 LOAD ./main.o
-LOAD c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
-LOAD c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a
-LOAD c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
+LOAD c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
+LOAD c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a
+LOAD c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 
 .hash
  *(.hash)
@@ -114,9 +115,9 @@ LOAD c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0xa9e
+.text           0x00000000      0x8a8
  *(.vectors)
- .vectors       0x00000000       0x54 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .vectors       0x00000000       0x54 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
                 0x00000000                __vector_default
  *(.vectors)
@@ -141,13 +142,13 @@ LOAD c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x00000054        0x0 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .init0         0x00000054        0x0 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000054                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x00000054        0xc c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .init2         0x00000054        0xc c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
  *(.init2)
  *(.init3)
  *(.init3)
@@ -162,10 +163,10 @@ LOAD c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x00000060        0x8 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .init9         0x00000060        0x8 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
  *(.init9)
  *(.text)
- .text          0x00000068        0x4 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .text          0x00000068        0x4 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000068                __vector_1
                 0x00000068                __vector_12
                 0x00000068                __bad_interrupt
@@ -188,9 +189,10 @@ LOAD c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.
                 0x00000068                __vector_18
                 0x00000068                __vector_20
  .text          0x0000006c        0x0 ./DIO_program.o
+ .text          0x0000006c        0x0 ./SPI_program.o
  .text          0x0000006c        0x0 ./UART_program.o
  .text          0x0000006c        0x0 ./main.o
- .text          0x0000006c        0x0 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text          0x0000006c        0x0 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
                 0x0000006c                . = ALIGN (0x2)
  *(.text.*)
  .text.MDIO_voidSetPinMode
@@ -208,23 +210,32 @@ LOAD c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.
  .text.MDIO_u8GetPinValue
                 0x00000698       0xfa ./DIO_program.o
                 0x00000698                MDIO_u8GetPinValue
+ .text.MSPI_voidIntialize
+                0x00000792       0x3e ./SPI_program.o
+                0x00000792                MSPI_voidIntialize
+ .text.MSPI_voidSendData
+                0x000007d0       0x26 ./SPI_program.o
+                0x000007d0                MSPI_voidSendData
+ .text.MSPI_voidrecieveData
+                0x000007f6       0x1e ./SPI_program.o
+                0x000007f6                MSPI_voidrecieveData
  .text.MUART_voidUartInitialization
-                0x00000792       0x2c ./UART_program.o
-                0x00000792                MUART_voidUartInitialization
+                0x00000814       0x2c ./UART_program.o
+                0x00000814                MUART_voidUartInitialization
  .text.MUART_voidUartSendByte
-                0x000007be       0x34 ./UART_program.o
-                0x000007be                MUART_voidUartSendByte
+                0x00000840       0x34 ./UART_program.o
+                0x00000840                MUART_voidUartSendByte
  .text.MUART_u8UartRecieveByte
-                0x000007f2       0x1e ./UART_program.o
-                0x000007f2                MUART_u8UartRecieveByte
- .text.main     0x00000810      0x28a ./main.o
-                0x00000810                main
- .text.libgcc   0x00000a9a        0x0 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x00000a9a                . = ALIGN (0x2)
+                0x00000874       0x1e ./UART_program.o
+                0x00000874                MUART_u8UartRecieveByte
+ .text.main     0x00000892       0x12 ./main.o
+                0x00000892                main
+ .text.libgcc   0x000008a4        0x0 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x000008a4                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000a9a        0x0 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x00000a9a                exit
-                0x00000a9a                _exit
+ .fini9         0x000008a4        0x0 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x000008a4                exit
+                0x000008a4                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -243,18 +254,19 @@ LOAD c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000a9a        0x4 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x000008a4        0x4 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000a9e                _etext = .
+                0x000008a8                _etext = .
 
-.data           0x00800060        0x0 load address 0x00000a9e
+.data           0x00800060        0x0 load address 0x000008a8
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
- .data          0x00800060        0x0 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .data          0x00800060        0x0 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
  .data          0x00800060        0x0 ./DIO_program.o
+ .data          0x00800060        0x0 ./SPI_program.o
  .data          0x00800060        0x0 ./UART_program.o
  .data          0x00800060        0x0 ./main.o
- .data          0x00800060        0x0 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .data          0x00800060        0x0 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.data*)
  *(.rodata)
  *(.rodata*)
@@ -266,16 +278,17 @@ LOAD c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.
 .bss            0x00800060        0x0
                 0x00800060                PROVIDE (__bss_start, .)
  *(.bss)
- .bss           0x00800060        0x0 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .bss           0x00800060        0x0 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
  .bss           0x00800060        0x0 ./DIO_program.o
+ .bss           0x00800060        0x0 ./SPI_program.o
  .bss           0x00800060        0x0 ./UART_program.o
  .bss           0x00800060        0x0 ./main.o
- .bss           0x00800060        0x0 c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .bss           0x00800060        0x0 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.bss*)
  *(COMMON)
                 0x00800060                PROVIDE (__bss_end, .)
-                0x00000a9e                __data_load_start = LOADADDR (.data)
-                0x00000a9e                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000008a8                __data_load_start = LOADADDR (.data)
+                0x000008a8                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800060        0x0
                 0x00800060                PROVIDE (__noinit_start, .)
@@ -300,17 +313,19 @@ LOAD c:/users/khaled fathy/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.
 .signature
  *(.signature*)
 
-.stab           0x00000000      0x9e4
+.stab           0x00000000      0xaa4
  *(.stab)
  .stab          0x00000000      0x5d0 ./DIO_program.o
- .stab          0x000005d0      0x1bc ./UART_program.o
+ .stab          0x000005d0      0x204 ./SPI_program.o
+                                0x264 (size before relaxing)
+ .stab          0x000007d4      0x1bc ./UART_program.o
                                 0x21c (size before relaxing)
- .stab          0x0000078c      0x258 ./main.o
-                                0x2b8 (size before relaxing)
+ .stab          0x00000990      0x114 ./main.o
+                                0x174 (size before relaxing)
 
-.stabstr        0x00000000      0x56d
+.stabstr        0x00000000      0x639
  *(.stabstr)
- .stabstr       0x00000000      0x56d ./DIO_program.o
+ .stabstr       0x00000000      0x639 ./DIO_program.o
 
 .stab.excl
  *(.stab.excl)

@@ -3,11 +3,11 @@ AVR_application.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000a9e  00000000  00000000  00000054  2**1
+  0 .text         000008a8  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .stab         000009e4  00000000  00000000  00000af4  2**2
+  1 .stab         00000aa4  00000000  00000000  000008fc  2**2
                   CONTENTS, READONLY, DEBUGGING
-  2 .stabstr      0000056d  00000000  00000000  000014d8  2**0
+  2 .stabstr      00000639  00000000  00000000  000013a0  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -42,8 +42,8 @@ Disassembly of section .text:
   5a:	d8 e0       	ldi	r29, 0x08	; 8
   5c:	de bf       	out	0x3e, r29	; 62
   5e:	cd bf       	out	0x3d, r28	; 61
-  60:	0e 94 08 04 	call	0x810	; 0x810 <main>
-  64:	0c 94 4d 05 	jmp	0xa9a	; 0xa9a <_exit>
+  60:	0e 94 49 04 	call	0x892	; 0x892 <main>
+  64:	0c 94 52 04 	jmp	0x8a4	; 0x8a4 <_exit>
 
 00000068 <__bad_interrupt>:
   68:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -1198,472 +1198,265 @@ u8 MDIO_u8GetPinValue(u8 copy_u8PortId , u8 copy_u8PinId)
  78e:	df 91       	pop	r29
  790:	08 95       	ret
 
-00000792 <MUART_voidUartInitialization>:
+00000792 <MSPI_voidIntialize>:
+#include"SPI_private.h"
+#include"SPI_config.h"
+
+
+void MSPI_voidIntialize(u8 copy_u8Mode)
+{
+ 792:	df 93       	push	r29
+ 794:	cf 93       	push	r28
+ 796:	0f 92       	push	r0
+ 798:	cd b7       	in	r28, 0x3d	; 61
+ 79a:	de b7       	in	r29, 0x3e	; 62
+ 79c:	89 83       	std	Y+1, r24	; 0x01
+	if(copy_u8Mode == M)
+ 79e:	89 81       	ldd	r24, Y+1	; 0x01
+ 7a0:	88 23       	and	r24, r24
+ 7a2:	41 f4       	brne	.+16     	; 0x7b4 <MSPI_voidIntialize+0x22>
+	{
+		SPI -> SPCR = 0x50 ;  //intterupt & spi enable & data order & m or s select & clock polarity & cpha & spr0 spr1
+ 7a4:	ed e2       	ldi	r30, 0x2D	; 45
+ 7a6:	f0 e0       	ldi	r31, 0x00	; 0
+ 7a8:	80 e5       	ldi	r24, 0x50	; 80
+ 7aa:	80 83       	st	Z, r24
+		SPI -> SPSR = 0x00 ;  // SPI intterupt flag & Write collision flag & spi2x double speed bit
+ 7ac:	ed e2       	ldi	r30, 0x2D	; 45
+ 7ae:	f0 e0       	ldi	r31, 0x00	; 0
+ 7b0:	11 82       	std	Z+1, r1	; 0x01
+ 7b2:	0a c0       	rjmp	.+20     	; 0x7c8 <MSPI_voidIntialize+0x36>
+		
+	}
+	
+	else if(copy_u8Mode == S)
+ 7b4:	89 81       	ldd	r24, Y+1	; 0x01
+ 7b6:	81 30       	cpi	r24, 0x01	; 1
+ 7b8:	39 f4       	brne	.+14     	; 0x7c8 <MSPI_voidIntialize+0x36>
+	{
+		SPI -> SPCR = 0x40 ;  //intterupt & spi enable & data order & m or s select & clock polarity & cpha & spr0 spr1
+ 7ba:	ed e2       	ldi	r30, 0x2D	; 45
+ 7bc:	f0 e0       	ldi	r31, 0x00	; 0
+ 7be:	80 e4       	ldi	r24, 0x40	; 64
+ 7c0:	80 83       	st	Z, r24
+		SPI -> SPSR = 0x00 ;  // SPI intterupt flag & Write collision flag & spi2x double speed bit
+ 7c2:	ed e2       	ldi	r30, 0x2D	; 45
+ 7c4:	f0 e0       	ldi	r31, 0x00	; 0
+ 7c6:	11 82       	std	Z+1, r1	; 0x01
+	}
+	
+    else {/*Error*/}
+	
+	
+}
+ 7c8:	0f 90       	pop	r0
+ 7ca:	cf 91       	pop	r28
+ 7cc:	df 91       	pop	r29
+ 7ce:	08 95       	ret
+
+000007d0 <MSPI_voidSendData>:
+
+
+
+void MSPI_voidSendData(u8 copy_u8Data)
+{
+ 7d0:	df 93       	push	r29
+ 7d2:	cf 93       	push	r28
+ 7d4:	0f 92       	push	r0
+ 7d6:	cd b7       	in	r28, 0x3d	; 61
+ 7d8:	de b7       	in	r29, 0x3e	; 62
+ 7da:	89 83       	std	Y+1, r24	; 0x01
+	if(copy_u8Data <= 0xFF)
+	{
+      
+	 while(!(GET_BIT(SPI->SPSR,7)));
+ 7dc:	ed e2       	ldi	r30, 0x2D	; 45
+ 7de:	f0 e0       	ldi	r31, 0x00	; 0
+ 7e0:	81 81       	ldd	r24, Z+1	; 0x01
+ 7e2:	88 23       	and	r24, r24
+ 7e4:	dc f7       	brge	.-10     	; 0x7dc <MSPI_voidSendData+0xc>
+	 
+ 	 SPI->SPDR = copy_u8Data;
+ 7e6:	ed e2       	ldi	r30, 0x2D	; 45
+ 7e8:	f0 e0       	ldi	r31, 0x00	; 0
+ 7ea:	89 81       	ldd	r24, Y+1	; 0x01
+ 7ec:	82 83       	std	Z+2, r24	; 0x02
+	}
+	else
+	{/*Error*/}
+	
+	
+}
+ 7ee:	0f 90       	pop	r0
+ 7f0:	cf 91       	pop	r28
+ 7f2:	df 91       	pop	r29
+ 7f4:	08 95       	ret
+
+000007f6 <MSPI_voidrecieveData>:
+
+
+u8 MSPI_voidrecieveData(void)
+{
+ 7f6:	df 93       	push	r29
+ 7f8:	cf 93       	push	r28
+ 7fa:	cd b7       	in	r28, 0x3d	; 61
+ 7fc:	de b7       	in	r29, 0x3e	; 62
+      
+	 while(!(GET_BIT(SPI->SPSR,7)));
+ 7fe:	ed e2       	ldi	r30, 0x2D	; 45
+ 800:	f0 e0       	ldi	r31, 0x00	; 0
+ 802:	81 81       	ldd	r24, Z+1	; 0x01
+ 804:	88 23       	and	r24, r24
+ 806:	dc f7       	brge	.-10     	; 0x7fe <MSPI_voidrecieveData+0x8>
+	 
+ 	return SPI->SPDR;
+ 808:	ed e2       	ldi	r30, 0x2D	; 45
+ 80a:	f0 e0       	ldi	r31, 0x00	; 0
+ 80c:	82 81       	ldd	r24, Z+2	; 0x02
+
+}
+ 80e:	cf 91       	pop	r28
+ 810:	df 91       	pop	r29
+ 812:	08 95       	ret
+
+00000814 <MUART_voidUartInitialization>:
 #include"UART_config.h"
 
 
 
 void MUART_voidUartInitialization(void)
 {
- 792:	df 93       	push	r29
- 794:	cf 93       	push	r28
- 796:	cd b7       	in	r28, 0x3d	; 61
- 798:	de b7       	in	r29, 0x3e	; 62
+ 814:	df 93       	push	r29
+ 816:	cf 93       	push	r28
+ 818:	cd b7       	in	r28, 0x3d	; 61
+ 81a:	de b7       	in	r29, 0x3e	; 62
 	enable tx and rx 
 	Asynchrounous
 	
 	*/
 	
 	UCSRA = 0x00;  // Choose Normal Asynchrounous Mode
- 79a:	eb e2       	ldi	r30, 0x2B	; 43
- 79c:	f0 e0       	ldi	r31, 0x00	; 0
- 79e:	10 82       	st	Z, r1
+ 81c:	eb e2       	ldi	r30, 0x2B	; 43
+ 81e:	f0 e0       	ldi	r31, 0x00	; 0
+ 820:	10 82       	st	Z, r1
 	
 	UCSRC = 0x86;  // Choose Asynchrounous and parity and stop bit and data character
- 7a0:	e0 e4       	ldi	r30, 0x40	; 64
- 7a2:	f0 e0       	ldi	r31, 0x00	; 0
- 7a4:	86 e8       	ldi	r24, 0x86	; 134
- 7a6:	80 83       	st	Z, r24
+ 822:	e0 e4       	ldi	r30, 0x40	; 64
+ 824:	f0 e0       	ldi	r31, 0x00	; 0
+ 826:	86 e8       	ldi	r24, 0x86	; 134
+ 828:	80 83       	st	Z, r24
 	
 	UBRRL = 0x33; //Set UBRR  = 51 , Baud rate = 9600 
- 7a8:	e9 e2       	ldi	r30, 0x29	; 41
- 7aa:	f0 e0       	ldi	r31, 0x00	; 0
- 7ac:	83 e3       	ldi	r24, 0x33	; 51
- 7ae:	80 83       	st	Z, r24
+ 82a:	e9 e2       	ldi	r30, 0x29	; 41
+ 82c:	f0 e0       	ldi	r31, 0x00	; 0
+ 82e:	83 e3       	ldi	r24, 0x33	; 51
+ 830:	80 83       	st	Z, r24
 	
 	UCSRB = 0x18;  // Enable Transmitter and Reciver
- 7b0:	ea e2       	ldi	r30, 0x2A	; 42
- 7b2:	f0 e0       	ldi	r31, 0x00	; 0
- 7b4:	88 e1       	ldi	r24, 0x18	; 24
- 7b6:	80 83       	st	Z, r24
+ 832:	ea e2       	ldi	r30, 0x2A	; 42
+ 834:	f0 e0       	ldi	r31, 0x00	; 0
+ 836:	88 e1       	ldi	r24, 0x18	; 24
+ 838:	80 83       	st	Z, r24
 	
 }
- 7b8:	cf 91       	pop	r28
- 7ba:	df 91       	pop	r29
- 7bc:	08 95       	ret
+ 83a:	cf 91       	pop	r28
+ 83c:	df 91       	pop	r29
+ 83e:	08 95       	ret
 
-000007be <MUART_voidUartSendByte>:
+00000840 <MUART_voidUartSendByte>:
 
 
 void MUART_voidUartSendByte(u8 copy_u8Byte)
 {
- 7be:	df 93       	push	r29
- 7c0:	cf 93       	push	r28
- 7c2:	0f 92       	push	r0
- 7c4:	cd b7       	in	r28, 0x3d	; 61
- 7c6:	de b7       	in	r29, 0x3e	; 62
- 7c8:	89 83       	std	Y+1, r24	; 0x01
+ 840:	df 93       	push	r29
+ 842:	cf 93       	push	r28
+ 844:	0f 92       	push	r0
+ 846:	cd b7       	in	r28, 0x3d	; 61
+ 848:	de b7       	in	r29, 0x3e	; 62
+ 84a:	89 83       	std	Y+1, r24	; 0x01
 	while(!(GET_BIT(UCSRA,5))){}
- 7ca:	eb e2       	ldi	r30, 0x2B	; 43
- 7cc:	f0 e0       	ldi	r31, 0x00	; 0
- 7ce:	80 81       	ld	r24, Z
- 7d0:	82 95       	swap	r24
- 7d2:	86 95       	lsr	r24
- 7d4:	87 70       	andi	r24, 0x07	; 7
- 7d6:	88 2f       	mov	r24, r24
- 7d8:	90 e0       	ldi	r25, 0x00	; 0
- 7da:	81 70       	andi	r24, 0x01	; 1
- 7dc:	90 70       	andi	r25, 0x00	; 0
- 7de:	00 97       	sbiw	r24, 0x00	; 0
- 7e0:	a1 f3       	breq	.-24     	; 0x7ca <MUART_voidUartSendByte+0xc>
+ 84c:	eb e2       	ldi	r30, 0x2B	; 43
+ 84e:	f0 e0       	ldi	r31, 0x00	; 0
+ 850:	80 81       	ld	r24, Z
+ 852:	82 95       	swap	r24
+ 854:	86 95       	lsr	r24
+ 856:	87 70       	andi	r24, 0x07	; 7
+ 858:	88 2f       	mov	r24, r24
+ 85a:	90 e0       	ldi	r25, 0x00	; 0
+ 85c:	81 70       	andi	r24, 0x01	; 1
+ 85e:	90 70       	andi	r25, 0x00	; 0
+ 860:	00 97       	sbiw	r24, 0x00	; 0
+ 862:	a1 f3       	breq	.-24     	; 0x84c <MUART_voidUartSendByte+0xc>
 	
 	
 		UDR = copy_u8Byte ;
- 7e2:	ec e2       	ldi	r30, 0x2C	; 44
- 7e4:	f0 e0       	ldi	r31, 0x00	; 0
- 7e6:	89 81       	ldd	r24, Y+1	; 0x01
- 7e8:	80 83       	st	Z, r24
+ 864:	ec e2       	ldi	r30, 0x2C	; 44
+ 866:	f0 e0       	ldi	r31, 0x00	; 0
+ 868:	89 81       	ldd	r24, Y+1	; 0x01
+ 86a:	80 83       	st	Z, r24
 		
 
 	
 	
 	
 }
- 7ea:	0f 90       	pop	r0
- 7ec:	cf 91       	pop	r28
- 7ee:	df 91       	pop	r29
- 7f0:	08 95       	ret
+ 86c:	0f 90       	pop	r0
+ 86e:	cf 91       	pop	r28
+ 870:	df 91       	pop	r29
+ 872:	08 95       	ret
 
-000007f2 <MUART_u8UartRecieveByte>:
+00000874 <MUART_u8UartRecieveByte>:
 
 
 u8 MUART_u8UartRecieveByte(void)
 {
- 7f2:	df 93       	push	r29
- 7f4:	cf 93       	push	r28
- 7f6:	cd b7       	in	r28, 0x3d	; 61
- 7f8:	de b7       	in	r29, 0x3e	; 62
+ 874:	df 93       	push	r29
+ 876:	cf 93       	push	r28
+ 878:	cd b7       	in	r28, 0x3d	; 61
+ 87a:	de b7       	in	r29, 0x3e	; 62
 	while(!(GET_BIT(UCSRA,7))){}
- 7fa:	eb e2       	ldi	r30, 0x2B	; 43
- 7fc:	f0 e0       	ldi	r31, 0x00	; 0
- 7fe:	80 81       	ld	r24, Z
- 800:	88 23       	and	r24, r24
- 802:	dc f7       	brge	.-10     	; 0x7fa <MUART_u8UartRecieveByte+0x8>
+ 87c:	eb e2       	ldi	r30, 0x2B	; 43
+ 87e:	f0 e0       	ldi	r31, 0x00	; 0
+ 880:	80 81       	ld	r24, Z
+ 882:	88 23       	and	r24, r24
+ 884:	dc f7       	brge	.-10     	; 0x87c <MUART_u8UartRecieveByte+0x8>
 	
 	return UDR;
- 804:	ec e2       	ldi	r30, 0x2C	; 44
- 806:	f0 e0       	ldi	r31, 0x00	; 0
- 808:	80 81       	ld	r24, Z
+ 886:	ec e2       	ldi	r30, 0x2C	; 44
+ 888:	f0 e0       	ldi	r31, 0x00	; 0
+ 88a:	80 81       	ld	r24, Z
 	
 }
- 80a:	cf 91       	pop	r28
- 80c:	df 91       	pop	r29
- 80e:	08 95       	ret
+ 88c:	cf 91       	pop	r28
+ 88e:	df 91       	pop	r29
+ 890:	08 95       	ret
 
-00000810 <main>:
+00000892 <main>:
 #include "UART_interface.h"
-
+#include "SPI_interface.h"
 
 
 int main()
 {
- 810:	df 93       	push	r29
- 812:	cf 93       	push	r28
- 814:	00 d0       	rcall	.+0      	; 0x816 <main+0x6>
- 816:	0f 92       	push	r0
- 818:	cd b7       	in	r28, 0x3d	; 61
- 81a:	de b7       	in	r29, 0x3e	; 62
-   //Initialize UART
-	MUART_voidUartInitialization();
- 81c:	0e 94 c9 03 	call	0x792	; 0x792 <MUART_voidUartInitialization>
-   //initiallize Pins for 7-Segment
-	MDIO_voidSetPortMode(GPIOC,HIGH);
- 820:	82 e0       	ldi	r24, 0x02	; 2
- 822:	60 e0       	ldi	r22, 0x00	; 0
- 824:	0e 94 8c 01 	call	0x318	; 0x318 <MDIO_voidSetPortMode>
-	MDIO_voidSetPortMode(GPIOB,HIGH);
- 828:	81 e0       	ldi	r24, 0x01	; 1
- 82a:	60 e0       	ldi	r22, 0x00	; 0
- 82c:	0e 94 8c 01 	call	0x318	; 0x318 <MDIO_voidSetPortMode>
-
-	u8 Local_u8Value=0;
- 830:	19 82       	std	Y+1, r1	; 0x01
-
-	while(1)
-	{
-	Local_u8Value = MUART_u8UartRecieveByte();
- 832:	0e 94 f9 03 	call	0x7f2	; 0x7f2 <MUART_u8UartRecieveByte>
- 836:	89 83       	std	Y+1, r24	; 0x01
+ 892:	df 93       	push	r29
+ 894:	cf 93       	push	r28
+ 896:	cd b7       	in	r28, 0x3d	; 61
+ 898:	de b7       	in	r29, 0x3e	; 62
 
 
-	switch(Local_u8Value)
- 838:	89 81       	ldd	r24, Y+1	; 0x01
- 83a:	28 2f       	mov	r18, r24
- 83c:	30 e0       	ldi	r19, 0x00	; 0
- 83e:	3b 83       	std	Y+3, r19	; 0x03
- 840:	2a 83       	std	Y+2, r18	; 0x02
- 842:	8a 81       	ldd	r24, Y+2	; 0x02
- 844:	9b 81       	ldd	r25, Y+3	; 0x03
- 846:	89 30       	cpi	r24, 0x09	; 9
- 848:	91 05       	cpc	r25, r1
- 84a:	09 f4       	brne	.+2      	; 0x84e <main+0x3e>
- 84c:	d0 c0       	rjmp	.+416    	; 0x9ee <__stack+0x18f>
- 84e:	2a 81       	ldd	r18, Y+2	; 0x02
- 850:	3b 81       	ldd	r19, Y+3	; 0x03
- 852:	2a 30       	cpi	r18, 0x0A	; 10
- 854:	31 05       	cpc	r19, r1
- 856:	0c f0       	brlt	.+2      	; 0x85a <main+0x4a>
- 858:	42 c0       	rjmp	.+132    	; 0x8de <__stack+0x7f>
- 85a:	8a 81       	ldd	r24, Y+2	; 0x02
- 85c:	9b 81       	ldd	r25, Y+3	; 0x03
- 85e:	84 30       	cpi	r24, 0x04	; 4
- 860:	91 05       	cpc	r25, r1
- 862:	09 f4       	brne	.+2      	; 0x866 <__stack+0x7>
- 864:	ab c0       	rjmp	.+342    	; 0x9bc <__stack+0x15d>
- 866:	2a 81       	ldd	r18, Y+2	; 0x02
- 868:	3b 81       	ldd	r19, Y+3	; 0x03
- 86a:	25 30       	cpi	r18, 0x05	; 5
- 86c:	31 05       	cpc	r19, r1
- 86e:	f4 f4       	brge	.+60     	; 0x8ac <__stack+0x4d>
- 870:	8a 81       	ldd	r24, Y+2	; 0x02
- 872:	9b 81       	ldd	r25, Y+3	; 0x03
- 874:	81 30       	cpi	r24, 0x01	; 1
- 876:	91 05       	cpc	r25, r1
- 878:	09 f4       	brne	.+2      	; 0x87c <__stack+0x1d>
- 87a:	91 c0       	rjmp	.+290    	; 0x99e <__stack+0x13f>
- 87c:	2a 81       	ldd	r18, Y+2	; 0x02
- 87e:	3b 81       	ldd	r19, Y+3	; 0x03
- 880:	22 30       	cpi	r18, 0x02	; 2
- 882:	31 05       	cpc	r19, r1
- 884:	34 f4       	brge	.+12     	; 0x892 <__stack+0x33>
- 886:	8a 81       	ldd	r24, Y+2	; 0x02
- 888:	9b 81       	ldd	r25, Y+3	; 0x03
- 88a:	00 97       	sbiw	r24, 0x00	; 0
- 88c:	09 f4       	brne	.+2      	; 0x890 <__stack+0x31>
- 88e:	7e c0       	rjmp	.+252    	; 0x98c <__stack+0x12d>
- 890:	d0 cf       	rjmp	.-96     	; 0x832 <main+0x22>
- 892:	2a 81       	ldd	r18, Y+2	; 0x02
- 894:	3b 81       	ldd	r19, Y+3	; 0x03
- 896:	22 30       	cpi	r18, 0x02	; 2
- 898:	31 05       	cpc	r19, r1
- 89a:	09 f4       	brne	.+2      	; 0x89e <__stack+0x3f>
- 89c:	85 c0       	rjmp	.+266    	; 0x9a8 <__stack+0x149>
- 89e:	8a 81       	ldd	r24, Y+2	; 0x02
- 8a0:	9b 81       	ldd	r25, Y+3	; 0x03
- 8a2:	83 30       	cpi	r24, 0x03	; 3
- 8a4:	91 05       	cpc	r25, r1
- 8a6:	09 f4       	brne	.+2      	; 0x8aa <__stack+0x4b>
- 8a8:	84 c0       	rjmp	.+264    	; 0x9b2 <__stack+0x153>
- 8aa:	c3 cf       	rjmp	.-122    	; 0x832 <main+0x22>
- 8ac:	2a 81       	ldd	r18, Y+2	; 0x02
- 8ae:	3b 81       	ldd	r19, Y+3	; 0x03
- 8b0:	26 30       	cpi	r18, 0x06	; 6
- 8b2:	31 05       	cpc	r19, r1
- 8b4:	09 f4       	brne	.+2      	; 0x8b8 <__stack+0x59>
- 8b6:	8c c0       	rjmp	.+280    	; 0x9d0 <__stack+0x171>
- 8b8:	8a 81       	ldd	r24, Y+2	; 0x02
- 8ba:	9b 81       	ldd	r25, Y+3	; 0x03
- 8bc:	86 30       	cpi	r24, 0x06	; 6
- 8be:	91 05       	cpc	r25, r1
- 8c0:	0c f4       	brge	.+2      	; 0x8c4 <__stack+0x65>
- 8c2:	81 c0       	rjmp	.+258    	; 0x9c6 <__stack+0x167>
- 8c4:	2a 81       	ldd	r18, Y+2	; 0x02
- 8c6:	3b 81       	ldd	r19, Y+3	; 0x03
- 8c8:	27 30       	cpi	r18, 0x07	; 7
- 8ca:	31 05       	cpc	r19, r1
- 8cc:	09 f4       	brne	.+2      	; 0x8d0 <__stack+0x71>
- 8ce:	85 c0       	rjmp	.+266    	; 0x9da <__stack+0x17b>
- 8d0:	8a 81       	ldd	r24, Y+2	; 0x02
- 8d2:	9b 81       	ldd	r25, Y+3	; 0x03
- 8d4:	88 30       	cpi	r24, 0x08	; 8
- 8d6:	91 05       	cpc	r25, r1
- 8d8:	09 f4       	brne	.+2      	; 0x8dc <__stack+0x7d>
- 8da:	84 c0       	rjmp	.+264    	; 0x9e4 <__stack+0x185>
- 8dc:	aa cf       	rjmp	.-172    	; 0x832 <main+0x22>
- 8de:	2a 81       	ldd	r18, Y+2	; 0x02
- 8e0:	3b 81       	ldd	r19, Y+3	; 0x03
- 8e2:	22 33       	cpi	r18, 0x32	; 50
- 8e4:	31 05       	cpc	r19, r1
- 8e6:	09 f4       	brne	.+2      	; 0x8ea <__stack+0x8b>
- 8e8:	ab c0       	rjmp	.+342    	; 0xa40 <__stack+0x1e1>
- 8ea:	8a 81       	ldd	r24, Y+2	; 0x02
- 8ec:	9b 81       	ldd	r25, Y+3	; 0x03
- 8ee:	83 33       	cpi	r24, 0x33	; 51
- 8f0:	91 05       	cpc	r25, r1
- 8f2:	fc f4       	brge	.+62     	; 0x932 <__stack+0xd3>
- 8f4:	2a 81       	ldd	r18, Y+2	; 0x02
- 8f6:	3b 81       	ldd	r19, Y+3	; 0x03
- 8f8:	24 31       	cpi	r18, 0x14	; 20
- 8fa:	31 05       	cpc	r19, r1
- 8fc:	09 f4       	brne	.+2      	; 0x900 <__stack+0xa1>
- 8fe:	85 c0       	rjmp	.+266    	; 0xa0a <__stack+0x1ab>
- 900:	8a 81       	ldd	r24, Y+2	; 0x02
- 902:	9b 81       	ldd	r25, Y+3	; 0x03
- 904:	85 31       	cpi	r24, 0x15	; 21
- 906:	91 05       	cpc	r25, r1
- 908:	3c f4       	brge	.+14     	; 0x918 <__stack+0xb9>
- 90a:	2a 81       	ldd	r18, Y+2	; 0x02
- 90c:	3b 81       	ldd	r19, Y+3	; 0x03
- 90e:	2a 30       	cpi	r18, 0x0A	; 10
- 910:	31 05       	cpc	r19, r1
- 912:	09 f4       	brne	.+2      	; 0x916 <__stack+0xb7>
- 914:	71 c0       	rjmp	.+226    	; 0x9f8 <__stack+0x199>
- 916:	8d cf       	rjmp	.-230    	; 0x832 <main+0x22>
- 918:	8a 81       	ldd	r24, Y+2	; 0x02
- 91a:	9b 81       	ldd	r25, Y+3	; 0x03
- 91c:	8e 31       	cpi	r24, 0x1E	; 30
- 91e:	91 05       	cpc	r25, r1
- 920:	09 f4       	brne	.+2      	; 0x924 <__stack+0xc5>
- 922:	7c c0       	rjmp	.+248    	; 0xa1c <__stack+0x1bd>
- 924:	2a 81       	ldd	r18, Y+2	; 0x02
- 926:	3b 81       	ldd	r19, Y+3	; 0x03
- 928:	28 32       	cpi	r18, 0x28	; 40
- 92a:	31 05       	cpc	r19, r1
- 92c:	09 f4       	brne	.+2      	; 0x930 <__stack+0xd1>
- 92e:	7f c0       	rjmp	.+254    	; 0xa2e <__stack+0x1cf>
- 930:	80 cf       	rjmp	.-256    	; 0x832 <main+0x22>
- 932:	8a 81       	ldd	r24, Y+2	; 0x02
- 934:	9b 81       	ldd	r25, Y+3	; 0x03
- 936:	80 35       	cpi	r24, 0x50	; 80
- 938:	91 05       	cpc	r25, r1
- 93a:	09 f4       	brne	.+2      	; 0x93e <__stack+0xdf>
- 93c:	9c c0       	rjmp	.+312    	; 0xa76 <__stack+0x217>
- 93e:	2a 81       	ldd	r18, Y+2	; 0x02
- 940:	3b 81       	ldd	r19, Y+3	; 0x03
- 942:	21 35       	cpi	r18, 0x51	; 81
- 944:	31 05       	cpc	r19, r1
- 946:	6c f4       	brge	.+26     	; 0x962 <__stack+0x103>
- 948:	8a 81       	ldd	r24, Y+2	; 0x02
- 94a:	9b 81       	ldd	r25, Y+3	; 0x03
- 94c:	8c 33       	cpi	r24, 0x3C	; 60
- 94e:	91 05       	cpc	r25, r1
- 950:	09 f4       	brne	.+2      	; 0x954 <__stack+0xf5>
- 952:	7f c0       	rjmp	.+254    	; 0xa52 <__stack+0x1f3>
- 954:	2a 81       	ldd	r18, Y+2	; 0x02
- 956:	3b 81       	ldd	r19, Y+3	; 0x03
- 958:	26 34       	cpi	r18, 0x46	; 70
- 95a:	31 05       	cpc	r19, r1
- 95c:	09 f4       	brne	.+2      	; 0x960 <__stack+0x101>
- 95e:	82 c0       	rjmp	.+260    	; 0xa64 <__stack+0x205>
- 960:	68 cf       	rjmp	.-304    	; 0x832 <main+0x22>
- 962:	8a 81       	ldd	r24, Y+2	; 0x02
- 964:	9b 81       	ldd	r25, Y+3	; 0x03
- 966:	8a 35       	cpi	r24, 0x5A	; 90
- 968:	91 05       	cpc	r25, r1
- 96a:	09 f4       	brne	.+2      	; 0x96e <__stack+0x10f>
- 96c:	8d c0       	rjmp	.+282    	; 0xa88 <__stack+0x229>
- 96e:	2a 81       	ldd	r18, Y+2	; 0x02
- 970:	3b 81       	ldd	r19, Y+3	; 0x03
- 972:	2f 3f       	cpi	r18, 0xFF	; 255
- 974:	31 05       	cpc	r19, r1
- 976:	09 f0       	breq	.+2      	; 0x97a <__stack+0x11b>
- 978:	5c cf       	rjmp	.-328    	; 0x832 <main+0x22>
-	{
-
-	case(255):MDIO_voidSetPortValue(GPIOB,255);MDIO_voidSetPortValue(GPIOC,255);break;
- 97a:	81 e0       	ldi	r24, 0x01	; 1
- 97c:	6f ef       	ldi	r22, 0xFF	; 255
- 97e:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 982:	82 e0       	ldi	r24, 0x02	; 2
- 984:	6f ef       	ldi	r22, 0xFF	; 255
- 986:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 98a:	53 cf       	rjmp	.-346    	; 0x832 <main+0x22>
-
-	case(0):MDIO_voidSetPortValue(GPIOB,0x3F);MDIO_voidSetPortValue(GPIOC,0x3F);break;
- 98c:	81 e0       	ldi	r24, 0x01	; 1
- 98e:	6f e3       	ldi	r22, 0x3F	; 63
- 990:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 994:	82 e0       	ldi	r24, 0x02	; 2
- 996:	6f e3       	ldi	r22, 0x3F	; 63
- 998:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 99c:	4a cf       	rjmp	.-364    	; 0x832 <main+0x22>
-	case(1):MDIO_voidSetPortValue(GPIOB,0x06);break;
- 99e:	81 e0       	ldi	r24, 0x01	; 1
- 9a0:	66 e0       	ldi	r22, 0x06	; 6
- 9a2:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 9a6:	45 cf       	rjmp	.-374    	; 0x832 <main+0x22>
-	case(2):MDIO_voidSetPortValue(GPIOB,0x5B);break;
- 9a8:	81 e0       	ldi	r24, 0x01	; 1
- 9aa:	6b e5       	ldi	r22, 0x5B	; 91
- 9ac:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 9b0:	40 cf       	rjmp	.-384    	; 0x832 <main+0x22>
-	case(3):MDIO_voidSetPortValue(GPIOB,0x4F);break;
- 9b2:	81 e0       	ldi	r24, 0x01	; 1
- 9b4:	6f e4       	ldi	r22, 0x4F	; 79
- 9b6:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 9ba:	3b cf       	rjmp	.-394    	; 0x832 <main+0x22>
-	case(4):MDIO_voidSetPortValue(GPIOB,0x66);break;
- 9bc:	81 e0       	ldi	r24, 0x01	; 1
- 9be:	66 e6       	ldi	r22, 0x66	; 102
- 9c0:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 9c4:	36 cf       	rjmp	.-404    	; 0x832 <main+0x22>
-	case(5):MDIO_voidSetPortValue(GPIOB,0x6D);break;
- 9c6:	81 e0       	ldi	r24, 0x01	; 1
- 9c8:	6d e6       	ldi	r22, 0x6D	; 109
- 9ca:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 9ce:	31 cf       	rjmp	.-414    	; 0x832 <main+0x22>
-	case(6):MDIO_voidSetPortValue(GPIOB,0x7D);break;
- 9d0:	81 e0       	ldi	r24, 0x01	; 1
- 9d2:	6d e7       	ldi	r22, 0x7D	; 125
- 9d4:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 9d8:	2c cf       	rjmp	.-424    	; 0x832 <main+0x22>
-	case(7):MDIO_voidSetPortValue(GPIOB,0x07);break;
- 9da:	81 e0       	ldi	r24, 0x01	; 1
- 9dc:	67 e0       	ldi	r22, 0x07	; 7
- 9de:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 9e2:	27 cf       	rjmp	.-434    	; 0x832 <main+0x22>
-	case(8):MDIO_voidSetPortValue(GPIOB,0x7F);break;
- 9e4:	81 e0       	ldi	r24, 0x01	; 1
- 9e6:	6f e7       	ldi	r22, 0x7F	; 127
- 9e8:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 9ec:	22 cf       	rjmp	.-444    	; 0x832 <main+0x22>
-	case(9):MDIO_voidSetPortValue(GPIOB,0x6F);break;
- 9ee:	81 e0       	ldi	r24, 0x01	; 1
- 9f0:	6f e6       	ldi	r22, 0x6F	; 111
- 9f2:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- 9f6:	1d cf       	rjmp	.-454    	; 0x832 <main+0x22>
-
-	case(10):MDIO_voidSetPortValue(GPIOC,0x06);MDIO_voidSetPortValue(GPIOB,0x3F);break;
- 9f8:	82 e0       	ldi	r24, 0x02	; 2
- 9fa:	66 e0       	ldi	r22, 0x06	; 6
- 9fc:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a00:	81 e0       	ldi	r24, 0x01	; 1
- a02:	6f e3       	ldi	r22, 0x3F	; 63
- a04:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a08:	14 cf       	rjmp	.-472    	; 0x832 <main+0x22>
 
 
-	case(20):MDIO_voidSetPortValue(GPIOC,0x5B);MDIO_voidSetPortValue(GPIOB,0x3F);break;
- a0a:	82 e0       	ldi	r24, 0x02	; 2
- a0c:	6b e5       	ldi	r22, 0x5B	; 91
- a0e:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a12:	81 e0       	ldi	r24, 0x01	; 1
- a14:	6f e3       	ldi	r22, 0x3F	; 63
- a16:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a1a:	0b cf       	rjmp	.-490    	; 0x832 <main+0x22>
 
+return 0;
+ 89a:	80 e0       	ldi	r24, 0x00	; 0
+ 89c:	90 e0       	ldi	r25, 0x00	; 0
+}
+ 89e:	cf 91       	pop	r28
+ 8a0:	df 91       	pop	r29
+ 8a2:	08 95       	ret
 
-	case(30):MDIO_voidSetPortValue(GPIOC,0x4F);MDIO_voidSetPortValue(GPIOB,0x3F);break;
- a1c:	82 e0       	ldi	r24, 0x02	; 2
- a1e:	6f e4       	ldi	r22, 0x4F	; 79
- a20:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a24:	81 e0       	ldi	r24, 0x01	; 1
- a26:	6f e3       	ldi	r22, 0x3F	; 63
- a28:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a2c:	02 cf       	rjmp	.-508    	; 0x832 <main+0x22>
+000008a4 <_exit>:
+ 8a4:	f8 94       	cli
 
-
-	case(40):MDIO_voidSetPortValue(GPIOC,0x66);MDIO_voidSetPortValue(GPIOB,0x3F);break;
- a2e:	82 e0       	ldi	r24, 0x02	; 2
- a30:	66 e6       	ldi	r22, 0x66	; 102
- a32:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a36:	81 e0       	ldi	r24, 0x01	; 1
- a38:	6f e3       	ldi	r22, 0x3F	; 63
- a3a:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a3e:	f9 ce       	rjmp	.-526    	; 0x832 <main+0x22>
-
-
-	case(50):MDIO_voidSetPortValue(GPIOC,0x6D);MDIO_voidSetPortValue(GPIOB,0x3F);break;
- a40:	82 e0       	ldi	r24, 0x02	; 2
- a42:	6d e6       	ldi	r22, 0x6D	; 109
- a44:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a48:	81 e0       	ldi	r24, 0x01	; 1
- a4a:	6f e3       	ldi	r22, 0x3F	; 63
- a4c:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a50:	f0 ce       	rjmp	.-544    	; 0x832 <main+0x22>
-
-
-	case(60):MDIO_voidSetPortValue(GPIOC,0x7D);MDIO_voidSetPortValue(GPIOB,0x3F);break;
- a52:	82 e0       	ldi	r24, 0x02	; 2
- a54:	6d e7       	ldi	r22, 0x7D	; 125
- a56:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a5a:	81 e0       	ldi	r24, 0x01	; 1
- a5c:	6f e3       	ldi	r22, 0x3F	; 63
- a5e:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a62:	e7 ce       	rjmp	.-562    	; 0x832 <main+0x22>
-
-
-	case(70):MDIO_voidSetPortValue(GPIOC,0x07);MDIO_voidSetPortValue(GPIOB,0x3F);break;
- a64:	82 e0       	ldi	r24, 0x02	; 2
- a66:	67 e0       	ldi	r22, 0x07	; 7
- a68:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a6c:	81 e0       	ldi	r24, 0x01	; 1
- a6e:	6f e3       	ldi	r22, 0x3F	; 63
- a70:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a74:	de ce       	rjmp	.-580    	; 0x832 <main+0x22>
-
-
-	case(80):MDIO_voidSetPortValue(GPIOC,0x7F);MDIO_voidSetPortValue(GPIOB,0x3F);break;
- a76:	82 e0       	ldi	r24, 0x02	; 2
- a78:	6f e7       	ldi	r22, 0x7F	; 127
- a7a:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a7e:	81 e0       	ldi	r24, 0x01	; 1
- a80:	6f e3       	ldi	r22, 0x3F	; 63
- a82:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a86:	d5 ce       	rjmp	.-598    	; 0x832 <main+0x22>
-
-
-	case(90):MDIO_voidSetPortValue(GPIOC,0x6F);MDIO_voidSetPortValue(GPIOB,0x3F);break;
- a88:	82 e0       	ldi	r24, 0x02	; 2
- a8a:	6f e6       	ldi	r22, 0x6F	; 111
- a8c:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a90:	81 e0       	ldi	r24, 0x01	; 1
- a92:	6f e3       	ldi	r22, 0x3F	; 63
- a94:	0e 94 0b 03 	call	0x616	; 0x616 <MDIO_voidSetPortValue>
- a98:	cc ce       	rjmp	.-616    	; 0x832 <main+0x22>
-
-00000a9a <_exit>:
- a9a:	f8 94       	cli
-
-00000a9c <__stop_program>:
- a9c:	ff cf       	rjmp	.-2      	; 0xa9c <__stop_program>
+000008a6 <__stop_program>:
+ 8a6:	ff cf       	rjmp	.-2      	; 0x8a6 <__stop_program>
