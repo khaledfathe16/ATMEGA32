@@ -12,8 +12,6 @@ typedef struct
 
 #define SPI ((volatile SPI_INT *)(0x2D))
 
-#define M    0
-#define S    1
 
 
 

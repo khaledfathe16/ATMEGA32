@@ -8,6 +8,8 @@ void MSPI_voidSendData(u8 copy_u8Data);
 u8 MSPI_voidrecieveData(void);
 
 
+#define M    0
+#define S    1
 
 
 
