@@ -16,8 +16,6 @@ MSPI_voidIntialize(S);
 while(1)
 {
 
-
-
 	Data = MSPI_voidRecieveData();
 
 	MDIO_voidSetPortValue(GPIOC,Data);

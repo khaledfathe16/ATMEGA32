@@ -1464,8 +1464,8 @@ int main()
 MSPI_voidIntialize(M);
  8c4:	80 e0       	ldi	r24, 0x00	; 0
  8c6:	0e 94 c9 03 	call	0x792	; 0x792 <MSPI_voidIntialize>
-u8 Data=0b11111111;
- 8ca:	8f ef       	ldi	r24, 0xFF	; 255
+u8 Data=0x01;
+ 8ca:	81 e0       	ldi	r24, 0x01	; 1
  8cc:	89 83       	std	Y+1, r24	; 0x01
 
 	//Data = MUART_u8UartRecieveByte();
