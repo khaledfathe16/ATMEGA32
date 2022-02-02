@@ -115,7 +115,7 @@ LOAD c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\l
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x8e2
+.text           0x00000000      0x8e4
  *(.vectors)
  .vectors       0x00000000       0x54 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
@@ -228,14 +228,14 @@ LOAD c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\l
  .text.MUART_u8UartRecieveByte
                 0x0000089c       0x1e ./UART_program.o
                 0x0000089c                MUART_u8UartRecieveByte
- .text.main     0x000008ba       0x24 ./main.o
+ .text.main     0x000008ba       0x26 ./main.o
                 0x000008ba                main
- .text.libgcc   0x000008de        0x0 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x000008de                . = ALIGN (0x2)
+ .text.libgcc   0x000008e0        0x0 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x000008e0                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000008de        0x0 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x000008de                exit
-                0x000008de                _exit
+ .fini9         0x000008e0        0x0 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x000008e0                exit
+                0x000008e0                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -254,11 +254,11 @@ LOAD c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\l
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000008de        0x4 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x000008e0        0x4 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x000008e2                _etext = .
+                0x000008e4                _etext = .
 
-.data           0x00800060        0x0 load address 0x000008e2
+.data           0x00800060        0x0 load address 0x000008e4
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
@@ -287,8 +287,8 @@ LOAD c:/users/algo/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\l
  *(.bss*)
  *(COMMON)
                 0x00800060                PROVIDE (__bss_end, .)
-                0x000008e2                __data_load_start = LOADADDR (.data)
-                0x000008e2                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000008e4                __data_load_start = LOADADDR (.data)
+                0x000008e4                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800060        0x0
                 0x00800060                PROVIDE (__noinit_start, .)
