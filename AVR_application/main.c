@@ -1,24 +1,24 @@
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
-#include <util/delay.h>
+//#include <util/delay.h>
 #include "DIO_interface.h"
-//#include "UART_interface.h"
+#include "UART_interface.h"
 #include "SPI_interface.h"
 
 
 int main()
 {
-
+MUART_voidUartInitialization();
 MSPI_voidIntialize(M);
+u8 Data=0;
 while(1)
 {
-	MSPI_voidSendData(0b00001111);
-	_delay_ms(500);
-	MSPI_voidSendData(0b00000111);
-	_delay_ms(500);
-	MSPI_voidSendData(0b00000001);
-	_delay_ms(500);
+	Data = MUART_u8UartRecieveByte();
+
+	MSPI_voidSendData(Data);
+
 }
+
 
 
 return 0;

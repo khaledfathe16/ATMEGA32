@@ -43,18 +43,13 @@ void MSPI_voidSendData(u8 copy_u8Data)
 
 	 while(!(GET_BIT(SPI->SPSR,7)));
 	 
-
-
-	
 	
 }
 
 
-u8 MSPI_voidrecieveData(void)
+u8 MSPI_voidRecieveData(void)
 {
-      u8 Local_u8Dummy = 0x00;
       
-      SPI->SPDR = Local_u8Dummy;
 
 	 while(!(GET_BIT(SPI->SPSR,7)));
 	 
