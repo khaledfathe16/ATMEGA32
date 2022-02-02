@@ -10,13 +10,14 @@ int main()
 {
 //MUART_voidUartInitialization();
 MSPI_voidIntialize(M);
-u8 Data=0xFF;
+u8 Data=0b11111111;
 
 	//Data = MUART_u8UartRecieveByte();
-
+while(1)
+{
 	MSPI_voidSendData(Data);
 
-
+}
 
 
 
