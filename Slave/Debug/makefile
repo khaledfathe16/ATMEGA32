@@ -82,7 +82,7 @@ sizedummy: Slave.elf
 
 avrdudedummy: Slave.elf
 	@echo 'Invoking: AVRDude'
-	C:\Users\Algo\Desktop\IMT_SDK_Win_64\WinAVR\bin\avrdude -pm32 -cusbasp -Uflash:w:Slave.hex:a
+	C:\Users\KFE\Desktop\IMT_SDK_Win_64\WinAVR\bin\avrdude -pm32 -Uflash:w:Slave.hex:a
 	@echo 'Finished building: $@'
 	@echo ' '
 

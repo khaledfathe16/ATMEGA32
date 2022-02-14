@@ -82,7 +82,7 @@ sizedummy: AVR_application.elf
 
 avrdudedummy: AVR_application.elf
 	@echo 'Invoking: AVRDude'
-	C:\Users\Algo\Desktop\IMT_SDK_Win_64\WinAVR\bin\avrdude -pm32 -cusbasp -Uflash:w:AVR_application.hex:a
+	C:\Users\KFE\Desktop\IMT_SDK_Win_64\WinAVR\bin\avrdude -pm32 -Uflash:w:AVR_application.hex:a
 	@echo 'Finished building: $@'
 	@echo ' '
 
