@@ -5,18 +5,21 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../DIO_program.c \
+../EEPROM_program.c \
 ../SPI_program.c \
 ../UART_program.c \
 ../main.c 
 
 OBJS += \
 ./DIO_program.o \
+./EEPROM_program.o \
 ./SPI_program.o \
 ./UART_program.o \
 ./main.o 
 
 C_DEPS += \
 ./DIO_program.d \
+./EEPROM_program.d \
 ./SPI_program.d \
 ./UART_program.d \
 ./main.d 

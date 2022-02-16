@@ -14,8 +14,8 @@ void MSPI_voidIntialize(u8 copy_u8Mode)
 	{
 
 		MDIO_voidSetPinMode(GPIOB,5,OUTPUT); // MOSI Enable as output
-		MDIO_voidSetPinMode(GPIOB,4,OUTPUT); // SCK Enable as output
-		MDIO_voidSetPinMode(GPIOB,7,OUTPUT); // SS Enable as output
+		MDIO_voidSetPinMode(GPIOB,4,OUTPUT); // SS Enable as output
+		MDIO_voidSetPinMode(GPIOB,7,OUTPUT); // SCK Enable as output
 		SPI -> SPCR = 0x50 ;  //intterupt & spi enable & data order & m or s select & clock polarity & cpha & spr0 spr1
 		SPI -> SPSR = 0x00 ;  // SPI intterupt flag & Write collision flag & spi2x double speed bit
 		
