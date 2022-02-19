@@ -17,15 +17,13 @@
 	 MDIO_voidSetPinValue(GPIOB,4,LOW);
 	 MSPI_voidSendData(0x06);
 	 MDIO_voidSetPinValue(GPIOB,4,HIGH);
-	 _delay_ms(5);
+     _delay_ms(50);
 	 MDIO_voidSetPinValue(GPIOB,4,LOW);
 	 MSPI_voidSendData(0x02);
-	 _delay_ms(5);
 	 MSPI_voidSendData(copy_u16Address);
 	 MSPI_voidSendData(copy_u8Data);
-	 _delay_ms(5);
 	 MDIO_voidSetPinValue(GPIOB,4,HIGH);
-	 _delay_ms(5);
+
  }
  
  

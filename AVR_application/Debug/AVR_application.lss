@@ -3,31 +3,31 @@ AVR_application.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         0000196a  00000000  00000000  00000074  2**1
+  0 .text         000016a4  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000008  00800060  0000196a  000019de  2**0
+  1 .data         00000008  00800060  000016a4  00001718  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .stab         000012d8  00000000  00000000  000019e8  2**2
+  2 .stab         00001050  00000000  00000000  00001720  2**2
                   CONTENTS, READONLY, DEBUGGING
-  3 .stabstr      00000b14  00000000  00000000  00002cc0  2**0
+  3 .stabstr      00000b04  00000000  00000000  00002770  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_aranges 00000140  00000000  00000000  000037d4  2**0
+  4 .debug_aranges 00000140  00000000  00000000  00003274  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_pubnames 00000170  00000000  00000000  00003914  2**0
+  5 .debug_pubnames 00000170  00000000  00000000  000033b4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00001c49  00000000  00000000  00003a84  2**0
+  6 .debug_info   00001c49  00000000  00000000  00003524  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000eeb  00000000  00000000  000056cd  2**0
+  7 .debug_abbrev 00000eeb  00000000  00000000  0000516d  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000dad  00000000  00000000  000065b8  2**0
+  8 .debug_line   00000dad  00000000  00000000  00006058  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000160  00000000  00000000  00007368  2**2
+  9 .debug_frame  00000160  00000000  00000000  00006e08  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000028d  00000000  00000000  000074c8  2**0
+ 10 .debug_str    0000028d  00000000  00000000  00006f68  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000007ce  00000000  00000000  00007755  2**0
+ 11 .debug_loc    000007ce  00000000  00000000  000071f5  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000050  00000000  00000000  00007f23  2**0
+ 12 .debug_ranges 00000050  00000000  00000000  000079c3  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -67,8 +67,8 @@ Disassembly of section .text:
       60:	10 e0       	ldi	r17, 0x00	; 0
       62:	a0 e6       	ldi	r26, 0x60	; 96
       64:	b0 e0       	ldi	r27, 0x00	; 0
-      66:	ea e6       	ldi	r30, 0x6A	; 106
-      68:	f9 e1       	ldi	r31, 0x19	; 25
+      66:	e4 ea       	ldi	r30, 0xA4	; 164
+      68:	f6 e1       	ldi	r31, 0x16	; 22
       6a:	02 c0       	rjmp	.+4      	; 0x70 <.do_copy_data_start>
 
 0000006c <.do_copy_data_loop>:
@@ -79,8 +79,8 @@ Disassembly of section .text:
       70:	a8 36       	cpi	r26, 0x68	; 104
       72:	b1 07       	cpc	r27, r17
       74:	d9 f7       	brne	.-10     	; 0x6c <.do_copy_data_loop>
-      76:	0e 94 e5 0b 	call	0x17ca	; 0x17ca <main>
-      7a:	0c 94 b3 0c 	jmp	0x1966	; 0x1966 <_exit>
+      76:	0e 94 90 0a 	call	0x1520	; 0x1520 <main>
+      7a:	0c 94 50 0b 	jmp	0x16a0	; 0x16a0 <_exit>
 
 0000007e <__bad_interrupt>:
       7e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -132,7 +132,7 @@ Disassembly of section .text:
       dc:	b0 e0       	ldi	r27, 0x00	; 0
       de:	e3 e7       	ldi	r30, 0x73	; 115
       e0:	f0 e0       	ldi	r31, 0x00	; 0
-      e2:	0c 94 7c 0c 	jmp	0x18f8	; 0x18f8 <__prologue_saves__>
+      e2:	0c 94 19 0b 	jmp	0x1632	; 0x1632 <__prologue_saves__>
       e6:	dc 01       	movw	r26, r24
       e8:	2b 01       	movw	r4, r22
       ea:	fa 01       	movw	r30, r20
@@ -457,14 +457,14 @@ Disassembly of section .text:
      368:	cd b7       	in	r28, 0x3d	; 61
      36a:	de b7       	in	r29, 0x3e	; 62
      36c:	e2 e1       	ldi	r30, 0x12	; 18
-     36e:	0c 94 98 0c 	jmp	0x1930	; 0x1930 <__epilogue_restores__>
+     36e:	0c 94 35 0b 	jmp	0x166a	; 0x166a <__epilogue_restores__>
 
 00000372 <__subsf3>:
      372:	a0 e2       	ldi	r26, 0x20	; 32
      374:	b0 e0       	ldi	r27, 0x00	; 0
      376:	ef eb       	ldi	r30, 0xBF	; 191
      378:	f1 e0       	ldi	r31, 0x01	; 1
-     37a:	0c 94 88 0c 	jmp	0x1910	; 0x1910 <__prologue_saves__+0x18>
+     37a:	0c 94 25 0b 	jmp	0x164a	; 0x164a <__prologue_saves__+0x18>
      37e:	69 83       	std	Y+1, r22	; 0x01
      380:	7a 83       	std	Y+2, r23	; 0x02
      382:	8b 83       	std	Y+3, r24	; 0x03
@@ -502,14 +502,14 @@ Disassembly of section .text:
      3c8:	0e 94 f5 03 	call	0x7ea	; 0x7ea <__pack_f>
      3cc:	a0 96       	adiw	r28, 0x20	; 32
      3ce:	e6 e0       	ldi	r30, 0x06	; 6
-     3d0:	0c 94 a4 0c 	jmp	0x1948	; 0x1948 <__epilogue_restores__+0x18>
+     3d0:	0c 94 41 0b 	jmp	0x1682	; 0x1682 <__epilogue_restores__+0x18>
 
 000003d4 <__addsf3>:
      3d4:	a0 e2       	ldi	r26, 0x20	; 32
      3d6:	b0 e0       	ldi	r27, 0x00	; 0
      3d8:	e0 ef       	ldi	r30, 0xF0	; 240
      3da:	f1 e0       	ldi	r31, 0x01	; 1
-     3dc:	0c 94 88 0c 	jmp	0x1910	; 0x1910 <__prologue_saves__+0x18>
+     3dc:	0c 94 25 0b 	jmp	0x164a	; 0x164a <__prologue_saves__+0x18>
      3e0:	69 83       	std	Y+1, r22	; 0x01
      3e2:	7a 83       	std	Y+2, r23	; 0x02
      3e4:	8b 83       	std	Y+3, r24	; 0x03
@@ -543,14 +543,14 @@ Disassembly of section .text:
      422:	0e 94 f5 03 	call	0x7ea	; 0x7ea <__pack_f>
      426:	a0 96       	adiw	r28, 0x20	; 32
      428:	e6 e0       	ldi	r30, 0x06	; 6
-     42a:	0c 94 a4 0c 	jmp	0x1948	; 0x1948 <__epilogue_restores__+0x18>
+     42a:	0c 94 41 0b 	jmp	0x1682	; 0x1682 <__epilogue_restores__+0x18>
 
 0000042e <__mulsf3>:
      42e:	a0 e2       	ldi	r26, 0x20	; 32
      430:	b0 e0       	ldi	r27, 0x00	; 0
      432:	ed e1       	ldi	r30, 0x1D	; 29
      434:	f2 e0       	ldi	r31, 0x02	; 2
-     436:	0c 94 7c 0c 	jmp	0x18f8	; 0x18f8 <__prologue_saves__>
+     436:	0c 94 19 0b 	jmp	0x1632	; 0x1632 <__prologue_saves__>
      43a:	69 83       	std	Y+1, r22	; 0x01
      43c:	7a 83       	std	Y+2, r23	; 0x02
      43e:	8b 83       	std	Y+3, r24	; 0x03
@@ -790,14 +790,14 @@ Disassembly of section .text:
      616:	0e 94 f5 03 	call	0x7ea	; 0x7ea <__pack_f>
      61a:	a0 96       	adiw	r28, 0x20	; 32
      61c:	e2 e1       	ldi	r30, 0x12	; 18
-     61e:	0c 94 98 0c 	jmp	0x1930	; 0x1930 <__epilogue_restores__>
+     61e:	0c 94 35 0b 	jmp	0x166a	; 0x166a <__epilogue_restores__>
 
 00000622 <__gtsf2>:
      622:	a8 e1       	ldi	r26, 0x18	; 24
      624:	b0 e0       	ldi	r27, 0x00	; 0
      626:	e7 e1       	ldi	r30, 0x17	; 23
      628:	f3 e0       	ldi	r31, 0x03	; 3
-     62a:	0c 94 88 0c 	jmp	0x1910	; 0x1910 <__prologue_saves__+0x18>
+     62a:	0c 94 25 0b 	jmp	0x164a	; 0x164a <__prologue_saves__+0x18>
      62e:	69 83       	std	Y+1, r22	; 0x01
      630:	7a 83       	std	Y+2, r23	; 0x02
      632:	8b 83       	std	Y+3, r24	; 0x03
@@ -835,14 +835,14 @@ Disassembly of section .text:
      678:	8f ef       	ldi	r24, 0xFF	; 255
      67a:	68 96       	adiw	r28, 0x18	; 24
      67c:	e6 e0       	ldi	r30, 0x06	; 6
-     67e:	0c 94 a4 0c 	jmp	0x1948	; 0x1948 <__epilogue_restores__+0x18>
+     67e:	0c 94 41 0b 	jmp	0x1682	; 0x1682 <__epilogue_restores__+0x18>
 
 00000682 <__gesf2>:
      682:	a8 e1       	ldi	r26, 0x18	; 24
      684:	b0 e0       	ldi	r27, 0x00	; 0
      686:	e7 e4       	ldi	r30, 0x47	; 71
      688:	f3 e0       	ldi	r31, 0x03	; 3
-     68a:	0c 94 88 0c 	jmp	0x1910	; 0x1910 <__prologue_saves__+0x18>
+     68a:	0c 94 25 0b 	jmp	0x164a	; 0x164a <__prologue_saves__+0x18>
      68e:	69 83       	std	Y+1, r22	; 0x01
      690:	7a 83       	std	Y+2, r23	; 0x02
      692:	8b 83       	std	Y+3, r24	; 0x03
@@ -880,14 +880,14 @@ Disassembly of section .text:
      6d8:	8f ef       	ldi	r24, 0xFF	; 255
      6da:	68 96       	adiw	r28, 0x18	; 24
      6dc:	e6 e0       	ldi	r30, 0x06	; 6
-     6de:	0c 94 a4 0c 	jmp	0x1948	; 0x1948 <__epilogue_restores__+0x18>
+     6de:	0c 94 41 0b 	jmp	0x1682	; 0x1682 <__epilogue_restores__+0x18>
 
 000006e2 <__ltsf2>:
      6e2:	a8 e1       	ldi	r26, 0x18	; 24
      6e4:	b0 e0       	ldi	r27, 0x00	; 0
      6e6:	e7 e7       	ldi	r30, 0x77	; 119
      6e8:	f3 e0       	ldi	r31, 0x03	; 3
-     6ea:	0c 94 88 0c 	jmp	0x1910	; 0x1910 <__prologue_saves__+0x18>
+     6ea:	0c 94 25 0b 	jmp	0x164a	; 0x164a <__prologue_saves__+0x18>
      6ee:	69 83       	std	Y+1, r22	; 0x01
      6f0:	7a 83       	std	Y+2, r23	; 0x02
      6f2:	8b 83       	std	Y+3, r24	; 0x03
@@ -925,14 +925,14 @@ Disassembly of section .text:
      738:	81 e0       	ldi	r24, 0x01	; 1
      73a:	68 96       	adiw	r28, 0x18	; 24
      73c:	e6 e0       	ldi	r30, 0x06	; 6
-     73e:	0c 94 a4 0c 	jmp	0x1948	; 0x1948 <__epilogue_restores__+0x18>
+     73e:	0c 94 41 0b 	jmp	0x1682	; 0x1682 <__epilogue_restores__+0x18>
 
 00000742 <__fixsfsi>:
      742:	ac e0       	ldi	r26, 0x0C	; 12
      744:	b0 e0       	ldi	r27, 0x00	; 0
      746:	e7 ea       	ldi	r30, 0xA7	; 167
      748:	f3 e0       	ldi	r31, 0x03	; 3
-     74a:	0c 94 8c 0c 	jmp	0x1918	; 0x1918 <__prologue_saves__+0x20>
+     74a:	0c 94 29 0b 	jmp	0x1652	; 0x1652 <__prologue_saves__+0x20>
      74e:	69 83       	std	Y+1, r22	; 0x01
      750:	7a 83       	std	Y+2, r23	; 0x02
      752:	8b 83       	std	Y+3, r24	; 0x03
@@ -1008,7 +1008,7 @@ Disassembly of section .text:
      7e0:	ca 01       	movw	r24, r20
      7e2:	2c 96       	adiw	r28, 0x0c	; 12
      7e4:	e2 e0       	ldi	r30, 0x02	; 2
-     7e6:	0c 94 a8 0c 	jmp	0x1950	; 0x1950 <__epilogue_restores__+0x20>
+     7e6:	0c 94 45 0b 	jmp	0x168a	; 0x168a <__epilogue_restores__+0x20>
 
 000007ea <__pack_f>:
      7ea:	df 92       	push	r13
@@ -2599,15 +2599,15 @@ u8 MDIO_u8GetPinValue(u8 copy_u8PortId , u8 copy_u8PinId)
     125e:	cf 93       	push	r28
     1260:	cd b7       	in	r28, 0x3d	; 61
     1262:	de b7       	in	r29, 0x3e	; 62
-    1264:	eb 97       	sbiw	r28, 0x3b	; 59
+    1264:	61 97       	sbiw	r28, 0x11	; 17
     1266:	0f b6       	in	r0, 0x3f	; 63
     1268:	f8 94       	cli
     126a:	de bf       	out	0x3e, r29	; 62
     126c:	0f be       	out	0x3f, r0	; 63
     126e:	cd bf       	out	0x3d, r28	; 61
-    1270:	9a af       	std	Y+58, r25	; 0x3a
-    1272:	89 af       	std	Y+57, r24	; 0x39
-    1274:	6b af       	std	Y+59, r22	; 0x3b
+    1270:	98 8b       	std	Y+16, r25	; 0x10
+    1272:	8f 87       	std	Y+15, r24	; 0x0f
+    1274:	69 8b       	std	Y+17, r22	; 0x11
 	 MDIO_voidSetPinValue(GPIOB,4,LOW);
     1276:	81 e0       	ldi	r24, 0x01	; 1
     1278:	64 e0       	ldi	r22, 0x04	; 4
@@ -2615,7 +2615,7 @@ u8 MDIO_u8GetPinValue(u8 copy_u8PortId , u8 copy_u8PinId)
     127c:	0e 94 6a 07 	call	0xed4	; 0xed4 <MDIO_voidSetPinValue>
 	 MSPI_voidSendData(0x06);
     1280:	86 e0       	ldi	r24, 0x06	; 6
-    1282:	0e 94 84 0b 	call	0x1708	; 0x1708 <MSPI_voidSendData>
+    1282:	0e 94 2f 0a 	call	0x145e	; 0x145e <MSPI_voidSendData>
 	 MDIO_voidSetPinValue(GPIOB,4,HIGH);
     1286:	81 e0       	ldi	r24, 0x01	; 1
     1288:	64 e0       	ldi	r22, 0x04	; 4
@@ -2623,22 +2623,22 @@ u8 MDIO_u8GetPinValue(u8 copy_u8PortId , u8 copy_u8PinId)
     128c:	0e 94 6a 07 	call	0xed4	; 0xed4 <MDIO_voidSetPinValue>
     1290:	80 e0       	ldi	r24, 0x00	; 0
     1292:	90 e0       	ldi	r25, 0x00	; 0
-    1294:	a0 ea       	ldi	r26, 0xA0	; 160
-    1296:	b0 e4       	ldi	r27, 0x40	; 64
-    1298:	8d ab       	std	Y+53, r24	; 0x35
-    129a:	9e ab       	std	Y+54, r25	; 0x36
-    129c:	af ab       	std	Y+55, r26	; 0x37
-    129e:	b8 af       	std	Y+56, r27	; 0x38
+    1294:	a8 e4       	ldi	r26, 0x48	; 72
+    1296:	b2 e4       	ldi	r27, 0x42	; 66
+    1298:	8b 87       	std	Y+11, r24	; 0x0b
+    129a:	9c 87       	std	Y+12, r25	; 0x0c
+    129c:	ad 87       	std	Y+13, r26	; 0x0d
+    129e:	be 87       	std	Y+14, r27	; 0x0e
  */
 void
 _delay_ms(double __ms)
 {
 	uint16_t __ticks;
 	double __tmp = ((F_CPU) / 4e3) * __ms;
-    12a0:	6d a9       	ldd	r22, Y+53	; 0x35
-    12a2:	7e a9       	ldd	r23, Y+54	; 0x36
-    12a4:	8f a9       	ldd	r24, Y+55	; 0x37
-    12a6:	98 ad       	ldd	r25, Y+56	; 0x38
+    12a0:	6b 85       	ldd	r22, Y+11	; 0x0b
+    12a2:	7c 85       	ldd	r23, Y+12	; 0x0c
+    12a4:	8d 85       	ldd	r24, Y+13	; 0x0d
+    12a6:	9e 85       	ldd	r25, Y+14	; 0x0e
     12a8:	20 e0       	ldi	r18, 0x00	; 0
     12aa:	30 e0       	ldi	r19, 0x00	; 0
     12ac:	4a ef       	ldi	r20, 0xFA	; 250
@@ -2646,15 +2646,15 @@ _delay_ms(double __ms)
     12b0:	0e 94 17 02 	call	0x42e	; 0x42e <__mulsf3>
     12b4:	dc 01       	movw	r26, r24
     12b6:	cb 01       	movw	r24, r22
-    12b8:	89 ab       	std	Y+49, r24	; 0x31
-    12ba:	9a ab       	std	Y+50, r25	; 0x32
-    12bc:	ab ab       	std	Y+51, r26	; 0x33
-    12be:	bc ab       	std	Y+52, r27	; 0x34
+    12b8:	8f 83       	std	Y+7, r24	; 0x07
+    12ba:	98 87       	std	Y+8, r25	; 0x08
+    12bc:	a9 87       	std	Y+9, r26	; 0x09
+    12be:	ba 87       	std	Y+10, r27	; 0x0a
 	if (__tmp < 1.0)
-    12c0:	69 a9       	ldd	r22, Y+49	; 0x31
-    12c2:	7a a9       	ldd	r23, Y+50	; 0x32
-    12c4:	8b a9       	ldd	r24, Y+51	; 0x33
-    12c6:	9c a9       	ldd	r25, Y+52	; 0x34
+    12c0:	6f 81       	ldd	r22, Y+7	; 0x07
+    12c2:	78 85       	ldd	r23, Y+8	; 0x08
+    12c4:	89 85       	ldd	r24, Y+9	; 0x09
+    12c6:	9a 85       	ldd	r25, Y+10	; 0x0a
     12c8:	20 e0       	ldi	r18, 0x00	; 0
     12ca:	30 e0       	ldi	r19, 0x00	; 0
     12cc:	40 e8       	ldi	r20, 0x80	; 128
@@ -2665,14 +2665,14 @@ _delay_ms(double __ms)
 		__ticks = 1;
     12d8:	81 e0       	ldi	r24, 0x01	; 1
     12da:	90 e0       	ldi	r25, 0x00	; 0
-    12dc:	98 ab       	std	Y+48, r25	; 0x30
-    12de:	8f a7       	std	Y+47, r24	; 0x2f
+    12dc:	9e 83       	std	Y+6, r25	; 0x06
+    12de:	8d 83       	std	Y+5, r24	; 0x05
     12e0:	3f c0       	rjmp	.+126    	; 0x1360 <HEEPROM_voidSendData+0x104>
 	else if (__tmp > 65535)
-    12e2:	69 a9       	ldd	r22, Y+49	; 0x31
-    12e4:	7a a9       	ldd	r23, Y+50	; 0x32
-    12e6:	8b a9       	ldd	r24, Y+51	; 0x33
-    12e8:	9c a9       	ldd	r25, Y+52	; 0x34
+    12e2:	6f 81       	ldd	r22, Y+7	; 0x07
+    12e4:	78 85       	ldd	r23, Y+8	; 0x08
+    12e6:	89 85       	ldd	r24, Y+9	; 0x09
+    12e8:	9a 85       	ldd	r25, Y+10	; 0x0a
     12ea:	20 e0       	ldi	r18, 0x00	; 0
     12ec:	3f ef       	ldi	r19, 0xFF	; 255
     12ee:	4f e7       	ldi	r20, 0x7F	; 127
@@ -2683,10 +2683,10 @@ _delay_ms(double __ms)
 	{
 		//	__ticks = requested delay in 1/10 ms
 		__ticks = (uint16_t) (__ms * 10.0);
-    12fa:	6d a9       	ldd	r22, Y+53	; 0x35
-    12fc:	7e a9       	ldd	r23, Y+54	; 0x36
-    12fe:	8f a9       	ldd	r24, Y+55	; 0x37
-    1300:	98 ad       	ldd	r25, Y+56	; 0x38
+    12fa:	6b 85       	ldd	r22, Y+11	; 0x0b
+    12fc:	7c 85       	ldd	r23, Y+12	; 0x0c
+    12fe:	8d 85       	ldd	r24, Y+13	; 0x0d
+    1300:	9e 85       	ldd	r25, Y+14	; 0x0e
     1302:	20 e0       	ldi	r18, 0x00	; 0
     1304:	30 e0       	ldi	r19, 0x00	; 0
     1306:	40 e2       	ldi	r20, 0x20	; 32
@@ -2699,43 +2699,43 @@ _delay_ms(double __ms)
     1316:	0e 94 41 00 	call	0x82	; 0x82 <__fixunssfsi>
     131a:	dc 01       	movw	r26, r24
     131c:	cb 01       	movw	r24, r22
-    131e:	98 ab       	std	Y+48, r25	; 0x30
-    1320:	8f a7       	std	Y+47, r24	; 0x2f
+    131e:	9e 83       	std	Y+6, r25	; 0x06
+    1320:	8d 83       	std	Y+5, r24	; 0x05
     1322:	0f c0       	rjmp	.+30     	; 0x1342 <HEEPROM_voidSendData+0xe6>
     1324:	88 ec       	ldi	r24, 0xC8	; 200
     1326:	90 e0       	ldi	r25, 0x00	; 0
-    1328:	9e a7       	std	Y+46, r25	; 0x2e
-    132a:	8d a7       	std	Y+45, r24	; 0x2d
+    1328:	9c 83       	std	Y+4, r25	; 0x04
+    132a:	8b 83       	std	Y+3, r24	; 0x03
     milliseconds can be achieved.
  */
 void
 _delay_loop_2(uint16_t __count)
 {
 	__asm__ volatile (
-    132c:	8d a5       	ldd	r24, Y+45	; 0x2d
-    132e:	9e a5       	ldd	r25, Y+46	; 0x2e
+    132c:	8b 81       	ldd	r24, Y+3	; 0x03
+    132e:	9c 81       	ldd	r25, Y+4	; 0x04
     1330:	01 97       	sbiw	r24, 0x01	; 1
     1332:	f1 f7       	brne	.-4      	; 0x1330 <HEEPROM_voidSendData+0xd4>
-    1334:	9e a7       	std	Y+46, r25	; 0x2e
-    1336:	8d a7       	std	Y+45, r24	; 0x2d
+    1334:	9c 83       	std	Y+4, r25	; 0x04
+    1336:	8b 83       	std	Y+3, r24	; 0x03
 		while(__ticks)
 		{
 			// wait 1/10 ms
 			_delay_loop_2(((F_CPU) / 4e3) / 10);
 			__ticks --;
-    1338:	8f a5       	ldd	r24, Y+47	; 0x2f
-    133a:	98 a9       	ldd	r25, Y+48	; 0x30
+    1338:	8d 81       	ldd	r24, Y+5	; 0x05
+    133a:	9e 81       	ldd	r25, Y+6	; 0x06
     133c:	01 97       	sbiw	r24, 0x01	; 1
-    133e:	98 ab       	std	Y+48, r25	; 0x30
-    1340:	8f a7       	std	Y+47, r24	; 0x2f
+    133e:	9e 83       	std	Y+6, r25	; 0x06
+    1340:	8d 83       	std	Y+5, r24	; 0x05
 		__ticks = 1;
 	else if (__tmp > 65535)
 	{
 		//	__ticks = requested delay in 1/10 ms
 		__ticks = (uint16_t) (__ms * 10.0);
 		while(__ticks)
-    1342:	8f a5       	ldd	r24, Y+47	; 0x2f
-    1344:	98 a9       	ldd	r25, Y+48	; 0x30
+    1342:	8d 81       	ldd	r24, Y+5	; 0x05
+    1344:	9e 81       	ldd	r25, Y+6	; 0x06
     1346:	00 97       	sbiw	r24, 0x00	; 0
     1348:	69 f7       	brne	.-38     	; 0x1324 <HEEPROM_voidSendData+0xc8>
     134a:	14 c0       	rjmp	.+40     	; 0x1374 <HEEPROM_voidSendData+0x118>
@@ -2745,26 +2745,26 @@ _delay_loop_2(uint16_t __count)
 	}
 	else
 		__ticks = (uint16_t)__tmp;
-    134c:	69 a9       	ldd	r22, Y+49	; 0x31
-    134e:	7a a9       	ldd	r23, Y+50	; 0x32
-    1350:	8b a9       	ldd	r24, Y+51	; 0x33
-    1352:	9c a9       	ldd	r25, Y+52	; 0x34
+    134c:	6f 81       	ldd	r22, Y+7	; 0x07
+    134e:	78 85       	ldd	r23, Y+8	; 0x08
+    1350:	89 85       	ldd	r24, Y+9	; 0x09
+    1352:	9a 85       	ldd	r25, Y+10	; 0x0a
     1354:	0e 94 41 00 	call	0x82	; 0x82 <__fixunssfsi>
     1358:	dc 01       	movw	r26, r24
     135a:	cb 01       	movw	r24, r22
-    135c:	98 ab       	std	Y+48, r25	; 0x30
-    135e:	8f a7       	std	Y+47, r24	; 0x2f
-    1360:	8f a5       	ldd	r24, Y+47	; 0x2f
-    1362:	98 a9       	ldd	r25, Y+48	; 0x30
-    1364:	9c a7       	std	Y+44, r25	; 0x2c
-    1366:	8b a7       	std	Y+43, r24	; 0x2b
-    1368:	8b a5       	ldd	r24, Y+43	; 0x2b
-    136a:	9c a5       	ldd	r25, Y+44	; 0x2c
+    135c:	9e 83       	std	Y+6, r25	; 0x06
+    135e:	8d 83       	std	Y+5, r24	; 0x05
+    1360:	8d 81       	ldd	r24, Y+5	; 0x05
+    1362:	9e 81       	ldd	r25, Y+6	; 0x06
+    1364:	9a 83       	std	Y+2, r25	; 0x02
+    1366:	89 83       	std	Y+1, r24	; 0x01
+    1368:	89 81       	ldd	r24, Y+1	; 0x01
+    136a:	9a 81       	ldd	r25, Y+2	; 0x02
     136c:	01 97       	sbiw	r24, 0x01	; 1
     136e:	f1 f7       	brne	.-4      	; 0x136c <HEEPROM_voidSendData+0x110>
-    1370:	9c a7       	std	Y+44, r25	; 0x2c
-    1372:	8b a7       	std	Y+43, r24	; 0x2b
-	 _delay_ms(5);
+    1370:	9a 83       	std	Y+2, r25	; 0x02
+    1372:	89 83       	std	Y+1, r24	; 0x01
+     _delay_ms(50);
 	 MDIO_voidSetPinValue(GPIOB,4,LOW);
     1374:	81 e0       	ldi	r24, 0x01	; 1
     1376:	64 e0       	ldi	r22, 0x04	; 4
@@ -2772,1002 +2772,560 @@ _delay_loop_2(uint16_t __count)
     137a:	0e 94 6a 07 	call	0xed4	; 0xed4 <MDIO_voidSetPinValue>
 	 MSPI_voidSendData(0x02);
     137e:	82 e0       	ldi	r24, 0x02	; 2
-    1380:	0e 94 84 0b 	call	0x1708	; 0x1708 <MSPI_voidSendData>
-    1384:	80 e0       	ldi	r24, 0x00	; 0
-    1386:	90 e0       	ldi	r25, 0x00	; 0
-    1388:	a0 ea       	ldi	r26, 0xA0	; 160
-    138a:	b0 e4       	ldi	r27, 0x40	; 64
-    138c:	8f a3       	std	Y+39, r24	; 0x27
-    138e:	98 a7       	std	Y+40, r25	; 0x28
-    1390:	a9 a7       	std	Y+41, r26	; 0x29
-    1392:	ba a7       	std	Y+42, r27	; 0x2a
- */
-void
-_delay_ms(double __ms)
-{
-	uint16_t __ticks;
-	double __tmp = ((F_CPU) / 4e3) * __ms;
-    1394:	6f a1       	ldd	r22, Y+39	; 0x27
-    1396:	78 a5       	ldd	r23, Y+40	; 0x28
-    1398:	89 a5       	ldd	r24, Y+41	; 0x29
-    139a:	9a a5       	ldd	r25, Y+42	; 0x2a
-    139c:	20 e0       	ldi	r18, 0x00	; 0
-    139e:	30 e0       	ldi	r19, 0x00	; 0
-    13a0:	4a ef       	ldi	r20, 0xFA	; 250
-    13a2:	54 e4       	ldi	r21, 0x44	; 68
-    13a4:	0e 94 17 02 	call	0x42e	; 0x42e <__mulsf3>
-    13a8:	dc 01       	movw	r26, r24
-    13aa:	cb 01       	movw	r24, r22
-    13ac:	8b a3       	std	Y+35, r24	; 0x23
-    13ae:	9c a3       	std	Y+36, r25	; 0x24
-    13b0:	ad a3       	std	Y+37, r26	; 0x25
-    13b2:	be a3       	std	Y+38, r27	; 0x26
-	if (__tmp < 1.0)
-    13b4:	6b a1       	ldd	r22, Y+35	; 0x23
-    13b6:	7c a1       	ldd	r23, Y+36	; 0x24
-    13b8:	8d a1       	ldd	r24, Y+37	; 0x25
-    13ba:	9e a1       	ldd	r25, Y+38	; 0x26
-    13bc:	20 e0       	ldi	r18, 0x00	; 0
-    13be:	30 e0       	ldi	r19, 0x00	; 0
-    13c0:	40 e8       	ldi	r20, 0x80	; 128
-    13c2:	5f e3       	ldi	r21, 0x3F	; 63
-    13c4:	0e 94 71 03 	call	0x6e2	; 0x6e2 <__ltsf2>
-    13c8:	88 23       	and	r24, r24
-    13ca:	2c f4       	brge	.+10     	; 0x13d6 <HEEPROM_voidSendData+0x17a>
-		__ticks = 1;
-    13cc:	81 e0       	ldi	r24, 0x01	; 1
-    13ce:	90 e0       	ldi	r25, 0x00	; 0
-    13d0:	9a a3       	std	Y+34, r25	; 0x22
-    13d2:	89 a3       	std	Y+33, r24	; 0x21
-    13d4:	3f c0       	rjmp	.+126    	; 0x1454 <HEEPROM_voidSendData+0x1f8>
-	else if (__tmp > 65535)
-    13d6:	6b a1       	ldd	r22, Y+35	; 0x23
-    13d8:	7c a1       	ldd	r23, Y+36	; 0x24
-    13da:	8d a1       	ldd	r24, Y+37	; 0x25
-    13dc:	9e a1       	ldd	r25, Y+38	; 0x26
-    13de:	20 e0       	ldi	r18, 0x00	; 0
-    13e0:	3f ef       	ldi	r19, 0xFF	; 255
-    13e2:	4f e7       	ldi	r20, 0x7F	; 127
-    13e4:	57 e4       	ldi	r21, 0x47	; 71
-    13e6:	0e 94 11 03 	call	0x622	; 0x622 <__gtsf2>
-    13ea:	18 16       	cp	r1, r24
-    13ec:	4c f5       	brge	.+82     	; 0x1440 <HEEPROM_voidSendData+0x1e4>
-	{
-		//	__ticks = requested delay in 1/10 ms
-		__ticks = (uint16_t) (__ms * 10.0);
-    13ee:	6f a1       	ldd	r22, Y+39	; 0x27
-    13f0:	78 a5       	ldd	r23, Y+40	; 0x28
-    13f2:	89 a5       	ldd	r24, Y+41	; 0x29
-    13f4:	9a a5       	ldd	r25, Y+42	; 0x2a
-    13f6:	20 e0       	ldi	r18, 0x00	; 0
-    13f8:	30 e0       	ldi	r19, 0x00	; 0
-    13fa:	40 e2       	ldi	r20, 0x20	; 32
-    13fc:	51 e4       	ldi	r21, 0x41	; 65
-    13fe:	0e 94 17 02 	call	0x42e	; 0x42e <__mulsf3>
-    1402:	dc 01       	movw	r26, r24
-    1404:	cb 01       	movw	r24, r22
-    1406:	bc 01       	movw	r22, r24
-    1408:	cd 01       	movw	r24, r26
-    140a:	0e 94 41 00 	call	0x82	; 0x82 <__fixunssfsi>
-    140e:	dc 01       	movw	r26, r24
-    1410:	cb 01       	movw	r24, r22
-    1412:	9a a3       	std	Y+34, r25	; 0x22
-    1414:	89 a3       	std	Y+33, r24	; 0x21
-    1416:	0f c0       	rjmp	.+30     	; 0x1436 <HEEPROM_voidSendData+0x1da>
-    1418:	88 ec       	ldi	r24, 0xC8	; 200
-    141a:	90 e0       	ldi	r25, 0x00	; 0
-    141c:	98 a3       	std	Y+32, r25	; 0x20
-    141e:	8f 8f       	std	Y+31, r24	; 0x1f
-    1420:	8f 8d       	ldd	r24, Y+31	; 0x1f
-    1422:	98 a1       	ldd	r25, Y+32	; 0x20
-    1424:	01 97       	sbiw	r24, 0x01	; 1
-    1426:	f1 f7       	brne	.-4      	; 0x1424 <HEEPROM_voidSendData+0x1c8>
-    1428:	98 a3       	std	Y+32, r25	; 0x20
-    142a:	8f 8f       	std	Y+31, r24	; 0x1f
-		while(__ticks)
-		{
-			// wait 1/10 ms
-			_delay_loop_2(((F_CPU) / 4e3) / 10);
-			__ticks --;
-    142c:	89 a1       	ldd	r24, Y+33	; 0x21
-    142e:	9a a1       	ldd	r25, Y+34	; 0x22
-    1430:	01 97       	sbiw	r24, 0x01	; 1
-    1432:	9a a3       	std	Y+34, r25	; 0x22
-    1434:	89 a3       	std	Y+33, r24	; 0x21
-		__ticks = 1;
-	else if (__tmp > 65535)
-	{
-		//	__ticks = requested delay in 1/10 ms
-		__ticks = (uint16_t) (__ms * 10.0);
-		while(__ticks)
-    1436:	89 a1       	ldd	r24, Y+33	; 0x21
-    1438:	9a a1       	ldd	r25, Y+34	; 0x22
-    143a:	00 97       	sbiw	r24, 0x00	; 0
-    143c:	69 f7       	brne	.-38     	; 0x1418 <HEEPROM_voidSendData+0x1bc>
-    143e:	14 c0       	rjmp	.+40     	; 0x1468 <HEEPROM_voidSendData+0x20c>
-			__ticks --;
-		}
-		return;
-	}
-	else
-		__ticks = (uint16_t)__tmp;
-    1440:	6b a1       	ldd	r22, Y+35	; 0x23
-    1442:	7c a1       	ldd	r23, Y+36	; 0x24
-    1444:	8d a1       	ldd	r24, Y+37	; 0x25
-    1446:	9e a1       	ldd	r25, Y+38	; 0x26
-    1448:	0e 94 41 00 	call	0x82	; 0x82 <__fixunssfsi>
-    144c:	dc 01       	movw	r26, r24
-    144e:	cb 01       	movw	r24, r22
-    1450:	9a a3       	std	Y+34, r25	; 0x22
-    1452:	89 a3       	std	Y+33, r24	; 0x21
-    1454:	89 a1       	ldd	r24, Y+33	; 0x21
-    1456:	9a a1       	ldd	r25, Y+34	; 0x22
-    1458:	9e 8f       	std	Y+30, r25	; 0x1e
-    145a:	8d 8f       	std	Y+29, r24	; 0x1d
-    145c:	8d 8d       	ldd	r24, Y+29	; 0x1d
-    145e:	9e 8d       	ldd	r25, Y+30	; 0x1e
-    1460:	01 97       	sbiw	r24, 0x01	; 1
-    1462:	f1 f7       	brne	.-4      	; 0x1460 <HEEPROM_voidSendData+0x204>
-    1464:	9e 8f       	std	Y+30, r25	; 0x1e
-    1466:	8d 8f       	std	Y+29, r24	; 0x1d
-	 _delay_ms(5);
+    1380:	0e 94 2f 0a 	call	0x145e	; 0x145e <MSPI_voidSendData>
 	 MSPI_voidSendData(copy_u16Address);
-    1468:	89 ad       	ldd	r24, Y+57	; 0x39
-    146a:	0e 94 84 0b 	call	0x1708	; 0x1708 <MSPI_voidSendData>
+    1384:	8f 85       	ldd	r24, Y+15	; 0x0f
+    1386:	0e 94 2f 0a 	call	0x145e	; 0x145e <MSPI_voidSendData>
 	 MSPI_voidSendData(copy_u8Data);
-    146e:	8b ad       	ldd	r24, Y+59	; 0x3b
-    1470:	0e 94 84 0b 	call	0x1708	; 0x1708 <MSPI_voidSendData>
-    1474:	80 e0       	ldi	r24, 0x00	; 0
-    1476:	90 e0       	ldi	r25, 0x00	; 0
-    1478:	a0 ea       	ldi	r26, 0xA0	; 160
-    147a:	b0 e4       	ldi	r27, 0x40	; 64
-    147c:	89 8f       	std	Y+25, r24	; 0x19
-    147e:	9a 8f       	std	Y+26, r25	; 0x1a
-    1480:	ab 8f       	std	Y+27, r26	; 0x1b
-    1482:	bc 8f       	std	Y+28, r27	; 0x1c
- */
-void
-_delay_ms(double __ms)
-{
-	uint16_t __ticks;
-	double __tmp = ((F_CPU) / 4e3) * __ms;
-    1484:	69 8d       	ldd	r22, Y+25	; 0x19
-    1486:	7a 8d       	ldd	r23, Y+26	; 0x1a
-    1488:	8b 8d       	ldd	r24, Y+27	; 0x1b
-    148a:	9c 8d       	ldd	r25, Y+28	; 0x1c
-    148c:	20 e0       	ldi	r18, 0x00	; 0
-    148e:	30 e0       	ldi	r19, 0x00	; 0
-    1490:	4a ef       	ldi	r20, 0xFA	; 250
-    1492:	54 e4       	ldi	r21, 0x44	; 68
-    1494:	0e 94 17 02 	call	0x42e	; 0x42e <__mulsf3>
-    1498:	dc 01       	movw	r26, r24
-    149a:	cb 01       	movw	r24, r22
-    149c:	8d 8b       	std	Y+21, r24	; 0x15
-    149e:	9e 8b       	std	Y+22, r25	; 0x16
-    14a0:	af 8b       	std	Y+23, r26	; 0x17
-    14a2:	b8 8f       	std	Y+24, r27	; 0x18
-	if (__tmp < 1.0)
-    14a4:	6d 89       	ldd	r22, Y+21	; 0x15
-    14a6:	7e 89       	ldd	r23, Y+22	; 0x16
-    14a8:	8f 89       	ldd	r24, Y+23	; 0x17
-    14aa:	98 8d       	ldd	r25, Y+24	; 0x18
-    14ac:	20 e0       	ldi	r18, 0x00	; 0
-    14ae:	30 e0       	ldi	r19, 0x00	; 0
-    14b0:	40 e8       	ldi	r20, 0x80	; 128
-    14b2:	5f e3       	ldi	r21, 0x3F	; 63
-    14b4:	0e 94 71 03 	call	0x6e2	; 0x6e2 <__ltsf2>
-    14b8:	88 23       	and	r24, r24
-    14ba:	2c f4       	brge	.+10     	; 0x14c6 <HEEPROM_voidSendData+0x26a>
-		__ticks = 1;
-    14bc:	81 e0       	ldi	r24, 0x01	; 1
-    14be:	90 e0       	ldi	r25, 0x00	; 0
-    14c0:	9c 8b       	std	Y+20, r25	; 0x14
-    14c2:	8b 8b       	std	Y+19, r24	; 0x13
-    14c4:	3f c0       	rjmp	.+126    	; 0x1544 <HEEPROM_voidSendData+0x2e8>
-	else if (__tmp > 65535)
-    14c6:	6d 89       	ldd	r22, Y+21	; 0x15
-    14c8:	7e 89       	ldd	r23, Y+22	; 0x16
-    14ca:	8f 89       	ldd	r24, Y+23	; 0x17
-    14cc:	98 8d       	ldd	r25, Y+24	; 0x18
-    14ce:	20 e0       	ldi	r18, 0x00	; 0
-    14d0:	3f ef       	ldi	r19, 0xFF	; 255
-    14d2:	4f e7       	ldi	r20, 0x7F	; 127
-    14d4:	57 e4       	ldi	r21, 0x47	; 71
-    14d6:	0e 94 11 03 	call	0x622	; 0x622 <__gtsf2>
-    14da:	18 16       	cp	r1, r24
-    14dc:	4c f5       	brge	.+82     	; 0x1530 <HEEPROM_voidSendData+0x2d4>
-	{
-		//	__ticks = requested delay in 1/10 ms
-		__ticks = (uint16_t) (__ms * 10.0);
-    14de:	69 8d       	ldd	r22, Y+25	; 0x19
-    14e0:	7a 8d       	ldd	r23, Y+26	; 0x1a
-    14e2:	8b 8d       	ldd	r24, Y+27	; 0x1b
-    14e4:	9c 8d       	ldd	r25, Y+28	; 0x1c
-    14e6:	20 e0       	ldi	r18, 0x00	; 0
-    14e8:	30 e0       	ldi	r19, 0x00	; 0
-    14ea:	40 e2       	ldi	r20, 0x20	; 32
-    14ec:	51 e4       	ldi	r21, 0x41	; 65
-    14ee:	0e 94 17 02 	call	0x42e	; 0x42e <__mulsf3>
-    14f2:	dc 01       	movw	r26, r24
-    14f4:	cb 01       	movw	r24, r22
-    14f6:	bc 01       	movw	r22, r24
-    14f8:	cd 01       	movw	r24, r26
-    14fa:	0e 94 41 00 	call	0x82	; 0x82 <__fixunssfsi>
-    14fe:	dc 01       	movw	r26, r24
-    1500:	cb 01       	movw	r24, r22
-    1502:	9c 8b       	std	Y+20, r25	; 0x14
-    1504:	8b 8b       	std	Y+19, r24	; 0x13
-    1506:	0f c0       	rjmp	.+30     	; 0x1526 <HEEPROM_voidSendData+0x2ca>
-    1508:	88 ec       	ldi	r24, 0xC8	; 200
-    150a:	90 e0       	ldi	r25, 0x00	; 0
-    150c:	9a 8b       	std	Y+18, r25	; 0x12
-    150e:	89 8b       	std	Y+17, r24	; 0x11
-    1510:	89 89       	ldd	r24, Y+17	; 0x11
-    1512:	9a 89       	ldd	r25, Y+18	; 0x12
-    1514:	01 97       	sbiw	r24, 0x01	; 1
-    1516:	f1 f7       	brne	.-4      	; 0x1514 <HEEPROM_voidSendData+0x2b8>
-    1518:	9a 8b       	std	Y+18, r25	; 0x12
-    151a:	89 8b       	std	Y+17, r24	; 0x11
-		while(__ticks)
-		{
-			// wait 1/10 ms
-			_delay_loop_2(((F_CPU) / 4e3) / 10);
-			__ticks --;
-    151c:	8b 89       	ldd	r24, Y+19	; 0x13
-    151e:	9c 89       	ldd	r25, Y+20	; 0x14
-    1520:	01 97       	sbiw	r24, 0x01	; 1
-    1522:	9c 8b       	std	Y+20, r25	; 0x14
-    1524:	8b 8b       	std	Y+19, r24	; 0x13
-		__ticks = 1;
-	else if (__tmp > 65535)
-	{
-		//	__ticks = requested delay in 1/10 ms
-		__ticks = (uint16_t) (__ms * 10.0);
-		while(__ticks)
-    1526:	8b 89       	ldd	r24, Y+19	; 0x13
-    1528:	9c 89       	ldd	r25, Y+20	; 0x14
-    152a:	00 97       	sbiw	r24, 0x00	; 0
-    152c:	69 f7       	brne	.-38     	; 0x1508 <HEEPROM_voidSendData+0x2ac>
-    152e:	14 c0       	rjmp	.+40     	; 0x1558 <HEEPROM_voidSendData+0x2fc>
-			__ticks --;
-		}
-		return;
-	}
-	else
-		__ticks = (uint16_t)__tmp;
-    1530:	6d 89       	ldd	r22, Y+21	; 0x15
-    1532:	7e 89       	ldd	r23, Y+22	; 0x16
-    1534:	8f 89       	ldd	r24, Y+23	; 0x17
-    1536:	98 8d       	ldd	r25, Y+24	; 0x18
-    1538:	0e 94 41 00 	call	0x82	; 0x82 <__fixunssfsi>
-    153c:	dc 01       	movw	r26, r24
-    153e:	cb 01       	movw	r24, r22
-    1540:	9c 8b       	std	Y+20, r25	; 0x14
-    1542:	8b 8b       	std	Y+19, r24	; 0x13
-    1544:	8b 89       	ldd	r24, Y+19	; 0x13
-    1546:	9c 89       	ldd	r25, Y+20	; 0x14
-    1548:	98 8b       	std	Y+16, r25	; 0x10
-    154a:	8f 87       	std	Y+15, r24	; 0x0f
-    154c:	8f 85       	ldd	r24, Y+15	; 0x0f
-    154e:	98 89       	ldd	r25, Y+16	; 0x10
-    1550:	01 97       	sbiw	r24, 0x01	; 1
-    1552:	f1 f7       	brne	.-4      	; 0x1550 <HEEPROM_voidSendData+0x2f4>
-    1554:	98 8b       	std	Y+16, r25	; 0x10
-    1556:	8f 87       	std	Y+15, r24	; 0x0f
-	 _delay_ms(5);
+    138a:	89 89       	ldd	r24, Y+17	; 0x11
+    138c:	0e 94 2f 0a 	call	0x145e	; 0x145e <MSPI_voidSendData>
 	 MDIO_voidSetPinValue(GPIOB,4,HIGH);
-    1558:	81 e0       	ldi	r24, 0x01	; 1
-    155a:	64 e0       	ldi	r22, 0x04	; 4
-    155c:	40 e0       	ldi	r20, 0x00	; 0
-    155e:	0e 94 6a 07 	call	0xed4	; 0xed4 <MDIO_voidSetPinValue>
-    1562:	80 e0       	ldi	r24, 0x00	; 0
-    1564:	90 e0       	ldi	r25, 0x00	; 0
-    1566:	a0 ea       	ldi	r26, 0xA0	; 160
-    1568:	b0 e4       	ldi	r27, 0x40	; 64
-    156a:	8b 87       	std	Y+11, r24	; 0x0b
-    156c:	9c 87       	std	Y+12, r25	; 0x0c
-    156e:	ad 87       	std	Y+13, r26	; 0x0d
-    1570:	be 87       	std	Y+14, r27	; 0x0e
- */
-void
-_delay_ms(double __ms)
-{
-	uint16_t __ticks;
-	double __tmp = ((F_CPU) / 4e3) * __ms;
-    1572:	6b 85       	ldd	r22, Y+11	; 0x0b
-    1574:	7c 85       	ldd	r23, Y+12	; 0x0c
-    1576:	8d 85       	ldd	r24, Y+13	; 0x0d
-    1578:	9e 85       	ldd	r25, Y+14	; 0x0e
-    157a:	20 e0       	ldi	r18, 0x00	; 0
-    157c:	30 e0       	ldi	r19, 0x00	; 0
-    157e:	4a ef       	ldi	r20, 0xFA	; 250
-    1580:	54 e4       	ldi	r21, 0x44	; 68
-    1582:	0e 94 17 02 	call	0x42e	; 0x42e <__mulsf3>
-    1586:	dc 01       	movw	r26, r24
-    1588:	cb 01       	movw	r24, r22
-    158a:	8f 83       	std	Y+7, r24	; 0x07
-    158c:	98 87       	std	Y+8, r25	; 0x08
-    158e:	a9 87       	std	Y+9, r26	; 0x09
-    1590:	ba 87       	std	Y+10, r27	; 0x0a
-	if (__tmp < 1.0)
-    1592:	6f 81       	ldd	r22, Y+7	; 0x07
-    1594:	78 85       	ldd	r23, Y+8	; 0x08
-    1596:	89 85       	ldd	r24, Y+9	; 0x09
-    1598:	9a 85       	ldd	r25, Y+10	; 0x0a
-    159a:	20 e0       	ldi	r18, 0x00	; 0
-    159c:	30 e0       	ldi	r19, 0x00	; 0
-    159e:	40 e8       	ldi	r20, 0x80	; 128
-    15a0:	5f e3       	ldi	r21, 0x3F	; 63
-    15a2:	0e 94 71 03 	call	0x6e2	; 0x6e2 <__ltsf2>
-    15a6:	88 23       	and	r24, r24
-    15a8:	2c f4       	brge	.+10     	; 0x15b4 <HEEPROM_voidSendData+0x358>
-		__ticks = 1;
-    15aa:	81 e0       	ldi	r24, 0x01	; 1
-    15ac:	90 e0       	ldi	r25, 0x00	; 0
-    15ae:	9e 83       	std	Y+6, r25	; 0x06
-    15b0:	8d 83       	std	Y+5, r24	; 0x05
-    15b2:	3f c0       	rjmp	.+126    	; 0x1632 <HEEPROM_voidSendData+0x3d6>
-	else if (__tmp > 65535)
-    15b4:	6f 81       	ldd	r22, Y+7	; 0x07
-    15b6:	78 85       	ldd	r23, Y+8	; 0x08
-    15b8:	89 85       	ldd	r24, Y+9	; 0x09
-    15ba:	9a 85       	ldd	r25, Y+10	; 0x0a
-    15bc:	20 e0       	ldi	r18, 0x00	; 0
-    15be:	3f ef       	ldi	r19, 0xFF	; 255
-    15c0:	4f e7       	ldi	r20, 0x7F	; 127
-    15c2:	57 e4       	ldi	r21, 0x47	; 71
-    15c4:	0e 94 11 03 	call	0x622	; 0x622 <__gtsf2>
-    15c8:	18 16       	cp	r1, r24
-    15ca:	4c f5       	brge	.+82     	; 0x161e <HEEPROM_voidSendData+0x3c2>
-	{
-		//	__ticks = requested delay in 1/10 ms
-		__ticks = (uint16_t) (__ms * 10.0);
-    15cc:	6b 85       	ldd	r22, Y+11	; 0x0b
-    15ce:	7c 85       	ldd	r23, Y+12	; 0x0c
-    15d0:	8d 85       	ldd	r24, Y+13	; 0x0d
-    15d2:	9e 85       	ldd	r25, Y+14	; 0x0e
-    15d4:	20 e0       	ldi	r18, 0x00	; 0
-    15d6:	30 e0       	ldi	r19, 0x00	; 0
-    15d8:	40 e2       	ldi	r20, 0x20	; 32
-    15da:	51 e4       	ldi	r21, 0x41	; 65
-    15dc:	0e 94 17 02 	call	0x42e	; 0x42e <__mulsf3>
-    15e0:	dc 01       	movw	r26, r24
-    15e2:	cb 01       	movw	r24, r22
-    15e4:	bc 01       	movw	r22, r24
-    15e6:	cd 01       	movw	r24, r26
-    15e8:	0e 94 41 00 	call	0x82	; 0x82 <__fixunssfsi>
-    15ec:	dc 01       	movw	r26, r24
-    15ee:	cb 01       	movw	r24, r22
-    15f0:	9e 83       	std	Y+6, r25	; 0x06
-    15f2:	8d 83       	std	Y+5, r24	; 0x05
-    15f4:	0f c0       	rjmp	.+30     	; 0x1614 <HEEPROM_voidSendData+0x3b8>
-    15f6:	88 ec       	ldi	r24, 0xC8	; 200
-    15f8:	90 e0       	ldi	r25, 0x00	; 0
-    15fa:	9c 83       	std	Y+4, r25	; 0x04
-    15fc:	8b 83       	std	Y+3, r24	; 0x03
-    15fe:	8b 81       	ldd	r24, Y+3	; 0x03
-    1600:	9c 81       	ldd	r25, Y+4	; 0x04
-    1602:	01 97       	sbiw	r24, 0x01	; 1
-    1604:	f1 f7       	brne	.-4      	; 0x1602 <HEEPROM_voidSendData+0x3a6>
-    1606:	9c 83       	std	Y+4, r25	; 0x04
-    1608:	8b 83       	std	Y+3, r24	; 0x03
-		while(__ticks)
-		{
-			// wait 1/10 ms
-			_delay_loop_2(((F_CPU) / 4e3) / 10);
-			__ticks --;
-    160a:	8d 81       	ldd	r24, Y+5	; 0x05
-    160c:	9e 81       	ldd	r25, Y+6	; 0x06
-    160e:	01 97       	sbiw	r24, 0x01	; 1
-    1610:	9e 83       	std	Y+6, r25	; 0x06
-    1612:	8d 83       	std	Y+5, r24	; 0x05
-		__ticks = 1;
-	else if (__tmp > 65535)
-	{
-		//	__ticks = requested delay in 1/10 ms
-		__ticks = (uint16_t) (__ms * 10.0);
-		while(__ticks)
-    1614:	8d 81       	ldd	r24, Y+5	; 0x05
-    1616:	9e 81       	ldd	r25, Y+6	; 0x06
-    1618:	00 97       	sbiw	r24, 0x00	; 0
-    161a:	69 f7       	brne	.-38     	; 0x15f6 <HEEPROM_voidSendData+0x39a>
-    161c:	14 c0       	rjmp	.+40     	; 0x1646 <HEEPROM_voidSendData+0x3ea>
-			__ticks --;
-		}
-		return;
-	}
-	else
-		__ticks = (uint16_t)__tmp;
-    161e:	6f 81       	ldd	r22, Y+7	; 0x07
-    1620:	78 85       	ldd	r23, Y+8	; 0x08
-    1622:	89 85       	ldd	r24, Y+9	; 0x09
-    1624:	9a 85       	ldd	r25, Y+10	; 0x0a
-    1626:	0e 94 41 00 	call	0x82	; 0x82 <__fixunssfsi>
-    162a:	dc 01       	movw	r26, r24
-    162c:	cb 01       	movw	r24, r22
-    162e:	9e 83       	std	Y+6, r25	; 0x06
-    1630:	8d 83       	std	Y+5, r24	; 0x05
-    1632:	8d 81       	ldd	r24, Y+5	; 0x05
-    1634:	9e 81       	ldd	r25, Y+6	; 0x06
-    1636:	9a 83       	std	Y+2, r25	; 0x02
-    1638:	89 83       	std	Y+1, r24	; 0x01
-    163a:	89 81       	ldd	r24, Y+1	; 0x01
-    163c:	9a 81       	ldd	r25, Y+2	; 0x02
-    163e:	01 97       	sbiw	r24, 0x01	; 1
-    1640:	f1 f7       	brne	.-4      	; 0x163e <HEEPROM_voidSendData+0x3e2>
-    1642:	9a 83       	std	Y+2, r25	; 0x02
-    1644:	89 83       	std	Y+1, r24	; 0x01
-	 _delay_ms(5);
- }
-    1646:	eb 96       	adiw	r28, 0x3b	; 59
-    1648:	0f b6       	in	r0, 0x3f	; 63
-    164a:	f8 94       	cli
-    164c:	de bf       	out	0x3e, r29	; 62
-    164e:	0f be       	out	0x3f, r0	; 63
-    1650:	cd bf       	out	0x3d, r28	; 61
-    1652:	cf 91       	pop	r28
-    1654:	df 91       	pop	r29
-    1656:	08 95       	ret
+    1390:	81 e0       	ldi	r24, 0x01	; 1
+    1392:	64 e0       	ldi	r22, 0x04	; 4
+    1394:	40 e0       	ldi	r20, 0x00	; 0
+    1396:	0e 94 6a 07 	call	0xed4	; 0xed4 <MDIO_voidSetPinValue>
 
-00001658 <HEEPROM_u8ReadData>:
+ }
+    139a:	61 96       	adiw	r28, 0x11	; 17
+    139c:	0f b6       	in	r0, 0x3f	; 63
+    139e:	f8 94       	cli
+    13a0:	de bf       	out	0x3e, r29	; 62
+    13a2:	0f be       	out	0x3f, r0	; 63
+    13a4:	cd bf       	out	0x3d, r28	; 61
+    13a6:	cf 91       	pop	r28
+    13a8:	df 91       	pop	r29
+    13aa:	08 95       	ret
+
+000013ac <HEEPROM_u8ReadData>:
  
  
  
   u8 HEEPROM_u8ReadData(u16 copy_u16Address)
   {
-    1658:	df 93       	push	r29
-    165a:	cf 93       	push	r28
-    165c:	00 d0       	rcall	.+0      	; 0x165e <HEEPROM_u8ReadData+0x6>
-    165e:	0f 92       	push	r0
-    1660:	cd b7       	in	r28, 0x3d	; 61
-    1662:	de b7       	in	r29, 0x3e	; 62
-    1664:	9b 83       	std	Y+3, r25	; 0x03
-    1666:	8a 83       	std	Y+2, r24	; 0x02
+    13ac:	df 93       	push	r29
+    13ae:	cf 93       	push	r28
+    13b0:	00 d0       	rcall	.+0      	; 0x13b2 <HEEPROM_u8ReadData+0x6>
+    13b2:	0f 92       	push	r0
+    13b4:	cd b7       	in	r28, 0x3d	; 61
+    13b6:	de b7       	in	r29, 0x3e	; 62
+    13b8:	9b 83       	std	Y+3, r25	; 0x03
+    13ba:	8a 83       	std	Y+2, r24	; 0x02
 	  u8 Local_u8Dummy;
 	  MDIO_voidSetPinValue(GPIOB,4,LOW);
-    1668:	81 e0       	ldi	r24, 0x01	; 1
-    166a:	64 e0       	ldi	r22, 0x04	; 4
-    166c:	41 e0       	ldi	r20, 0x01	; 1
-    166e:	0e 94 6a 07 	call	0xed4	; 0xed4 <MDIO_voidSetPinValue>
+    13bc:	81 e0       	ldi	r24, 0x01	; 1
+    13be:	64 e0       	ldi	r22, 0x04	; 4
+    13c0:	41 e0       	ldi	r20, 0x01	; 1
+    13c2:	0e 94 6a 07 	call	0xed4	; 0xed4 <MDIO_voidSetPinValue>
 	  MSPI_voidSendData(0x03);
-    1672:	83 e0       	ldi	r24, 0x03	; 3
-    1674:	0e 94 84 0b 	call	0x1708	; 0x1708 <MSPI_voidSendData>
+    13c6:	83 e0       	ldi	r24, 0x03	; 3
+    13c8:	0e 94 2f 0a 	call	0x145e	; 0x145e <MSPI_voidSendData>
 	  MSPI_voidSendData(copy_u16Address);
-    1678:	8a 81       	ldd	r24, Y+2	; 0x02
-    167a:	0e 94 84 0b 	call	0x1708	; 0x1708 <MSPI_voidSendData>
+    13cc:	8a 81       	ldd	r24, Y+2	; 0x02
+    13ce:	0e 94 2f 0a 	call	0x145e	; 0x145e <MSPI_voidSendData>
 	  MSPI_voidSendData(0xFF);
-    167e:	8f ef       	ldi	r24, 0xFF	; 255
-    1680:	0e 94 84 0b 	call	0x1708	; 0x1708 <MSPI_voidSendData>
+    13d2:	8f ef       	ldi	r24, 0xFF	; 255
+    13d4:	0e 94 2f 0a 	call	0x145e	; 0x145e <MSPI_voidSendData>
 	  Local_u8Dummy = MSPI_voidRecieveData();
-    1684:	0e 94 97 0b 	call	0x172e	; 0x172e <MSPI_voidRecieveData>
-    1688:	89 83       	std	Y+1, r24	; 0x01
+    13d8:	0e 94 42 0a 	call	0x1484	; 0x1484 <MSPI_voidRecieveData>
+    13dc:	89 83       	std	Y+1, r24	; 0x01
 	  MDIO_voidSetPinValue(GPIOB,4,HIGH);
-    168a:	81 e0       	ldi	r24, 0x01	; 1
-    168c:	64 e0       	ldi	r22, 0x04	; 4
-    168e:	40 e0       	ldi	r20, 0x00	; 0
-    1690:	0e 94 6a 07 	call	0xed4	; 0xed4 <MDIO_voidSetPinValue>
+    13de:	81 e0       	ldi	r24, 0x01	; 1
+    13e0:	64 e0       	ldi	r22, 0x04	; 4
+    13e2:	40 e0       	ldi	r20, 0x00	; 0
+    13e4:	0e 94 6a 07 	call	0xed4	; 0xed4 <MDIO_voidSetPinValue>
 	  return Local_u8Dummy;
-    1694:	89 81       	ldd	r24, Y+1	; 0x01
+    13e8:	89 81       	ldd	r24, Y+1	; 0x01
   }
-    1696:	0f 90       	pop	r0
-    1698:	0f 90       	pop	r0
-    169a:	0f 90       	pop	r0
-    169c:	cf 91       	pop	r28
-    169e:	df 91       	pop	r29
-    16a0:	08 95       	ret
+    13ea:	0f 90       	pop	r0
+    13ec:	0f 90       	pop	r0
+    13ee:	0f 90       	pop	r0
+    13f0:	cf 91       	pop	r28
+    13f2:	df 91       	pop	r29
+    13f4:	08 95       	ret
 
-000016a2 <MSPI_voidIntialize>:
+000013f6 <MSPI_voidIntialize>:
 #include"SPI_private.h"
 #include"SPI_config.h"
 
 
 void MSPI_voidIntialize(u8 copy_u8Mode)
 {
-    16a2:	df 93       	push	r29
-    16a4:	cf 93       	push	r28
-    16a6:	0f 92       	push	r0
-    16a8:	cd b7       	in	r28, 0x3d	; 61
-    16aa:	de b7       	in	r29, 0x3e	; 62
-    16ac:	89 83       	std	Y+1, r24	; 0x01
+    13f6:	df 93       	push	r29
+    13f8:	cf 93       	push	r28
+    13fa:	0f 92       	push	r0
+    13fc:	cd b7       	in	r28, 0x3d	; 61
+    13fe:	de b7       	in	r29, 0x3e	; 62
+    1400:	89 83       	std	Y+1, r24	; 0x01
 	if(copy_u8Mode == M)
-    16ae:	89 81       	ldd	r24, Y+1	; 0x01
-    16b0:	88 23       	and	r24, r24
-    16b2:	b9 f4       	brne	.+46     	; 0x16e2 <MSPI_voidIntialize+0x40>
+    1402:	89 81       	ldd	r24, Y+1	; 0x01
+    1404:	88 23       	and	r24, r24
+    1406:	b9 f4       	brne	.+46     	; 0x1436 <MSPI_voidIntialize+0x40>
 	{
 
 		MDIO_voidSetPinMode(GPIOB,5,OUTPUT); // MOSI Enable as output
-    16b4:	81 e0       	ldi	r24, 0x01	; 1
-    16b6:	65 e0       	ldi	r22, 0x05	; 5
-    16b8:	40 e0       	ldi	r20, 0x00	; 0
-    16ba:	0e 94 9b 05 	call	0xb36	; 0xb36 <MDIO_voidSetPinMode>
+    1408:	81 e0       	ldi	r24, 0x01	; 1
+    140a:	65 e0       	ldi	r22, 0x05	; 5
+    140c:	40 e0       	ldi	r20, 0x00	; 0
+    140e:	0e 94 9b 05 	call	0xb36	; 0xb36 <MDIO_voidSetPinMode>
 		MDIO_voidSetPinMode(GPIOB,4,OUTPUT); // SS Enable as output
-    16be:	81 e0       	ldi	r24, 0x01	; 1
-    16c0:	64 e0       	ldi	r22, 0x04	; 4
-    16c2:	40 e0       	ldi	r20, 0x00	; 0
-    16c4:	0e 94 9b 05 	call	0xb36	; 0xb36 <MDIO_voidSetPinMode>
+    1412:	81 e0       	ldi	r24, 0x01	; 1
+    1414:	64 e0       	ldi	r22, 0x04	; 4
+    1416:	40 e0       	ldi	r20, 0x00	; 0
+    1418:	0e 94 9b 05 	call	0xb36	; 0xb36 <MDIO_voidSetPinMode>
 		MDIO_voidSetPinMode(GPIOB,7,OUTPUT); // SCK Enable as output
-    16c8:	81 e0       	ldi	r24, 0x01	; 1
-    16ca:	67 e0       	ldi	r22, 0x07	; 7
-    16cc:	40 e0       	ldi	r20, 0x00	; 0
-    16ce:	0e 94 9b 05 	call	0xb36	; 0xb36 <MDIO_voidSetPinMode>
+    141c:	81 e0       	ldi	r24, 0x01	; 1
+    141e:	67 e0       	ldi	r22, 0x07	; 7
+    1420:	40 e0       	ldi	r20, 0x00	; 0
+    1422:	0e 94 9b 05 	call	0xb36	; 0xb36 <MDIO_voidSetPinMode>
 		SPI -> SPCR = 0x50 ;  //intterupt & spi enable & data order & m or s select & clock polarity & cpha & spr0 spr1
-    16d2:	ed e2       	ldi	r30, 0x2D	; 45
-    16d4:	f0 e0       	ldi	r31, 0x00	; 0
-    16d6:	80 e5       	ldi	r24, 0x50	; 80
-    16d8:	80 83       	st	Z, r24
+    1426:	ed e2       	ldi	r30, 0x2D	; 45
+    1428:	f0 e0       	ldi	r31, 0x00	; 0
+    142a:	80 e5       	ldi	r24, 0x50	; 80
+    142c:	80 83       	st	Z, r24
 		SPI -> SPSR = 0x00 ;  // SPI intterupt flag & Write collision flag & spi2x double speed bit
-    16da:	ed e2       	ldi	r30, 0x2D	; 45
-    16dc:	f0 e0       	ldi	r31, 0x00	; 0
-    16de:	11 82       	std	Z+1, r1	; 0x01
-    16e0:	0f c0       	rjmp	.+30     	; 0x1700 <MSPI_voidIntialize+0x5e>
+    142e:	ed e2       	ldi	r30, 0x2D	; 45
+    1430:	f0 e0       	ldi	r31, 0x00	; 0
+    1432:	11 82       	std	Z+1, r1	; 0x01
+    1434:	10 c0       	rjmp	.+32     	; 0x1456 <MSPI_voidIntialize+0x60>
 		
 	}
 	
 	else if(copy_u8Mode == S)
-    16e2:	89 81       	ldd	r24, Y+1	; 0x01
-    16e4:	81 30       	cpi	r24, 0x01	; 1
-    16e6:	61 f4       	brne	.+24     	; 0x1700 <MSPI_voidIntialize+0x5e>
+    1436:	89 81       	ldd	r24, Y+1	; 0x01
+    1438:	81 30       	cpi	r24, 0x01	; 1
+    143a:	69 f4       	brne	.+26     	; 0x1456 <MSPI_voidIntialize+0x60>
 	{
 		    MDIO_voidSetPinMode(GPIOB,6,OUTPUT); // MISO Enable as output
-    16e8:	81 e0       	ldi	r24, 0x01	; 1
-    16ea:	66 e0       	ldi	r22, 0x06	; 6
-    16ec:	40 e0       	ldi	r20, 0x00	; 0
-    16ee:	0e 94 9b 05 	call	0xb36	; 0xb36 <MDIO_voidSetPinMode>
+    143c:	81 e0       	ldi	r24, 0x01	; 1
+    143e:	66 e0       	ldi	r22, 0x06	; 6
+    1440:	40 e0       	ldi	r20, 0x00	; 0
+    1442:	0e 94 9b 05 	call	0xb36	; 0xb36 <MDIO_voidSetPinMode>
 		SPI -> SPCR = 0x40 ;  //intterupt & spi enable & data order & m or s select & clock polarity & cpha & spr0 spr1
-    16f2:	ed e2       	ldi	r30, 0x2D	; 45
-    16f4:	f0 e0       	ldi	r31, 0x00	; 0
-    16f6:	80 e4       	ldi	r24, 0x40	; 64
-    16f8:	80 83       	st	Z, r24
-		SPI -> SPSR = 0x00 ;  // SPI intterupt flag & Write collision flag & spi2x double speed bit
-    16fa:	ed e2       	ldi	r30, 0x2D	; 45
-    16fc:	f0 e0       	ldi	r31, 0x00	; 0
-    16fe:	11 82       	std	Z+1, r1	; 0x01
+    1446:	ed e2       	ldi	r30, 0x2D	; 45
+    1448:	f0 e0       	ldi	r31, 0x00	; 0
+    144a:	80 e4       	ldi	r24, 0x40	; 64
+    144c:	80 83       	st	Z, r24
+		SPI -> SPSR = 0x01 ;  // SPI intterupt flag & Write collision flag & spi2x double speed bit
+    144e:	ed e2       	ldi	r30, 0x2D	; 45
+    1450:	f0 e0       	ldi	r31, 0x00	; 0
+    1452:	81 e0       	ldi	r24, 0x01	; 1
+    1454:	81 83       	std	Z+1, r24	; 0x01
 	}
 	
     else {/*Error*/}
 	
 	
 }
-    1700:	0f 90       	pop	r0
-    1702:	cf 91       	pop	r28
-    1704:	df 91       	pop	r29
-    1706:	08 95       	ret
+    1456:	0f 90       	pop	r0
+    1458:	cf 91       	pop	r28
+    145a:	df 91       	pop	r29
+    145c:	08 95       	ret
 
-00001708 <MSPI_voidSendData>:
+0000145e <MSPI_voidSendData>:
 
 
 
 void MSPI_voidSendData(u8 copy_u8Data)
 {
-    1708:	df 93       	push	r29
-    170a:	cf 93       	push	r28
-    170c:	0f 92       	push	r0
-    170e:	cd b7       	in	r28, 0x3d	; 61
-    1710:	de b7       	in	r29, 0x3e	; 62
-    1712:	89 83       	std	Y+1, r24	; 0x01
+    145e:	df 93       	push	r29
+    1460:	cf 93       	push	r28
+    1462:	0f 92       	push	r0
+    1464:	cd b7       	in	r28, 0x3d	; 61
+    1466:	de b7       	in	r29, 0x3e	; 62
+    1468:	89 83       	std	Y+1, r24	; 0x01
 
 	 SPI->SPDR = copy_u8Data;
-    1714:	ed e2       	ldi	r30, 0x2D	; 45
-    1716:	f0 e0       	ldi	r31, 0x00	; 0
-    1718:	89 81       	ldd	r24, Y+1	; 0x01
-    171a:	82 83       	std	Z+2, r24	; 0x02
+    146a:	ed e2       	ldi	r30, 0x2D	; 45
+    146c:	f0 e0       	ldi	r31, 0x00	; 0
+    146e:	89 81       	ldd	r24, Y+1	; 0x01
+    1470:	82 83       	std	Z+2, r24	; 0x02
 
 	 while(!(GET_BIT(SPI->SPSR,7)));
-    171c:	ed e2       	ldi	r30, 0x2D	; 45
-    171e:	f0 e0       	ldi	r31, 0x00	; 0
-    1720:	81 81       	ldd	r24, Z+1	; 0x01
-    1722:	88 23       	and	r24, r24
-    1724:	dc f7       	brge	.-10     	; 0x171c <MSPI_voidSendData+0x14>
+    1472:	ed e2       	ldi	r30, 0x2D	; 45
+    1474:	f0 e0       	ldi	r31, 0x00	; 0
+    1476:	81 81       	ldd	r24, Z+1	; 0x01
+    1478:	88 23       	and	r24, r24
+    147a:	dc f7       	brge	.-10     	; 0x1472 <MSPI_voidSendData+0x14>
 	 
 	
 }
-    1726:	0f 90       	pop	r0
-    1728:	cf 91       	pop	r28
-    172a:	df 91       	pop	r29
-    172c:	08 95       	ret
+    147c:	0f 90       	pop	r0
+    147e:	cf 91       	pop	r28
+    1480:	df 91       	pop	r29
+    1482:	08 95       	ret
 
-0000172e <MSPI_voidRecieveData>:
+00001484 <MSPI_voidRecieveData>:
 
 
 u8 MSPI_voidRecieveData(void)
 {
-    172e:	df 93       	push	r29
-    1730:	cf 93       	push	r28
-    1732:	cd b7       	in	r28, 0x3d	; 61
-    1734:	de b7       	in	r29, 0x3e	; 62
+    1484:	df 93       	push	r29
+    1486:	cf 93       	push	r28
+    1488:	cd b7       	in	r28, 0x3d	; 61
+    148a:	de b7       	in	r29, 0x3e	; 62
       
 
 	 while(!(GET_BIT(SPI->SPSR,7)));
-    1736:	ed e2       	ldi	r30, 0x2D	; 45
-    1738:	f0 e0       	ldi	r31, 0x00	; 0
-    173a:	81 81       	ldd	r24, Z+1	; 0x01
-    173c:	88 23       	and	r24, r24
-    173e:	dc f7       	brge	.-10     	; 0x1736 <MSPI_voidRecieveData+0x8>
+    148c:	ed e2       	ldi	r30, 0x2D	; 45
+    148e:	f0 e0       	ldi	r31, 0x00	; 0
+    1490:	81 81       	ldd	r24, Z+1	; 0x01
+    1492:	88 23       	and	r24, r24
+    1494:	dc f7       	brge	.-10     	; 0x148c <MSPI_voidRecieveData+0x8>
 	 
  	 return SPI->SPDR;
-    1740:	ed e2       	ldi	r30, 0x2D	; 45
-    1742:	f0 e0       	ldi	r31, 0x00	; 0
-    1744:	82 81       	ldd	r24, Z+2	; 0x02
+    1496:	ed e2       	ldi	r30, 0x2D	; 45
+    1498:	f0 e0       	ldi	r31, 0x00	; 0
+    149a:	82 81       	ldd	r24, Z+2	; 0x02
 
 }
-    1746:	cf 91       	pop	r28
-    1748:	df 91       	pop	r29
-    174a:	08 95       	ret
+    149c:	cf 91       	pop	r28
+    149e:	df 91       	pop	r29
+    14a0:	08 95       	ret
 
-0000174c <MUART_voidUartInitialization>:
+000014a2 <MUART_voidUartInitialization>:
 #include"UART_config.h"
 
 
 
 void MUART_voidUartInitialization(void)
 {
-    174c:	df 93       	push	r29
-    174e:	cf 93       	push	r28
-    1750:	cd b7       	in	r28, 0x3d	; 61
-    1752:	de b7       	in	r29, 0x3e	; 62
+    14a2:	df 93       	push	r29
+    14a4:	cf 93       	push	r28
+    14a6:	cd b7       	in	r28, 0x3d	; 61
+    14a8:	de b7       	in	r29, 0x3e	; 62
 	enable tx and rx 
 	Asynchrounous
 	
 	*/
 	
 	UCSRA = 0x00;  // Choose Normal Asynchrounous Mode
-    1754:	eb e2       	ldi	r30, 0x2B	; 43
-    1756:	f0 e0       	ldi	r31, 0x00	; 0
-    1758:	10 82       	st	Z, r1
+    14aa:	eb e2       	ldi	r30, 0x2B	; 43
+    14ac:	f0 e0       	ldi	r31, 0x00	; 0
+    14ae:	10 82       	st	Z, r1
 	
 	UCSRC = 0x86;  // Choose Asynchrounous and parity and stop bit and data character
-    175a:	e0 e4       	ldi	r30, 0x40	; 64
-    175c:	f0 e0       	ldi	r31, 0x00	; 0
-    175e:	86 e8       	ldi	r24, 0x86	; 134
-    1760:	80 83       	st	Z, r24
+    14b0:	e0 e4       	ldi	r30, 0x40	; 64
+    14b2:	f0 e0       	ldi	r31, 0x00	; 0
+    14b4:	86 e8       	ldi	r24, 0x86	; 134
+    14b6:	80 83       	st	Z, r24
 	
 	UBRRL = 0x33; //Set UBRR  = 51 , Baud rate = 9600 
-    1762:	e9 e2       	ldi	r30, 0x29	; 41
-    1764:	f0 e0       	ldi	r31, 0x00	; 0
-    1766:	83 e3       	ldi	r24, 0x33	; 51
-    1768:	80 83       	st	Z, r24
+    14b8:	e9 e2       	ldi	r30, 0x29	; 41
+    14ba:	f0 e0       	ldi	r31, 0x00	; 0
+    14bc:	83 e3       	ldi	r24, 0x33	; 51
+    14be:	80 83       	st	Z, r24
 	
 	UCSRB = 0x18;  // Enable Transmitter and Reciver
-    176a:	ea e2       	ldi	r30, 0x2A	; 42
-    176c:	f0 e0       	ldi	r31, 0x00	; 0
-    176e:	88 e1       	ldi	r24, 0x18	; 24
-    1770:	80 83       	st	Z, r24
+    14c0:	ea e2       	ldi	r30, 0x2A	; 42
+    14c2:	f0 e0       	ldi	r31, 0x00	; 0
+    14c4:	88 e1       	ldi	r24, 0x18	; 24
+    14c6:	80 83       	st	Z, r24
 	
 }
-    1772:	cf 91       	pop	r28
-    1774:	df 91       	pop	r29
-    1776:	08 95       	ret
+    14c8:	cf 91       	pop	r28
+    14ca:	df 91       	pop	r29
+    14cc:	08 95       	ret
 
-00001778 <MUART_voidUartSendByte>:
+000014ce <MUART_voidUartSendByte>:
 
 
 void MUART_voidUartSendByte(u8 copy_u8Byte)
 {
-    1778:	df 93       	push	r29
-    177a:	cf 93       	push	r28
-    177c:	0f 92       	push	r0
-    177e:	cd b7       	in	r28, 0x3d	; 61
-    1780:	de b7       	in	r29, 0x3e	; 62
-    1782:	89 83       	std	Y+1, r24	; 0x01
+    14ce:	df 93       	push	r29
+    14d0:	cf 93       	push	r28
+    14d2:	0f 92       	push	r0
+    14d4:	cd b7       	in	r28, 0x3d	; 61
+    14d6:	de b7       	in	r29, 0x3e	; 62
+    14d8:	89 83       	std	Y+1, r24	; 0x01
 	while(!(GET_BIT(UCSRA,5))){}
-    1784:	eb e2       	ldi	r30, 0x2B	; 43
-    1786:	f0 e0       	ldi	r31, 0x00	; 0
-    1788:	80 81       	ld	r24, Z
-    178a:	82 95       	swap	r24
-    178c:	86 95       	lsr	r24
-    178e:	87 70       	andi	r24, 0x07	; 7
-    1790:	88 2f       	mov	r24, r24
-    1792:	90 e0       	ldi	r25, 0x00	; 0
-    1794:	81 70       	andi	r24, 0x01	; 1
-    1796:	90 70       	andi	r25, 0x00	; 0
-    1798:	00 97       	sbiw	r24, 0x00	; 0
-    179a:	a1 f3       	breq	.-24     	; 0x1784 <MUART_voidUartSendByte+0xc>
+    14da:	eb e2       	ldi	r30, 0x2B	; 43
+    14dc:	f0 e0       	ldi	r31, 0x00	; 0
+    14de:	80 81       	ld	r24, Z
+    14e0:	82 95       	swap	r24
+    14e2:	86 95       	lsr	r24
+    14e4:	87 70       	andi	r24, 0x07	; 7
+    14e6:	88 2f       	mov	r24, r24
+    14e8:	90 e0       	ldi	r25, 0x00	; 0
+    14ea:	81 70       	andi	r24, 0x01	; 1
+    14ec:	90 70       	andi	r25, 0x00	; 0
+    14ee:	00 97       	sbiw	r24, 0x00	; 0
+    14f0:	a1 f3       	breq	.-24     	; 0x14da <MUART_voidUartSendByte+0xc>
 	
 	
 		UDR = copy_u8Byte ;
-    179c:	ec e2       	ldi	r30, 0x2C	; 44
-    179e:	f0 e0       	ldi	r31, 0x00	; 0
-    17a0:	89 81       	ldd	r24, Y+1	; 0x01
-    17a2:	80 83       	st	Z, r24
+    14f2:	ec e2       	ldi	r30, 0x2C	; 44
+    14f4:	f0 e0       	ldi	r31, 0x00	; 0
+    14f6:	89 81       	ldd	r24, Y+1	; 0x01
+    14f8:	80 83       	st	Z, r24
 		
 
 	
 	
 	
 }
-    17a4:	0f 90       	pop	r0
-    17a6:	cf 91       	pop	r28
-    17a8:	df 91       	pop	r29
-    17aa:	08 95       	ret
+    14fa:	0f 90       	pop	r0
+    14fc:	cf 91       	pop	r28
+    14fe:	df 91       	pop	r29
+    1500:	08 95       	ret
 
-000017ac <MUART_u8UartRecieveByte>:
+00001502 <MUART_u8UartRecieveByte>:
 
 
 u8 MUART_u8UartRecieveByte(void)
 {
-    17ac:	df 93       	push	r29
-    17ae:	cf 93       	push	r28
-    17b0:	cd b7       	in	r28, 0x3d	; 61
-    17b2:	de b7       	in	r29, 0x3e	; 62
+    1502:	df 93       	push	r29
+    1504:	cf 93       	push	r28
+    1506:	cd b7       	in	r28, 0x3d	; 61
+    1508:	de b7       	in	r29, 0x3e	; 62
 	while(!(GET_BIT(UCSRA,7))){}
-    17b4:	eb e2       	ldi	r30, 0x2B	; 43
-    17b6:	f0 e0       	ldi	r31, 0x00	; 0
-    17b8:	80 81       	ld	r24, Z
-    17ba:	88 23       	and	r24, r24
-    17bc:	dc f7       	brge	.-10     	; 0x17b4 <MUART_u8UartRecieveByte+0x8>
+    150a:	eb e2       	ldi	r30, 0x2B	; 43
+    150c:	f0 e0       	ldi	r31, 0x00	; 0
+    150e:	80 81       	ld	r24, Z
+    1510:	88 23       	and	r24, r24
+    1512:	dc f7       	brge	.-10     	; 0x150a <MUART_u8UartRecieveByte+0x8>
 	
 	return UDR;
-    17be:	ec e2       	ldi	r30, 0x2C	; 44
-    17c0:	f0 e0       	ldi	r31, 0x00	; 0
-    17c2:	80 81       	ld	r24, Z
+    1514:	ec e2       	ldi	r30, 0x2C	; 44
+    1516:	f0 e0       	ldi	r31, 0x00	; 0
+    1518:	80 81       	ld	r24, Z
 	
 }
-    17c4:	cf 91       	pop	r28
-    17c6:	df 91       	pop	r29
-    17c8:	08 95       	ret
+    151a:	cf 91       	pop	r28
+    151c:	df 91       	pop	r29
+    151e:	08 95       	ret
 
-000017ca <main>:
+00001520 <main>:
 //#include "UART_interface.h"
 #include "SPI_interface.h"
 #include "EEPROM_interface.h"
 
 int main()
 {
-    17ca:	df 93       	push	r29
-    17cc:	cf 93       	push	r28
-    17ce:	cd b7       	in	r28, 0x3d	; 61
-    17d0:	de b7       	in	r29, 0x3e	; 62
-    17d2:	60 97       	sbiw	r28, 0x10	; 16
-    17d4:	0f b6       	in	r0, 0x3f	; 63
-    17d6:	f8 94       	cli
-    17d8:	de bf       	out	0x3e, r29	; 62
-    17da:	0f be       	out	0x3f, r0	; 63
-    17dc:	cd bf       	out	0x3d, r28	; 61
-
-u8 x;
+    1520:	df 93       	push	r29
+    1522:	cf 93       	push	r28
+    1524:	cd b7       	in	r28, 0x3d	; 61
+    1526:	de b7       	in	r29, 0x3e	; 62
+    1528:	2e 97       	sbiw	r28, 0x0e	; 14
+    152a:	0f b6       	in	r0, 0x3f	; 63
+    152c:	f8 94       	cli
+    152e:	de bf       	out	0x3e, r29	; 62
+    1530:	0f be       	out	0x3f, r0	; 63
+    1532:	cd bf       	out	0x3d, r28	; 61
+	MDIO_voidSetPortMode(GPIOC,OUTPUT);
+    1534:	82 e0       	ldi	r24, 0x02	; 2
+    1536:	60 e0       	ldi	r22, 0x00	; 0
+    1538:	0e 94 f1 06 	call	0xde2	; 0xde2 <MDIO_voidSetPortMode>
+//u8 x;
 MSPI_voidIntialize(M);
-    17de:	80 e0       	ldi	r24, 0x00	; 0
-    17e0:	0e 94 51 0b 	call	0x16a2	; 0x16a2 <MSPI_voidIntialize>
-HEEPROM_voidSendData(0x05,0x6D);
-HEEPROM_voidSendData(0x06,0x7D);
-HEEPROM_voidSendData(0x07,0x07);
-HEEPROM_voidSendData(0x08,0x7F);
-HEEPROM_voidSendData(0x09,0x6F);*/
-MDIO_voidSetPortMode(GPIOC,OUTPUT);
-    17e4:	82 e0       	ldi	r24, 0x02	; 2
-    17e6:	60 e0       	ldi	r22, 0x00	; 0
-    17e8:	0e 94 f1 06 	call	0xde2	; 0xde2 <MDIO_voidSetPortMode>
-
-while(1)
-{
-
-	for(u8 i=0;i<=9;i++)
-    17ec:	1f 86       	std	Y+15, r1	; 0x0f
-    17ee:	7f c0       	rjmp	.+254    	; 0x18ee <main+0x124>
-	{
-		x = HEEPROM_u8ReadData(0x00+i);
-    17f0:	8f 85       	ldd	r24, Y+15	; 0x0f
-    17f2:	88 2f       	mov	r24, r24
-    17f4:	90 e0       	ldi	r25, 0x00	; 0
-    17f6:	0e 94 2c 0b 	call	0x1658	; 0x1658 <HEEPROM_u8ReadData>
-    17fa:	88 8b       	std	Y+16, r24	; 0x10
-			MDIO_voidSetPortValue(GPIOC,x);
-    17fc:	82 e0       	ldi	r24, 0x02	; 2
-    17fe:	68 89       	ldd	r22, Y+16	; 0x10
-    1800:	0e 94 70 08 	call	0x10e0	; 0x10e0 <MDIO_voidSetPortValue>
-    1804:	80 e0       	ldi	r24, 0x00	; 0
-    1806:	90 e0       	ldi	r25, 0x00	; 0
-    1808:	a8 ec       	ldi	r26, 0xC8	; 200
-    180a:	b2 e4       	ldi	r27, 0x42	; 66
-    180c:	8b 87       	std	Y+11, r24	; 0x0b
-    180e:	9c 87       	std	Y+12, r25	; 0x0c
-    1810:	ad 87       	std	Y+13, r26	; 0x0d
-    1812:	be 87       	std	Y+14, r27	; 0x0e
+    153c:	80 e0       	ldi	r24, 0x00	; 0
+    153e:	0e 94 fb 09 	call	0x13f6	; 0x13f6 <MSPI_voidIntialize>
+    1542:	80 e0       	ldi	r24, 0x00	; 0
+    1544:	90 e0       	ldi	r25, 0x00	; 0
+    1546:	a8 e4       	ldi	r26, 0x48	; 72
+    1548:	b2 e4       	ldi	r27, 0x42	; 66
+    154a:	8b 87       	std	Y+11, r24	; 0x0b
+    154c:	9c 87       	std	Y+12, r25	; 0x0c
+    154e:	ad 87       	std	Y+13, r26	; 0x0d
+    1550:	be 87       	std	Y+14, r27	; 0x0e
  */
 void
 _delay_ms(double __ms)
 {
 	uint16_t __ticks;
 	double __tmp = ((F_CPU) / 4e3) * __ms;
-    1814:	6b 85       	ldd	r22, Y+11	; 0x0b
-    1816:	7c 85       	ldd	r23, Y+12	; 0x0c
-    1818:	8d 85       	ldd	r24, Y+13	; 0x0d
-    181a:	9e 85       	ldd	r25, Y+14	; 0x0e
-    181c:	20 e0       	ldi	r18, 0x00	; 0
-    181e:	30 e0       	ldi	r19, 0x00	; 0
-    1820:	4a ef       	ldi	r20, 0xFA	; 250
-    1822:	54 e4       	ldi	r21, 0x44	; 68
-    1824:	0e 94 17 02 	call	0x42e	; 0x42e <__mulsf3>
-    1828:	dc 01       	movw	r26, r24
-    182a:	cb 01       	movw	r24, r22
-    182c:	8f 83       	std	Y+7, r24	; 0x07
-    182e:	98 87       	std	Y+8, r25	; 0x08
-    1830:	a9 87       	std	Y+9, r26	; 0x09
-    1832:	ba 87       	std	Y+10, r27	; 0x0a
+    1552:	6b 85       	ldd	r22, Y+11	; 0x0b
+    1554:	7c 85       	ldd	r23, Y+12	; 0x0c
+    1556:	8d 85       	ldd	r24, Y+13	; 0x0d
+    1558:	9e 85       	ldd	r25, Y+14	; 0x0e
+    155a:	20 e0       	ldi	r18, 0x00	; 0
+    155c:	30 e0       	ldi	r19, 0x00	; 0
+    155e:	4a ef       	ldi	r20, 0xFA	; 250
+    1560:	54 e4       	ldi	r21, 0x44	; 68
+    1562:	0e 94 17 02 	call	0x42e	; 0x42e <__mulsf3>
+    1566:	dc 01       	movw	r26, r24
+    1568:	cb 01       	movw	r24, r22
+    156a:	8f 83       	std	Y+7, r24	; 0x07
+    156c:	98 87       	std	Y+8, r25	; 0x08
+    156e:	a9 87       	std	Y+9, r26	; 0x09
+    1570:	ba 87       	std	Y+10, r27	; 0x0a
 	if (__tmp < 1.0)
-    1834:	6f 81       	ldd	r22, Y+7	; 0x07
-    1836:	78 85       	ldd	r23, Y+8	; 0x08
-    1838:	89 85       	ldd	r24, Y+9	; 0x09
-    183a:	9a 85       	ldd	r25, Y+10	; 0x0a
-    183c:	20 e0       	ldi	r18, 0x00	; 0
-    183e:	30 e0       	ldi	r19, 0x00	; 0
-    1840:	40 e8       	ldi	r20, 0x80	; 128
-    1842:	5f e3       	ldi	r21, 0x3F	; 63
-    1844:	0e 94 71 03 	call	0x6e2	; 0x6e2 <__ltsf2>
-    1848:	88 23       	and	r24, r24
-    184a:	2c f4       	brge	.+10     	; 0x1856 <main+0x8c>
+    1572:	6f 81       	ldd	r22, Y+7	; 0x07
+    1574:	78 85       	ldd	r23, Y+8	; 0x08
+    1576:	89 85       	ldd	r24, Y+9	; 0x09
+    1578:	9a 85       	ldd	r25, Y+10	; 0x0a
+    157a:	20 e0       	ldi	r18, 0x00	; 0
+    157c:	30 e0       	ldi	r19, 0x00	; 0
+    157e:	40 e8       	ldi	r20, 0x80	; 128
+    1580:	5f e3       	ldi	r21, 0x3F	; 63
+    1582:	0e 94 71 03 	call	0x6e2	; 0x6e2 <__ltsf2>
+    1586:	88 23       	and	r24, r24
+    1588:	2c f4       	brge	.+10     	; 0x1594 <main+0x74>
 		__ticks = 1;
-    184c:	81 e0       	ldi	r24, 0x01	; 1
-    184e:	90 e0       	ldi	r25, 0x00	; 0
-    1850:	9e 83       	std	Y+6, r25	; 0x06
-    1852:	8d 83       	std	Y+5, r24	; 0x05
-    1854:	3f c0       	rjmp	.+126    	; 0x18d4 <main+0x10a>
+    158a:	81 e0       	ldi	r24, 0x01	; 1
+    158c:	90 e0       	ldi	r25, 0x00	; 0
+    158e:	9e 83       	std	Y+6, r25	; 0x06
+    1590:	8d 83       	std	Y+5, r24	; 0x05
+    1592:	3f c0       	rjmp	.+126    	; 0x1612 <main+0xf2>
 	else if (__tmp > 65535)
-    1856:	6f 81       	ldd	r22, Y+7	; 0x07
-    1858:	78 85       	ldd	r23, Y+8	; 0x08
-    185a:	89 85       	ldd	r24, Y+9	; 0x09
-    185c:	9a 85       	ldd	r25, Y+10	; 0x0a
-    185e:	20 e0       	ldi	r18, 0x00	; 0
-    1860:	3f ef       	ldi	r19, 0xFF	; 255
-    1862:	4f e7       	ldi	r20, 0x7F	; 127
-    1864:	57 e4       	ldi	r21, 0x47	; 71
-    1866:	0e 94 11 03 	call	0x622	; 0x622 <__gtsf2>
-    186a:	18 16       	cp	r1, r24
-    186c:	4c f5       	brge	.+82     	; 0x18c0 <main+0xf6>
+    1594:	6f 81       	ldd	r22, Y+7	; 0x07
+    1596:	78 85       	ldd	r23, Y+8	; 0x08
+    1598:	89 85       	ldd	r24, Y+9	; 0x09
+    159a:	9a 85       	ldd	r25, Y+10	; 0x0a
+    159c:	20 e0       	ldi	r18, 0x00	; 0
+    159e:	3f ef       	ldi	r19, 0xFF	; 255
+    15a0:	4f e7       	ldi	r20, 0x7F	; 127
+    15a2:	57 e4       	ldi	r21, 0x47	; 71
+    15a4:	0e 94 11 03 	call	0x622	; 0x622 <__gtsf2>
+    15a8:	18 16       	cp	r1, r24
+    15aa:	4c f5       	brge	.+82     	; 0x15fe <main+0xde>
 	{
 		//	__ticks = requested delay in 1/10 ms
 		__ticks = (uint16_t) (__ms * 10.0);
-    186e:	6b 85       	ldd	r22, Y+11	; 0x0b
-    1870:	7c 85       	ldd	r23, Y+12	; 0x0c
-    1872:	8d 85       	ldd	r24, Y+13	; 0x0d
-    1874:	9e 85       	ldd	r25, Y+14	; 0x0e
-    1876:	20 e0       	ldi	r18, 0x00	; 0
-    1878:	30 e0       	ldi	r19, 0x00	; 0
-    187a:	40 e2       	ldi	r20, 0x20	; 32
-    187c:	51 e4       	ldi	r21, 0x41	; 65
-    187e:	0e 94 17 02 	call	0x42e	; 0x42e <__mulsf3>
-    1882:	dc 01       	movw	r26, r24
-    1884:	cb 01       	movw	r24, r22
-    1886:	bc 01       	movw	r22, r24
-    1888:	cd 01       	movw	r24, r26
-    188a:	0e 94 41 00 	call	0x82	; 0x82 <__fixunssfsi>
-    188e:	dc 01       	movw	r26, r24
-    1890:	cb 01       	movw	r24, r22
-    1892:	9e 83       	std	Y+6, r25	; 0x06
-    1894:	8d 83       	std	Y+5, r24	; 0x05
-    1896:	0f c0       	rjmp	.+30     	; 0x18b6 <main+0xec>
-    1898:	88 ec       	ldi	r24, 0xC8	; 200
-    189a:	90 e0       	ldi	r25, 0x00	; 0
-    189c:	9c 83       	std	Y+4, r25	; 0x04
-    189e:	8b 83       	std	Y+3, r24	; 0x03
-    18a0:	8b 81       	ldd	r24, Y+3	; 0x03
-    18a2:	9c 81       	ldd	r25, Y+4	; 0x04
-    18a4:	01 97       	sbiw	r24, 0x01	; 1
-    18a6:	f1 f7       	brne	.-4      	; 0x18a4 <main+0xda>
-    18a8:	9c 83       	std	Y+4, r25	; 0x04
-    18aa:	8b 83       	std	Y+3, r24	; 0x03
+    15ac:	6b 85       	ldd	r22, Y+11	; 0x0b
+    15ae:	7c 85       	ldd	r23, Y+12	; 0x0c
+    15b0:	8d 85       	ldd	r24, Y+13	; 0x0d
+    15b2:	9e 85       	ldd	r25, Y+14	; 0x0e
+    15b4:	20 e0       	ldi	r18, 0x00	; 0
+    15b6:	30 e0       	ldi	r19, 0x00	; 0
+    15b8:	40 e2       	ldi	r20, 0x20	; 32
+    15ba:	51 e4       	ldi	r21, 0x41	; 65
+    15bc:	0e 94 17 02 	call	0x42e	; 0x42e <__mulsf3>
+    15c0:	dc 01       	movw	r26, r24
+    15c2:	cb 01       	movw	r24, r22
+    15c4:	bc 01       	movw	r22, r24
+    15c6:	cd 01       	movw	r24, r26
+    15c8:	0e 94 41 00 	call	0x82	; 0x82 <__fixunssfsi>
+    15cc:	dc 01       	movw	r26, r24
+    15ce:	cb 01       	movw	r24, r22
+    15d0:	9e 83       	std	Y+6, r25	; 0x06
+    15d2:	8d 83       	std	Y+5, r24	; 0x05
+    15d4:	0f c0       	rjmp	.+30     	; 0x15f4 <main+0xd4>
+    15d6:	88 ec       	ldi	r24, 0xC8	; 200
+    15d8:	90 e0       	ldi	r25, 0x00	; 0
+    15da:	9c 83       	std	Y+4, r25	; 0x04
+    15dc:	8b 83       	std	Y+3, r24	; 0x03
+    15de:	8b 81       	ldd	r24, Y+3	; 0x03
+    15e0:	9c 81       	ldd	r25, Y+4	; 0x04
+    15e2:	01 97       	sbiw	r24, 0x01	; 1
+    15e4:	f1 f7       	brne	.-4      	; 0x15e2 <main+0xc2>
+    15e6:	9c 83       	std	Y+4, r25	; 0x04
+    15e8:	8b 83       	std	Y+3, r24	; 0x03
 		while(__ticks)
 		{
 			// wait 1/10 ms
 			_delay_loop_2(((F_CPU) / 4e3) / 10);
 			__ticks --;
-    18ac:	8d 81       	ldd	r24, Y+5	; 0x05
-    18ae:	9e 81       	ldd	r25, Y+6	; 0x06
-    18b0:	01 97       	sbiw	r24, 0x01	; 1
-    18b2:	9e 83       	std	Y+6, r25	; 0x06
-    18b4:	8d 83       	std	Y+5, r24	; 0x05
+    15ea:	8d 81       	ldd	r24, Y+5	; 0x05
+    15ec:	9e 81       	ldd	r25, Y+6	; 0x06
+    15ee:	01 97       	sbiw	r24, 0x01	; 1
+    15f0:	9e 83       	std	Y+6, r25	; 0x06
+    15f2:	8d 83       	std	Y+5, r24	; 0x05
 		__ticks = 1;
 	else if (__tmp > 65535)
 	{
 		//	__ticks = requested delay in 1/10 ms
 		__ticks = (uint16_t) (__ms * 10.0);
 		while(__ticks)
-    18b6:	8d 81       	ldd	r24, Y+5	; 0x05
-    18b8:	9e 81       	ldd	r25, Y+6	; 0x06
-    18ba:	00 97       	sbiw	r24, 0x00	; 0
-    18bc:	69 f7       	brne	.-38     	; 0x1898 <main+0xce>
-    18be:	14 c0       	rjmp	.+40     	; 0x18e8 <main+0x11e>
+    15f4:	8d 81       	ldd	r24, Y+5	; 0x05
+    15f6:	9e 81       	ldd	r25, Y+6	; 0x06
+    15f8:	00 97       	sbiw	r24, 0x00	; 0
+    15fa:	69 f7       	brne	.-38     	; 0x15d6 <main+0xb6>
+    15fc:	14 c0       	rjmp	.+40     	; 0x1626 <main+0x106>
 			__ticks --;
 		}
 		return;
 	}
 	else
 		__ticks = (uint16_t)__tmp;
-    18c0:	6f 81       	ldd	r22, Y+7	; 0x07
-    18c2:	78 85       	ldd	r23, Y+8	; 0x08
-    18c4:	89 85       	ldd	r24, Y+9	; 0x09
-    18c6:	9a 85       	ldd	r25, Y+10	; 0x0a
-    18c8:	0e 94 41 00 	call	0x82	; 0x82 <__fixunssfsi>
-    18cc:	dc 01       	movw	r26, r24
-    18ce:	cb 01       	movw	r24, r22
-    18d0:	9e 83       	std	Y+6, r25	; 0x06
-    18d2:	8d 83       	std	Y+5, r24	; 0x05
-    18d4:	8d 81       	ldd	r24, Y+5	; 0x05
-    18d6:	9e 81       	ldd	r25, Y+6	; 0x06
-    18d8:	9a 83       	std	Y+2, r25	; 0x02
-    18da:	89 83       	std	Y+1, r24	; 0x01
-    18dc:	89 81       	ldd	r24, Y+1	; 0x01
-    18de:	9a 81       	ldd	r25, Y+2	; 0x02
-    18e0:	01 97       	sbiw	r24, 0x01	; 1
-    18e2:	f1 f7       	brne	.-4      	; 0x18e0 <main+0x116>
-    18e4:	9a 83       	std	Y+2, r25	; 0x02
-    18e6:	89 83       	std	Y+1, r24	; 0x01
-MDIO_voidSetPortMode(GPIOC,OUTPUT);
+    15fe:	6f 81       	ldd	r22, Y+7	; 0x07
+    1600:	78 85       	ldd	r23, Y+8	; 0x08
+    1602:	89 85       	ldd	r24, Y+9	; 0x09
+    1604:	9a 85       	ldd	r25, Y+10	; 0x0a
+    1606:	0e 94 41 00 	call	0x82	; 0x82 <__fixunssfsi>
+    160a:	dc 01       	movw	r26, r24
+    160c:	cb 01       	movw	r24, r22
+    160e:	9e 83       	std	Y+6, r25	; 0x06
+    1610:	8d 83       	std	Y+5, r24	; 0x05
+    1612:	8d 81       	ldd	r24, Y+5	; 0x05
+    1614:	9e 81       	ldd	r25, Y+6	; 0x06
+    1616:	9a 83       	std	Y+2, r25	; 0x02
+    1618:	89 83       	std	Y+1, r24	; 0x01
+    161a:	89 81       	ldd	r24, Y+1	; 0x01
+    161c:	9a 81       	ldd	r25, Y+2	; 0x02
+    161e:	01 97       	sbiw	r24, 0x01	; 1
+    1620:	f1 f7       	brne	.-4      	; 0x161e <main+0xfe>
+    1622:	9a 83       	std	Y+2, r25	; 0x02
+    1624:	89 83       	std	Y+1, r24	; 0x01
+_delay_ms(50);
 
-while(1)
-{
+HEEPROM_voidSendData(0x00,0x4F);
+    1626:	80 e0       	ldi	r24, 0x00	; 0
+    1628:	90 e0       	ldi	r25, 0x00	; 0
+    162a:	6f e4       	ldi	r22, 0x4F	; 79
+    162c:	0e 94 2e 09 	call	0x125c	; 0x125c <HEEPROM_voidSendData>
+    1630:	ff cf       	rjmp	.-2      	; 0x1630 <main+0x110>
 
-	for(u8 i=0;i<=9;i++)
-    18e8:	8f 85       	ldd	r24, Y+15	; 0x0f
-    18ea:	8f 5f       	subi	r24, 0xFF	; 255
-    18ec:	8f 87       	std	Y+15, r24	; 0x0f
-    18ee:	8f 85       	ldd	r24, Y+15	; 0x0f
-    18f0:	8a 30       	cpi	r24, 0x0A	; 10
-    18f2:	08 f4       	brcc	.+2      	; 0x18f6 <main+0x12c>
-    18f4:	7d cf       	rjmp	.-262    	; 0x17f0 <main+0x26>
-    18f6:	7a cf       	rjmp	.-268    	; 0x17ec <main+0x22>
+00001632 <__prologue_saves__>:
+    1632:	2f 92       	push	r2
+    1634:	3f 92       	push	r3
+    1636:	4f 92       	push	r4
+    1638:	5f 92       	push	r5
+    163a:	6f 92       	push	r6
+    163c:	7f 92       	push	r7
+    163e:	8f 92       	push	r8
+    1640:	9f 92       	push	r9
+    1642:	af 92       	push	r10
+    1644:	bf 92       	push	r11
+    1646:	cf 92       	push	r12
+    1648:	df 92       	push	r13
+    164a:	ef 92       	push	r14
+    164c:	ff 92       	push	r15
+    164e:	0f 93       	push	r16
+    1650:	1f 93       	push	r17
+    1652:	cf 93       	push	r28
+    1654:	df 93       	push	r29
+    1656:	cd b7       	in	r28, 0x3d	; 61
+    1658:	de b7       	in	r29, 0x3e	; 62
+    165a:	ca 1b       	sub	r28, r26
+    165c:	db 0b       	sbc	r29, r27
+    165e:	0f b6       	in	r0, 0x3f	; 63
+    1660:	f8 94       	cli
+    1662:	de bf       	out	0x3e, r29	; 62
+    1664:	0f be       	out	0x3f, r0	; 63
+    1666:	cd bf       	out	0x3d, r28	; 61
+    1668:	09 94       	ijmp
 
-000018f8 <__prologue_saves__>:
-    18f8:	2f 92       	push	r2
-    18fa:	3f 92       	push	r3
-    18fc:	4f 92       	push	r4
-    18fe:	5f 92       	push	r5
-    1900:	6f 92       	push	r6
-    1902:	7f 92       	push	r7
-    1904:	8f 92       	push	r8
-    1906:	9f 92       	push	r9
-    1908:	af 92       	push	r10
-    190a:	bf 92       	push	r11
-    190c:	cf 92       	push	r12
-    190e:	df 92       	push	r13
-    1910:	ef 92       	push	r14
-    1912:	ff 92       	push	r15
-    1914:	0f 93       	push	r16
-    1916:	1f 93       	push	r17
-    1918:	cf 93       	push	r28
-    191a:	df 93       	push	r29
-    191c:	cd b7       	in	r28, 0x3d	; 61
-    191e:	de b7       	in	r29, 0x3e	; 62
-    1920:	ca 1b       	sub	r28, r26
-    1922:	db 0b       	sbc	r29, r27
-    1924:	0f b6       	in	r0, 0x3f	; 63
-    1926:	f8 94       	cli
-    1928:	de bf       	out	0x3e, r29	; 62
-    192a:	0f be       	out	0x3f, r0	; 63
-    192c:	cd bf       	out	0x3d, r28	; 61
-    192e:	09 94       	ijmp
+0000166a <__epilogue_restores__>:
+    166a:	2a 88       	ldd	r2, Y+18	; 0x12
+    166c:	39 88       	ldd	r3, Y+17	; 0x11
+    166e:	48 88       	ldd	r4, Y+16	; 0x10
+    1670:	5f 84       	ldd	r5, Y+15	; 0x0f
+    1672:	6e 84       	ldd	r6, Y+14	; 0x0e
+    1674:	7d 84       	ldd	r7, Y+13	; 0x0d
+    1676:	8c 84       	ldd	r8, Y+12	; 0x0c
+    1678:	9b 84       	ldd	r9, Y+11	; 0x0b
+    167a:	aa 84       	ldd	r10, Y+10	; 0x0a
+    167c:	b9 84       	ldd	r11, Y+9	; 0x09
+    167e:	c8 84       	ldd	r12, Y+8	; 0x08
+    1680:	df 80       	ldd	r13, Y+7	; 0x07
+    1682:	ee 80       	ldd	r14, Y+6	; 0x06
+    1684:	fd 80       	ldd	r15, Y+5	; 0x05
+    1686:	0c 81       	ldd	r16, Y+4	; 0x04
+    1688:	1b 81       	ldd	r17, Y+3	; 0x03
+    168a:	aa 81       	ldd	r26, Y+2	; 0x02
+    168c:	b9 81       	ldd	r27, Y+1	; 0x01
+    168e:	ce 0f       	add	r28, r30
+    1690:	d1 1d       	adc	r29, r1
+    1692:	0f b6       	in	r0, 0x3f	; 63
+    1694:	f8 94       	cli
+    1696:	de bf       	out	0x3e, r29	; 62
+    1698:	0f be       	out	0x3f, r0	; 63
+    169a:	cd bf       	out	0x3d, r28	; 61
+    169c:	ed 01       	movw	r28, r26
+    169e:	08 95       	ret
 
-00001930 <__epilogue_restores__>:
-    1930:	2a 88       	ldd	r2, Y+18	; 0x12
-    1932:	39 88       	ldd	r3, Y+17	; 0x11
-    1934:	48 88       	ldd	r4, Y+16	; 0x10
-    1936:	5f 84       	ldd	r5, Y+15	; 0x0f
-    1938:	6e 84       	ldd	r6, Y+14	; 0x0e
-    193a:	7d 84       	ldd	r7, Y+13	; 0x0d
-    193c:	8c 84       	ldd	r8, Y+12	; 0x0c
-    193e:	9b 84       	ldd	r9, Y+11	; 0x0b
-    1940:	aa 84       	ldd	r10, Y+10	; 0x0a
-    1942:	b9 84       	ldd	r11, Y+9	; 0x09
-    1944:	c8 84       	ldd	r12, Y+8	; 0x08
-    1946:	df 80       	ldd	r13, Y+7	; 0x07
-    1948:	ee 80       	ldd	r14, Y+6	; 0x06
-    194a:	fd 80       	ldd	r15, Y+5	; 0x05
-    194c:	0c 81       	ldd	r16, Y+4	; 0x04
-    194e:	1b 81       	ldd	r17, Y+3	; 0x03
-    1950:	aa 81       	ldd	r26, Y+2	; 0x02
-    1952:	b9 81       	ldd	r27, Y+1	; 0x01
-    1954:	ce 0f       	add	r28, r30
-    1956:	d1 1d       	adc	r29, r1
-    1958:	0f b6       	in	r0, 0x3f	; 63
-    195a:	f8 94       	cli
-    195c:	de bf       	out	0x3e, r29	; 62
-    195e:	0f be       	out	0x3f, r0	; 63
-    1960:	cd bf       	out	0x3d, r28	; 61
-    1962:	ed 01       	movw	r28, r26
-    1964:	08 95       	ret
+000016a0 <_exit>:
+    16a0:	f8 94       	cli
 
-00001966 <_exit>:
-    1966:	f8 94       	cli
-
-00001968 <__stop_program>:
-    1968:	ff cf       	rjmp	.-2      	; 0x1968 <__stop_program>
+000016a2 <__stop_program>:
+    16a2:	ff cf       	rjmp	.-2      	; 0x16a2 <__stop_program>
