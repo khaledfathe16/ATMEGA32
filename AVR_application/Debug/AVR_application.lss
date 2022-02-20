@@ -9,25 +9,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, DATA
   2 .stab         000014f4  00000000  00000000  00001be8  2**2
                   CONTENTS, READONLY, DEBUGGING
-  3 .stabstr      00000b95  00000000  00000000  000030dc  2**0
+  3 .stabstr      00000ba5  00000000  00000000  000030dc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_aranges 00000140  00000000  00000000  00003c71  2**0
+  4 .debug_aranges 00000140  00000000  00000000  00003c81  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_pubnames 00000170  00000000  00000000  00003db1  2**0
+  5 .debug_pubnames 00000170  00000000  00000000  00003dc1  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00001c49  00000000  00000000  00003f21  2**0
+  6 .debug_info   00001c49  00000000  00000000  00003f31  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000eeb  00000000  00000000  00005b6a  2**0
+  7 .debug_abbrev 00000eeb  00000000  00000000  00005b7a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000dad  00000000  00000000  00006a55  2**0
+  8 .debug_line   00000dad  00000000  00000000  00006a65  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000160  00000000  00000000  00007804  2**2
+  9 .debug_frame  00000160  00000000  00000000  00007814  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000028d  00000000  00000000  00007964  2**0
+ 10 .debug_str    0000028d  00000000  00000000  00007974  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000007ce  00000000  00000000  00007bf1  2**0
+ 11 .debug_loc    000007ce  00000000  00000000  00007c01  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000050  00000000  00000000  000083bf  2**0
+ 12 .debug_ranges 00000050  00000000  00000000  000083cf  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -3634,7 +3634,7 @@ int main()
     188c:	de bf       	out	0x3e, r29	; 62
     188e:	0f be       	out	0x3f, r0	; 63
     1890:	cd bf       	out	0x3d, r28	; 61
-	u8 x;
+u8 Local_u8represent;
 MDIO_voidSetPortMode(GPIOC,OUTPUT);
     1892:	82 e0       	ldi	r24, 0x02	; 2
     1894:	60 e0       	ldi	r22, 0x00	; 0
@@ -3780,14 +3780,14 @@ _delay_ms(double __ms)
     1980:	98 8b       	std	Y+16, r25	; 0x10
     1982:	8f 87       	std	Y+15, r24	; 0x0f
 _delay_ms(5);
-
-x = HEEPROM_u8ReadData(0x00);
+Local_u8represent = HEEPROM_u8ReadData(0x00);
     1984:	80 e0       	ldi	r24, 0x00	; 0
     1986:	90 e0       	ldi	r25, 0x00	; 0
     1988:	0e 94 7d 0b 	call	0x16fa	; 0x16fa <HEEPROM_u8ReadData>
     198c:	8e 8f       	std	Y+30, r24	; 0x1e
 
-if(x==0xFF)
+
+if(Local_u8represent==0xFF)
     198e:	8e 8d       	ldd	r24, Y+30	; 0x1e
     1990:	8f 3f       	cpi	r24, 0xFF	; 255
     1992:	41 f5       	brne	.+80     	; 0x19e4 <main+0x166>
@@ -3843,13 +3843,13 @@ while(1)
     19e6:	7f c0       	rjmp	.+254    	; 0x1ae6 <main+0x268>
 	{
 
-		x = HEEPROM_u8ReadData(0x00+i);
+		Local_u8represent = HEEPROM_u8ReadData(0x00+i);
     19e8:	8d 8d       	ldd	r24, Y+29	; 0x1d
     19ea:	88 2f       	mov	r24, r24
     19ec:	90 e0       	ldi	r25, 0x00	; 0
     19ee:	0e 94 7d 0b 	call	0x16fa	; 0x16fa <HEEPROM_u8ReadData>
     19f2:	8e 8f       	std	Y+30, r24	; 0x1e
-			MDIO_voidSetPortValue(GPIOC,x);
+			MDIO_voidSetPortValue(GPIOC,Local_u8represent);
     19f4:	82 e0       	ldi	r24, 0x02	; 2
     19f6:	6e 8d       	ldd	r22, Y+30	; 0x1e
     19f8:	0e 94 70 08 	call	0x10e0	; 0x10e0 <MDIO_voidSetPortValue>

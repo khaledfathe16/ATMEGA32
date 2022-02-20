@@ -429,9 +429,9 @@ LOAD c:/users/kfe/desktop/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\li
  .stab          0x00001188      0x36c ./main.o
                                 0x558 (size before relaxing)
 
-.stabstr        0x00000000      0xb95
+.stabstr        0x00000000      0xba5
  *(.stabstr)
- .stabstr       0x00000000      0xb95 ./DIO_program.o
+ .stabstr       0x00000000      0xba5 ./DIO_program.o
 
 .stab.excl
  *(.stab.excl)
