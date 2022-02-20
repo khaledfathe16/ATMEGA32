@@ -8,37 +8,50 @@
 
 int main()
 {
-	MDIO_voidSetPortMode(GPIOC,OUTPUT);
-//u8 x;
+	u8 x;
+MDIO_voidSetPortMode(GPIOC,OUTPUT);
 MSPI_voidIntialize(M);
-_delay_ms(50);
+_delay_ms(5);
 
-HEEPROM_voidSendData(0x00,0x4F);
+x = HEEPROM_u8ReadData(0x00);
 
-/*HEEPROM_voidSendData(0x00,0x3F);
-HEEPROM_voidSendData(0x01,0x06);
-HEEPROM_voidSendData(0x02,0x5B);
-HEEPROM_voidSendData(0x03,0x4F);
-HEEPROM_voidSendData(0x04,0x66);
-HEEPROM_voidSendData(0x05,0x6D);
-HEEPROM_voidSendData(0x06,0x7D);
-HEEPROM_voidSendData(0x07,0x07);
-HEEPROM_voidSendData(0x08,0x7F);
-HEEPROM_voidSendData(0x09,0x6F);
+if(x==0xFF)
+{
+	u8 arr[10]={0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
+	HEEPROM_voidSend16Byte(0x00 ,arr);
+}
 
+else {
+
+}
+
+/*
+HEEPROM_voidSendData(0x00,0xFF);
+HEEPROM_voidSendData(0x01,0xFF);
+HEEPROM_voidSendData(0x02,0xFF);
+HEEPROM_voidSendData(0x03,0xFF);
+HEEPROM_voidSendData(0x04,0xFF);
+HEEPROM_voidSendData(0x05,0xFF);
+HEEPROM_voidSendData(0x06,0xFF);
+HEEPROM_voidSendData(0x07,0xFF);
+HEEPROM_voidSendData(0x08,0xFF);
+HEEPROM_voidSendData(0x09,0xFF);
 */
+
+
 while(1)
 {
-/*
+
 	for(u8 i=0;i<=9;i++)
 	{
+
 		x = HEEPROM_u8ReadData(0x00+i);
 			MDIO_voidSetPortValue(GPIOC,x);
 			_delay_ms(100);
 
 
 	}
-*/
+
 }
 
 
@@ -46,5 +59,5 @@ while(1)
 return 0;
 }
 
-//
+
 
