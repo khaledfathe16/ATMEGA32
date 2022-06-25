@@ -10,8 +10,9 @@
 int main()
 {
 
-	MDIO_voidSetPinMode(GPIOD,0,OUTPUT);
+	MDIO_voidSetPortMode(GPIOD,OUTPUT);
 
+	MDIO_voidSetPortValue(GPIOD,0xFF);
 
 	while(1)
 	{
