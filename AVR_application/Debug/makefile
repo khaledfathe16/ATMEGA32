@@ -76,13 +76,13 @@ AVR_application.eep: AVR_application.elf
 
 sizedummy: AVR_application.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega32 AVR_application.elf
+	-avr-size --format=berkeley -t AVR_application.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
 avrdudedummy: AVR_application.elf
 	@echo 'Invoking: AVRDude'
-	C:\Users\KFE\Desktop\IMT_SDK_Win_64\WinAVR\bin\avrdude -pm32 -cusbasp -Uflash:w:AVR_application.hex:a
+	G:\Embedded systems\Azex\Tool chain\Tools\Tools\IMT_SDK_Win_32\WinAVR\bin\avrdude -pm32 -cusbasp -Uflash:w:AVR_application.hex:a
 	@echo 'Finished building: $@'
 	@echo ' '
 
